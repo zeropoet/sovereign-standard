@@ -26,46 +26,68 @@
       display: grid;
       place-items: center;
       min-height: 100vh;
-      padding: 8vw;
-      font-family: "Avenir Next Condensed", "Helvetica Neue", "Arial Narrow", sans-serif;
+      padding: clamp(1.5rem, 4vw, 3.5rem);
+      font-family: Palatino, "Palatino Linotype", "Book Antiqua", serif;
+      font-synthesis: weight;
     }
 
     main {
-      width: min(92vw, 900px);
+      width: 100%;
+      display: grid;
+      place-items: center;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(3.75rem, 11vw, 8.5rem);
-      font-weight: 600;
-      line-height: 0.88;
-      letter-spacing: 0.18em;
+      color: var(--fg);
+      font-family: Didot, Bodoni MT, "Times New Roman", serif;
+      font-size: clamp(1.55rem, 5vw, 3.35rem);
+      font-weight: 800;
+      line-height: 0.8;
       text-transform: uppercase;
       text-rendering: geometricPrecision;
+      text-align: center;
+      width: min-content;
+      max-width: 100%;
+      font-kerning: normal;
+      font-variant-ligatures: none;
     }
 
     h1 span {
       display: block;
+      min-width: 0;
     }
 
     h1 span:last-child {
-      letter-spacing: 0.26em;
-      margin-top: 0.08em;
+      margin-top: 0.04em;
     }
 
-    @media (max-width: 640px) {
+    @media (min-width: 1280px) {
+      h1 {
+        font-size: clamp(2.4rem, 3vw, 4rem);
+        line-height: 0.79;
+      }
+    }
+
+    @media (max-width: 720px) {
       body {
-        padding: 12vw 8vw;
+        padding: clamp(1.25rem, 7vw, 2.5rem);
       }
 
       h1 {
-        font-size: clamp(3rem, 16vw, 5rem);
-        line-height: 0.92;
-        letter-spacing: 0.14em;
+        font-size: clamp(1.3rem, 8.6vw, 2rem);
+        line-height: 0.82;
       }
 
       h1 span:last-child {
-        letter-spacing: 0.18em;
+        margin-top: 0.05em;
+      }
+    }
+
+    @media (max-width: 420px) {
+      h1 {
+        font-size: clamp(1.1rem, 9.2vw, 1.55rem);
+        line-height: 0.84;
       }
     }
   </style>
@@ -73,7 +95,7 @@
 <body>
   <main>
     <h1 aria-label="Sovereign Standard">
-      <span>Sovereign</span>
+      <span>Søvereign</span>
       <span>Standard</span>
     </h1>
   </main>

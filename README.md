@@ -1,1 +1,1 @@
-# Søvereign Standard
+# Sovereign Standard

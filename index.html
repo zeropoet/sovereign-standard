@@ -6,7 +6,7 @@
   <title>Sovereign Standard</title>
   <style>
     :root {
-      --bg: #0b0b0b;
+      --bg: #111111;
       --fg: #c8c5bd;
     }
 
@@ -42,54 +42,15 @@
       justify-items: center;
     }
 
-    .wordmark {
-      display: grid;
-      gap: 0.12em;
-      margin: 0;
-      color: var(--fg);
-      font-family: Didot, Bodoni MT, "Times New Roman", serif;
-      font-size: clamp(2.1rem, 6vw, 5.25rem);
-      font-weight: 500;
-      line-height: 0.86;
-      letter-spacing: 0.035em;
-      text-transform: uppercase;
-      text-align: center;
-      text-rendering: geometricPrecision;
-      font-kerning: normal;
-      font-variant-ligatures: none;
-    }
-
-    .wordmark-line {
-      display: flex;
-      justify-content: center;
-      align-items: baseline;
-      flex-wrap: nowrap;
-      white-space: nowrap;
-    }
-
-    .slashed-o {
-      position: relative;
-      display: inline-block;
-      width: 0.72em;
-      text-align: center;
-    }
-
-    .slashed-o::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: -0.04em;
-      width: 0.045em;
-      height: 1.04em;
-      background: currentColor;
-      transform: translateX(-50%) rotate(35deg);
-      transform-origin: center;
-      border-radius: 999px;
+    .logo {
+      width: min(92vw, 36rem);
+      height: auto;
+      display: block;
     }
 
     @media (min-width: 1280px) {
-      .wordmark {
-        font-size: clamp(3rem, 4.2vw, 5.8rem);
+      .logo {
+        width: min(70vw, 42rem);
       }
     }
 
@@ -97,18 +58,11 @@
       body {
         padding: clamp(1.25rem, 7vw, 2.5rem);
       }
-
-      .wordmark {
-        font-size: clamp(1.55rem, 9.3vw, 3rem);
-        letter-spacing: 0.028em;
-        line-height: 0.88;
-      }
     }
 
     @media (max-width: 420px) {
-      .wordmark {
-        font-size: clamp(1.25rem, 10vw, 2.2rem);
-        letter-spacing: 0.02em;
+      .logo {
+        width: 96vw;
       }
     }
   </style>
@@ -116,10 +70,7 @@
 <body>
   <main>
     <section class="mark" aria-label="Sovereign Standard">
-      <h1 class="wordmark" aria-label="Sovereign Standard">
-        <span class="wordmark-line">S<span class="slashed-o" aria-hidden="true">O</span>VEREIGN</span>
-        <span class="wordmark-line">STANDARD</span>
-      </h1>
+      <img class="logo" src="images/SovereignStandard_Logo.png" alt="Sovereign Standard">
     </section>
   </main>
 </body>

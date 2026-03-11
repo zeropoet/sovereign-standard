@@ -42,35 +42,54 @@
       justify-items: center;
     }
 
-    h1 {
+    .wordmark {
+      display: grid;
+      gap: 0.12em;
       margin: 0;
       color: var(--fg);
       font-family: Didot, Bodoni MT, "Times New Roman", serif;
-      font-size: clamp(1.55rem, 5vw, 3.35rem);
-      font-weight: 800;
-      line-height: 0.8;
+      font-size: clamp(2.1rem, 6vw, 5.25rem);
+      font-weight: 500;
+      line-height: 0.86;
+      letter-spacing: 0.035em;
       text-transform: uppercase;
-      text-rendering: geometricPrecision;
       text-align: center;
-      width: min-content;
-      max-width: 100%;
+      text-rendering: geometricPrecision;
       font-kerning: normal;
       font-variant-ligatures: none;
     }
 
-    h1 span {
-      display: block;
-      min-width: 0;
+    .wordmark-line {
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      flex-wrap: nowrap;
+      white-space: nowrap;
     }
 
-    h1 span:last-child {
-      margin-top: 0.04em;
+    .slashed-o {
+      position: relative;
+      display: inline-block;
+      width: 0.72em;
+      text-align: center;
+    }
+
+    .slashed-o::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: -0.04em;
+      width: 0.045em;
+      height: 1.04em;
+      background: currentColor;
+      transform: translateX(-50%) rotate(35deg);
+      transform-origin: center;
+      border-radius: 999px;
     }
 
     @media (min-width: 1280px) {
-      h1 {
-        font-size: clamp(2.4rem, 3vw, 4rem);
-        line-height: 0.79;
+      .wordmark {
+        font-size: clamp(3rem, 4.2vw, 5.8rem);
       }
     }
 
@@ -79,20 +98,17 @@
         padding: clamp(1.25rem, 7vw, 2.5rem);
       }
 
-      h1 {
-        font-size: clamp(1.3rem, 8.6vw, 2rem);
-        line-height: 0.82;
-      }
-
-      h1 span:last-child {
-        margin-top: 0.05em;
+      .wordmark {
+        font-size: clamp(1.55rem, 9.3vw, 3rem);
+        letter-spacing: 0.028em;
+        line-height: 0.88;
       }
     }
 
     @media (max-width: 420px) {
-      h1 {
-        font-size: clamp(1.1rem, 9.2vw, 1.55rem);
-        line-height: 0.84;
+      .wordmark {
+        font-size: clamp(1.25rem, 10vw, 2.2rem);
+        letter-spacing: 0.02em;
       }
     }
   </style>
@@ -100,9 +116,9 @@
 <body>
   <main>
     <section class="mark" aria-label="Sovereign Standard">
-      <h1 aria-label="Sovereign Standard">
-        <span>Søvereign</span>
-        <span>Standard</span>
+      <h1 class="wordmark" aria-label="Sovereign Standard">
+        <span class="wordmark-line">S<span class="slashed-o" aria-hidden="true">O</span>VEREIGN</span>
+        <span class="wordmark-line">STANDARD</span>
       </h1>
     </section>
   </main>

@@ -1,0 +1,14 @@
+DerivedData/
+.build/
+**/.build/
+**/.swiftpm/
+*.xcuserstate
+*.xcworkspace
+xcuserdata/
+**/xcuserdata/
+*.DS_Store
+**/.DS_Store
+/tmp-derived/
+/tmp-home/
+/tmp-sigil-build/
+tmp-referenceinstrument-*.png

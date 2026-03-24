@@ -39,7 +39,7 @@ body {
 .landing-shell {
   display: grid;
   gap: 18px;
-  justify-items: start;
+  justify-items: center;
 }
 
 .landing-title {
@@ -48,6 +48,7 @@ body {
   font-weight: 400;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .landing-page-didot .landing-title {
@@ -55,7 +56,16 @@ body {
 }
 
 .landing-link {
+  justify-self: center;
   font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.site-footer {
+  margin-top: 72px;
+  color: var(--muted);
+  font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -167,7 +177,8 @@ h3 {
 
 .archive-page .page-intro {
   max-width: none;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .artifact-header,
@@ -281,7 +292,39 @@ h3 {
 
 .meta-list {
   display: grid;
-  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.meta-column {
+  display: grid;
+  align-content: start;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.meta-group {
+  display: grid;
+  align-content: start;
+  gap: 0.85rem;
+  padding-top: 0.2rem;
+  min-width: 0;
+}
+
+.meta-column .meta-group + .meta-group {
+  border-top: 1px solid var(--line);
+  padding-top: 1rem;
+}
+
+.meta-group h3 {
+  font-size: 11px;
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin: 0;
+  padding-bottom: 0.2rem;
 }
 
 .meta-list div,
@@ -289,6 +332,8 @@ h3 {
 .meta-list strong {
   font-size: 14px;
   line-height: 1.7;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .meta-list div {
@@ -300,6 +345,8 @@ h3 {
   font-family: var(--mono-sans);
   font-size: 0.92rem;
   color: var(--text);
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 @media (max-width: 640px) {
@@ -320,5 +367,23 @@ h3 {
 
   #gallery {
     gap: 20px;
+  }
+
+  .meta-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .landing-shell {
+    justify-items: start;
+  }
+
+  .landing-title {
+    text-align: left;
+  }
+
+  .landing-link {
+    justify-self: start;
   }
 }

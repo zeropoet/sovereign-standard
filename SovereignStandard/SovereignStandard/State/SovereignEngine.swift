@@ -40,6 +40,7 @@ struct SovereignEngine {
 
     func generateUnit(unitID: Int) -> UnitOutput {
         let start = permutationFromUnitID(unitID)
+        let startCanonicalDistance = canonicalDistance.distance(from: start)
         let path = pathGenerator.generatePath(from: start)
         let events = path.map(FoldEvent.permutationCommit)
         let memory = memoryEncoder.encode(events)
@@ -57,6 +58,7 @@ struct SovereignEngine {
         return UnitOutput(
             unitID: unitID,
             permutation: start,
+            canonicalDistance: startCanonicalDistance,
             events: events,
             memory: memory,
             hash: hash,

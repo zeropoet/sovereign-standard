@@ -105,6 +105,7 @@ private struct PersistedUnitOutput: Encodable {
     enum CodingKeys: String, CodingKey {
         case unitID = "unit_id"
         case permutation
+        case canonicalDistance = "canonical_distance"
         case events
         case memory
         case hash
@@ -116,6 +117,7 @@ private struct PersistedUnitOutput: Encodable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(unit.unitID, forKey: .unitID)
         try container.encode(unit.permutation.values, forKey: .permutation)
+        try container.encode(unit.canonicalDistance, forKey: .canonicalDistance)
         try container.encode(unit.events.map(PersistedUnitEvent.init), forKey: .events)
         try container.encode(unit.memory, forKey: .memory)
         try container.encode(unit.hash, forKey: .hash)

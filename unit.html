@@ -39,9 +39,13 @@
         <img id="qr" alt="QR code">
       </article>
     </section>
+
+    <footer class="site-footer">SOVEREIGN STANDARD - <span id="site-year"></span></footer>
   </main>
 
   <script>
+    document.getElementById('site-year').textContent = new Date().getFullYear();
+
     function formatCreationDate(value) {
       const date = new Date(value);
 
@@ -65,7 +69,7 @@
 
       const yearInMilliseconds = 365.25 * 24 * 60 * 60 * 1000;
       const elapsed = Date.now() - creationDate.getTime();
-      const integrity = Math.max(0, 1 - (elapsed / yearInMilliseconds));
+      const integrity = Math.min(1, Math.max(0, 1 - (elapsed / yearInMilliseconds)));
 
       return integrity.toFixed(3);
     }
@@ -94,12 +98,35 @@
       document.getElementById('qr').src = `output/${unitID}/qr.svg`;
 
       document.getElementById('meta-list').innerHTML = `
-        <div><span>Hash</span><br><span class="code">${data.hash}</span></div>
-        <div><span>Starting permutation</span><br><span class="code">${data.permutation.join(', ')}</span></div>
-        <div><span>Events</span><br><span class="code">${data.events.length}</span></div>
-        <div><span>Creation date</span><br><span class="code">${formatCreationDate(data.creation_date)}</span></div>
-        <div><span>Integrity</span><br><span class="code">${calculateIntegrity(data.creation_date)}</span></div>
-        <div><span>Tea blend</span><br><span class="code">Green Sencha 75g<br>Lemon Balm 33g<br>Kapoor Tulsi 27g<br>Ginger 15g</span></div>
+        <div class="meta-column">
+          <div class="meta-group">
+            <h3>Current Commit</h3>
+            <div><span>Commit index</span><br><span class="code">${unitID}</span></div>
+            <div><span>Creation date</span><br><span class="code">${formatCreationDate(data.creation_date)}</span></div>
+            <div><span>Integrity - 12 month resolve</span><br><span class="code">${calculateIntegrity(data.creation_date)}</span></div>
+          </div>
+          <div class="meta-group">
+            <h3>Tea Blend</h3>
+            <div><span>Composition</span><br><span class="code">Green Sencha 75g<br>Lemon Balm 33g<br>Kapoor Tulsi 27g<br>Ginger 15g</span></div>
+          </div>
+          <div class="meta-group">
+            <h3>Standard, held.</h3>
+          </div>
+        </div>
+        <div class="meta-column">
+          <div class="meta-group">
+            <h3>Source State</h3>
+            <div><span>Starting permutation</span><br><span class="code">${data.permutation.join(', ')}</span></div>
+            <div><span>Convergence hash</span><br><span class="code">${data.hash}</span></div>
+            <div><span>Canonical distance</span><br><span class="code">${data.canonical_distance}</span></div>
+          </div>
+          <div class="meta-group">
+            <h3>Materialization</h3>
+            <div><span>Engraving depth (µm)</span><br><span class="code">Pending</span></div>
+            <div><span>Line width (µm)</span><br><span class="code">Pending</span></div>
+            <div><span>Energy density</span><br><span class="code">Pending</span></div>
+          </div>
+        </div>
       `;
     }
 

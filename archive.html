@@ -15,9 +15,12 @@
       <p class="page-intro" id="unit-count">0 units created</p>
     </header>
     <div id="gallery"></div>
+    <footer class="site-footer">SOVEREIGN STANDARD - <span id="site-year"></span></footer>
   </main>
 
   <script>
+    document.getElementById('site-year').textContent = new Date().getFullYear();
+
     async function loadUnits() {
       const response = await fetch('units.json', { cache: 'no-store' });
       const manifest = await response.json();

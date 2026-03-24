@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sovereign Standard Archive</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="archive-page">
+    <a href="index.html" class="nav">Sovereign Standard</a>
+    <header class="page-header">
+      <h1 class="page-title">Artifact Archive</h1>
+      <p class="page-intro">Each unit represents a deterministic Sovereign Engine output.</p>
+      <p class="page-intro" id="unit-count">0 units created</p>
+    </header>
+    <div id="gallery"></div>
+  </main>
+
+  <script>
+    async function loadUnits() {
+      const response = await fetch('units.json', { cache: 'no-store' });
+      const manifest = await response.json();
+      const gallery = document.getElementById('gallery');
+      const unitCount = document.getElementById('unit-count');
+
+      unitCount.textContent = `${manifest.units.length} units created`;
+
+      if (!manifest.units.length) {
+        gallery.innerHTML = '<p>No artifacts indexed yet.</p>';
+        return;
+      }
+
+      for (const unitID of manifest.units) {
+        const card = document.createElement('article');
+        card.className = 'artifact-card panel';
+
+        const link = document.createElement('a');
+        link.href = `unit.html?id=${unitID}`;
+        link.className = 'artifact-link';
+
+        const img = document.createElement('img');
+        img.loading = 'lazy';
+        img.width = 180;
+        img.height = 180;
+        img.src = `output/${unitID}/sigil.svg`;
+        img.alt = `Sigil for unit ${unitID}`;
+
+        const code = document.createElement('code');
+        code.textContent = `${unitID}`;
+
+        link.append(img, code);
+        card.append(link);
+        gallery.append(card);
+      }
+    }
+
+    loadUnits().catch(() => {
+      document.getElementById('gallery').innerHTML = '<p>Unable to load artifact index.</p>';
+    });
+  </script>
+</body>
+</html>

@@ -7,33 +7,34 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="shell">
-    <section class="hero">
-      <span class="eyebrow">Sovereign Standard</span>
-      <h1 id="unit-title">Unit</h1>
-    </section>
+  <main class="artifact-page">
+    <a href="index.html" class="nav">Sovereign Standard</a>
+    <header class="page-header artifact-header">
+      <p class="page-kicker"><a href="archive.html">Artifact Archive</a></p>
+      <h1 class="page-title" id="unit-title">Unit</h1>
+    </header>
 
-    <section class="panel section-stack">
+    <section class="panel section-stack artifact-section">
       <div class="section-head">
-        <h2>METADATA</h2>
+        <h2>Metadata</h2>
       </div>
       <div id="meta-list" class="meta-list"></div>
     </section>
 
-    <section class="artifact-grid">
-      <article class="panel">
-        <h3>FRONT</h3>
+    <section class="artifact-grid artifact-section">
+      <article class="panel artifact-figure">
+        <h3>Front</h3>
         <img id="front" alt="Front layout">
       </article>
-      <article class="panel">
-        <h3>BACK</h3>
+      <article class="panel artifact-figure">
+        <h3>Back</h3>
         <img id="back" alt="Back layout">
       </article>
-      <article class="panel">
-        <h3>SIGIL</h3>
+      <article class="panel artifact-figure">
+        <h3>Sigil</h3>
         <img id="sigil" alt="Sigil">
       </article>
-      <article class="panel">
+      <article class="panel artifact-figure">
         <h3>QR</h3>
         <img id="qr" alt="QR code">
       </article>
@@ -50,7 +51,7 @@
       }
 
       document.title = `Unit ${unitID} · Sovereign Standard`;
-      document.getElementById('unit-title').textContent = `UNIT ${unitID}`;
+      document.getElementById('unit-title').textContent = `Unit ${unitID}`;
 
       const data = await fetch(`output/${unitID}/data.json`, { cache: 'no-store' }).then((response) => {
         if (!response.ok) {
@@ -65,9 +66,9 @@
       document.getElementById('qr').src = `output/${unitID}/qr.svg`;
 
       document.getElementById('meta-list').innerHTML = `
-        <div><strong>Hash</strong><br><span class="code">${data.hash}</span></div>
-        <div><strong>Starting permutation</strong><br><span class="code">${data.permutation.join(', ')}</span></div>
-        <div><strong>Events</strong><br><span class="code">${data.events.length}</span></div>
+        <div><span>Starting permutation</span><br><span class="code">${data.permutation.join(', ')}</span></div>
+        <div><span>Events</span><br><span class="code">${data.events.length}</span></div>
+        <div><span>Hash</span><br><span class="code">${data.hash}</span></div>
       `;
     }
 

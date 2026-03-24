@@ -7,45 +7,11 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="shell">
-    <section class="hero">
-      <span class="eyebrow">Sovereign Standard</span>
-      <h1>SOVEREIGN ENGINE</h1>
-    </section>
-
-    <section class="panel section-stack">
-      <div class="section-head">
-        <h2>PUBLISHED UNITS</h2>
-      </div>
-      <div id="unit-grid" class="unit-grid"></div>
+  <main class="landing-page landing-page-didot">
+    <section class="landing-shell">
+      <h1 class="landing-title">Sovereign Standard</h1>
+      <a href="archive.html" class="landing-link">Artifact Archive</a>
     </section>
   </main>
-
-  <script>
-    async function loadUnits() {
-      const response = await fetch('units.json', { cache: 'no-store' });
-      const manifest = await response.json();
-      const grid = document.getElementById('unit-grid');
-
-      if (!manifest.units.length) {
-        grid.innerHTML = '<p class="muted">No units have been published yet.</p>';
-        return;
-      }
-
-      grid.innerHTML = manifest.units.map((unitID) => `
-        <a class="panel unit-card" href="unit.html?id=${unitID}">
-          <div>
-            <span class="eyebrow">Unit ${unitID}</span>
-            <h3>Artifact ${unitID}</h3>
-          </div>
-          <img src="output/${unitID}/front.svg" alt="Front layout for unit ${unitID}">
-        </a>
-      `).join('');
-    }
-
-    loadUnits().catch((error) => {
-      document.getElementById('unit-grid').innerHTML = `<p class="muted">Unable to load units: ${error.message}</p>`;
-    });
-  </script>
 </body>
 </html>

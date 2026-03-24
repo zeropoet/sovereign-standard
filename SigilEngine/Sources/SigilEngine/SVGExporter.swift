@@ -18,11 +18,8 @@ public struct SVGExporter {
 
         let svg = """
         <svg xmlns="http://www.w3.org/2000/svg"
-             viewBox="0 0 1 1"
-             fill="none"
-             stroke="black"
-             stroke-width="0.01">
-            <path d="\(path)" />
+             viewBox="0 0 1 1">
+            <path d="\(path)" fill="black" />
         </svg>
         """
 

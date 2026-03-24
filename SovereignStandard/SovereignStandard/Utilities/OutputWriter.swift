@@ -11,9 +11,7 @@ struct OutputWriter {
             withIntermediateDirectories: true
         )
 
-        let qrSVG = try qrCode.exportSVG(
-            url: "https://control.sovereignstandard.co/unit/\(unit.unitID)"
-        )
+        let qrSVG = try qrCode.exportSVG(url: SiteConfiguration.unitURL(for: unit.unitID))
         let frontSVG = LaserLayout.frontSVG(unit: unit)
         let backSVG = LaserLayout.backSVG(unit: unit, qrSVG: qrSVG)
 

@@ -42,6 +42,34 @@
   </main>
 
   <script>
+    function formatCreationDate(value) {
+      const date = new Date(value);
+
+      if (Number.isNaN(date.getTime())) {
+        return 'Unavailable';
+      }
+
+      return new Intl.DateTimeFormat(undefined, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      }).format(date);
+    }
+
+    function calculateIntegrity(value) {
+      const creationDate = new Date(value);
+
+      if (Number.isNaN(creationDate.getTime())) {
+        return 'Unavailable';
+      }
+
+      const yearInMilliseconds = 365.25 * 24 * 60 * 60 * 1000;
+      const elapsed = Date.now() - creationDate.getTime();
+      const integrity = Math.max(0, 1 - (elapsed / yearInMilliseconds));
+
+      return integrity.toFixed(3);
+    }
+
     async function loadUnit() {
       const params = new URLSearchParams(window.location.search);
       const unitID = params.get('id');
@@ -66,9 +94,12 @@
       document.getElementById('qr').src = `output/${unitID}/qr.svg`;
 
       document.getElementById('meta-list').innerHTML = `
+        <div><span>Hash</span><br><span class="code">${data.hash}</span></div>
         <div><span>Starting permutation</span><br><span class="code">${data.permutation.join(', ')}</span></div>
         <div><span>Events</span><br><span class="code">${data.events.length}</span></div>
-        <div><span>Hash</span><br><span class="code">${data.hash}</span></div>
+        <div><span>Creation date</span><br><span class="code">${formatCreationDate(data.creation_date)}</span></div>
+        <div><span>Integrity</span><br><span class="code">${calculateIntegrity(data.creation_date)}</span></div>
+        <div><span>Tea blend</span><br><span class="code">Green Sencha 75g<br>Lemon Balm 33g<br>Kapoor Tulsi 27g<br>Ginger 15g</span></div>
       `;
     }
 

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sovereign Standard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <span class="eyebrow">Sovereign Standard</span>
+      <h1>SovereignEngine</h1>
+      <p class="lede">Deterministic unit generation for the Sovereign Standard artifact system.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Published Units</h2>
+      <p class="muted">These units are generated deterministically by the engine and published as static artifacts.</p>
+      <div id="unit-grid" class="unit-grid"></div>
+    </section>
+  </main>
+
+  <script>
+    async function loadUnits() {
+      const response = await fetch('units.json', { cache: 'no-store' });
+      const manifest = await response.json();
+      const grid = document.getElementById('unit-grid');
+
+      if (!manifest.units.length) {
+        grid.innerHTML = '<p class="muted">No units have been published yet.</p>';
+        return;
+      }
+
+      grid.innerHTML = manifest.units.map((unitID) => `
+        <a class="panel unit-card" href="unit.html?id=${unitID}">
+          <div>
+            <span class="eyebrow">Unit ${unitID}</span>
+            <h3>Artifact ${unitID}</h3>
+          </div>
+          <img src="output/${unitID}/front.svg" alt="Front layout for unit ${unitID}">
+        </a>
+      `).join('');
+    }
+
+    loadUnits().catch((error) => {
+      document.getElementById('unit-grid').innerHTML = `<p class="muted">Unable to load units: ${error.message}</p>`;
+    });
+  </script>
+</body>
+</html>

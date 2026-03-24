@@ -6,6 +6,8 @@ DerivedData/
 *.xcworkspace
 xcuserdata/
 **/xcuserdata/
+.idea/
+**/.idea/
 *.DS_Store
 **/.DS_Store
 /tmp-derived/

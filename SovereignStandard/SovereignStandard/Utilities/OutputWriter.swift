@@ -47,4 +47,34 @@ struct OutputWriter {
         let data = try encoder.encode(unit)
         try data.write(to: unitDirectory.appendingPathComponent("data.json"))
     }
+
+    func delete(unitID: Int, outputRoot: URL) throws {
+        let unitDirectory = outputRoot.appendingPathComponent(String(unitID), isDirectory: true)
+
+        if FileManager.default.fileExists(atPath: unitDirectory.path) {
+            try FileManager.default.removeItem(at: unitDirectory)
+        }
+    }
+
+    func existingUnitIDs(outputRoot: URL) throws -> [Int] {
+        guard FileManager.default.fileExists(atPath: outputRoot.path) else {
+            return []
+        }
+
+        let urls = try FileManager.default.contentsOfDirectory(
+            at: outputRoot,
+            includingPropertiesForKeys: [.isDirectoryKey],
+            options: [.skipsHiddenFiles]
+        )
+
+        let unitIDs = urls.compactMap { url -> Int? in
+            guard (try? url.resourceValues(forKeys: [.isDirectoryKey]).isDirectory) == true else {
+                return nil
+            }
+
+            return Int(url.lastPathComponent)
+        }
+
+        return unitIDs.sorted()
+    }
 }

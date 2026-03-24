@@ -29,6 +29,35 @@ body {
   min-height: 100vh;
 }
 
+.has-custom-cursor,
+.has-custom-cursor a,
+.has-custom-cursor button,
+.has-custom-cursor input,
+.has-custom-cursor textarea {
+  cursor: none;
+}
+
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: #111111;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-100px, -100px);
+  opacity: 0;
+  transition: opacity 120ms ease;
+  margin-left: -6px;
+  margin-top: -6px;
+}
+
+.cursor-dot.is-visible {
+  opacity: 1;
+}
+
 .landing-page {
   min-height: 100vh;
   display: grid;
@@ -244,6 +273,9 @@ h3 {
 .artifact-figure h3 {
   margin-left: 2px;
   font-weight: 400;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 #gallery {
@@ -334,6 +366,16 @@ h3 {
   line-height: 1.7;
   min-width: 0;
   overflow-wrap: anywhere;
+}
+
+.meta-group > div > span:first-child {
+  display: inline-block;
+  font-size: 11px;
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
 }
 
 .meta-list div {

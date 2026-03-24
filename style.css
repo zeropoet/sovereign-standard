@@ -408,7 +408,18 @@ h3 {
   }
 
   #gallery {
+    grid-template-columns: 1fr;
     gap: 20px;
+    justify-content: stretch;
+  }
+
+  .artifact-card {
+    width: 100%;
+  }
+
+  .artifact-card img {
+    width: min(100%, 320px);
+    height: auto;
   }
 
   .meta-list {

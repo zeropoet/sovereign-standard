@@ -1,7 +1,7 @@
 import Foundation
 
 enum SiteConfiguration {
-    static let publicBaseURL = URL(string: "https://zeropoet.github.io/sovereign-standard")!
+    static let publicBaseURL = URL(string: "https://sovereignstandard.co")!
 
     static func unitURL(for unitID: Int) -> String {
         publicBaseURL

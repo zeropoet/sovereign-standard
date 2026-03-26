@@ -1,34 +1,86 @@
 # Sovereign Standard
 
-Sovereign Standard is a deterministic artifact generator and static archive site built from the Reference Instrument fold engine.
+Sovereign Standard is a deterministic artifact generator and static archive site built around the Reference Instrument fold engine.
 
-The core engine preserves:
+Today, this repository contains:
 
-- FoldKernel integration
-- event array encoding
-- memory encoding
-- convergence hashing
-- sigil generation
+- the Swift package that generates and verifies units
+- local engine dependencies in `FoldKernel/` and `SigilEngine/`
+- the committed artifact archive in `output/`
+- the static public site served from the repo root
+- release metadata and archive integrity tooling in `release/` and `scripts/`
 
-## Site
+## Current baseline
 
-The public site is static:
+- Platform target: macOS 13+
+- Swift tools version: 5.9
+- Walker version: `SovereignWalker-1.0.0`
+- Kernel version: `FoldKernel-1.0.0`
+- Fixed step count: `64`
+- Public base URL: `https://sovereignstandard.co`
+- Live archive range: units `0...135`
+- Current committed archive size: `136` units
 
-- `index.html` is the landing page
-- `archive.html` is the artifact index
-- `unit.html?id=<unit-id>` is the per-unit detail page
+The deterministic payload for a unit lives in `data.json`. The issuance sidecar lives in `issuance.json`.
 
-`units.json` drives the archive view.
+## Repository layout
 
-## Generator
+- `Package.swift` defines the main executable package.
+- `SovereignStandard/SovereignStandard/` contains the CLI app, engine, output writer, verifier, QR generation, and site manifest writer.
+- `FoldKernel/` contains the fold primitives, symmetry/canonical-distance logic, memory encoding, and convergence hash machinery.
+- `SigilEngine/` contains deterministic sigil geometry and SVG export.
+- `Tests/SovereignStandardTests/` contains generator, golden-vector, replay, and verifier coverage.
+- `output/<unit-id>/` stores generated artifacts for each committed unit.
+- `index.html`, `archive.html`, `unit.html`, `style.css`, `site.js`, and `units.json` make up the static site.
+- `release/PRODUCTION.md` documents the production baseline and release procedure.
+- `release/archive-manifest.sha256` records hashes for the committed public archive.
 
-Run the generator from the repo root:
+## Unit artifacts
+
+Each generated unit is written to `output/<unit-id>/` with:
+
+- `data.json`
+- `issuance.json`
+- `sigil.svg`
+- `qr.svg`
+- `front.svg`
+- `back.svg`
+
+`data.json` is deterministic for a fixed walker/kernel baseline and includes:
+
+- `unit_id`
+- `walker_version`
+- `kernel_version`
+- `step_count`
+- `permutation`
+- `canonical_distance`
+- `events`
+- `memory`
+- `hash`
+- `sigil_svg`
+
+`issuance.json` is intentionally separate from the deterministic payload and carries creation-time metadata:
+
+- `creation_date`
+- `integrity`
+
+Rewriting an existing unit preserves the existing `issuance.json`. Deleting and recreating a unit may produce a new issuance sidecar.
+
+## CLI
+
+Run commands from the repository root.
+
+Generate specific units:
 
 ```bash
 swift run SovereignStandard generate 0 1 2
 ```
 
-`generate` now verifies every written unit before completing.
+Generate comma-separated unit ids:
+
+```bash
+swift run SovereignStandard generate 42,43,44
+```
 
 Delete units:
 
@@ -42,85 +94,102 @@ Verify stored artifacts against a fresh deterministic recomputation:
 swift run SovereignStandard verify 0 1 42
 ```
 
-Verify every generated unit in `output/`:
+Verify every generated unit currently present in `output/`:
 
 ```bash
 swift run SovereignStandard verify-all
 ```
 
-Default run:
+Rebuild `units.json` from the existing archive without generating or deleting units:
+
+```bash
+swift run SovereignStandard sync-site
+```
+
+Default invocation with no subcommand currently generates units `136...149` and then syncs the site:
 
 ```bash
 swift run SovereignStandard
 ```
 
-Generated artifacts are written to `output/<unit-id>/`:
+Behavior notes:
 
-- `sigil.svg`
-- `qr.svg`
-- `front.svg`
-- `back.svg`
-- `data.json`
-- `issuance.json`
+- `generate` writes artifacts, verifies each generated unit immediately, then rewrites `units.json`
+- `delete` removes unit directories, then rewrites `units.json`
+- `verify` and `verify-all` do not modify site files
+- unit ids must be non-negative integers
 
-Each deterministic `data.json` includes:
+## Static site
 
-- `unit_id`
-- `walker_version`
-- `kernel_version`
-- `step_count`
-- `permutation` (the unit-seeded starting permutation)
-- `canonical_distance`
-- `events`
-- `memory`
-- `hash` (the convergence hash)
-- `sigil_svg`
+The public site is fully static and published from committed files in the repository root.
 
-Artifacts are now written without wall-clock metadata so regeneration remains bit-identical for a given unit under fixed walker and kernel versions.
+- `index.html` is the landing page
+- `archive.html` lists all units from `units.json`
+- `unit.html?id=<unit-id>` renders a single unit from `output/<unit-id>/`
+- `units.json` is generated by `SiteWriter` and drives the archive index
+- `site.js` contains shared browser behavior
+- `assets/` and `manifest.webmanifest` provide icons and metadata for deployment
 
-`issuance.json` is intentionally separate and may contain non-deterministic creation-time metadata:
-
-- `creation_date` (`YYYY-MM-DD`)
-- `integrity`
-
-The repository also includes golden-vector tests and a byte-for-byte artifact replay check, and CI runs `swift test` on every push and pull request.
-
-CI also:
-
-- runs `swift run SovereignStandard verify-all`
-- regenerates units `0...135`
-- fails if `output/` or `units.json` drift from the committed archive
-
-GitHub Pages deployment is handled by `.github/workflows/pages.yml`, which stages the static site, committed archive, `CNAME`, and `.nojekyll` for `https://sovereignstandard.co`.
-
-## QR routing
-
-QR codes are generated from the configured public base URL in:
+QR routing and public unit URLs are derived from:
 
 - `SovereignStandard/SovereignStandard/Utilities/SiteConfiguration.swift`
 
-When the final domain changes, update that one file and regenerate affected units.
+If the production domain changes, update that file and regenerate affected units.
 
-## Release Operations
+## Determinism and verification
 
-The canonical production procedure and archive policy live in:
+The current implementation is designed so that, under a fixed walker/kernel baseline:
+
+- generating the same unit twice produces the same deterministic payload and visual artifacts
+- committed artifacts can be checked byte-for-byte with `verify` or `verify-all`
+- `data.json`, `sigil.svg`, `front.svg`, `back.svg`, `qr.svg`, and `units.json` are expected to remain stable for the production archive range
+
+The main test suite currently covers:
+
+- deterministic generation
+- fixed version and step-count enforcement
+- rejection of invalid unit ids
+- golden vectors for units `0`, `1`, and `42`
+- byte-identical artifact replay after delete/regenerate
+- issuance preservation across rewrites
+- verifier success and tamper detection
+
+Run the tests with:
+
+```bash
+swift test
+```
+
+## CI and deployment
+
+GitHub Actions currently does the following:
+
+- `.github/workflows/ci.yml` runs `swift test`
+- the same CI workflow runs `swift run SovereignStandard verify-all`
+- the same CI workflow regenerates units `0...135`
+- CI fails if `output/` or `units.json` drift from the committed archive
+- `.github/workflows/pages.yml` stages the static site and deploys it to GitHub Pages
+
+The Pages deployment publishes the committed site, assets, archive output, `CNAME`, and `.nojekyll` for `https://sovereignstandard.co`.
+
+## Release operations
+
+The canonical production procedure lives in:
 
 - `release/PRODUCTION.md`
 
-The committed public hash manifest lives in:
-
-- `release/archive-manifest.sha256`
-
-Refresh it with:
+Refresh the public hash manifest with:
 
 ```bash
 ./scripts/update_archive_manifest.sh
 ```
 
-## Current archive state
+Before shipping a new production snapshot, the normal release path is:
 
-The current generated set is:
-
-- units `0...135`
-
-Unit `136+` is intentionally not present right now.
+1. Confirm the public base URL in `SovereignStandard/SovereignStandard/Utilities/SiteConfiguration.swift`.
+2. Regenerate the production archive with `swift run SovereignStandard generate {0..135}`.
+3. Verify committed artifacts with `swift run SovereignStandard verify-all`.
+4. Refresh `release/archive-manifest.sha256`.
+5. Run `swift test`.
+6. Confirm GitHub Pages custom domain and HTTPS settings.
+7. Commit and push the release snapshot.

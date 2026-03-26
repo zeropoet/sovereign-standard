@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Unit</title>
+  <meta name="description" content="A deterministic Sovereign Standard unit artifact.">
+  <link id="canonical-link" rel="canonical" href="https://sovereignstandard.co/unit.html">
   <link rel="icon" href="assets/favicons/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
@@ -11,6 +13,17 @@
   <link rel="icon" type="image/png" sizes="64x64" href="assets/favicons/favicon-64x64.png">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/favicons/android-chrome-192x192.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sovereign Standard">
+  <meta id="og-title" property="og:title" content="Unit · Sovereign Standard">
+  <meta id="og-description" property="og:description" content="A deterministic Sovereign Standard unit artifact.">
+  <meta id="og-url" property="og:url" content="https://sovereignstandard.co/unit.html">
+  <meta property="og:image" content="https://sovereignstandard.co/assets/favicons/favicon-base.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta id="twitter-title" name="twitter:title" content="Unit · Sovereign Standard">
+  <meta id="twitter-description" name="twitter:description" content="A deterministic Sovereign Standard unit artifact.">
+  <meta name="twitter:image" content="https://sovereignstandard.co/assets/favicons/favicon-base.png">
   <meta name="theme-color" content="#000000">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -61,8 +74,19 @@
         throw new Error('Missing unit id');
       }
 
-      document.title = `Unit ${unitID} · Sovereign Standard`;
+      const unitURL = `https://sovereignstandard.co/unit.html?id=${unitID}`;
+      const unitTitle = `Unit ${unitID} · Sovereign Standard`;
+      const unitDescription = `Deterministic artifact record for Sovereign Standard unit ${unitID}.`;
+
+      document.title = unitTitle;
       document.getElementById('unit-title').textContent = `Unit ${unitID}`;
+      document.getElementById('canonical-link').href = unitURL;
+      document.querySelector('meta[name="description"]').content = unitDescription;
+      document.getElementById('og-title').content = unitTitle;
+      document.getElementById('og-description').content = unitDescription;
+      document.getElementById('og-url').content = unitURL;
+      document.getElementById('twitter-title').content = unitTitle;
+      document.getElementById('twitter-description').content = unitDescription;
 
       const data = await fetch(`output/${unitID}/data.json`, { cache: 'no-store' }).then((response) => {
         if (!response.ok) {

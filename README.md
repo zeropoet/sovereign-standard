@@ -85,6 +85,14 @@ Artifacts are now written without wall-clock metadata so regeneration remains bi
 
 The repository also includes golden-vector tests and a byte-for-byte artifact replay check, and CI runs `swift test` on every push and pull request.
 
+CI also:
+
+- runs `swift run SovereignStandard verify-all`
+- regenerates units `0...135`
+- fails if `output/` or `units.json` drift from the committed archive
+
+GitHub Pages deployment is handled by `.github/workflows/pages.yml`, which stages the static site, committed archive, `CNAME`, and `.nojekyll` for `https://sovereignstandard.co`.
+
 ## QR routing
 
 QR codes are generated from the configured public base URL in:
@@ -92,6 +100,22 @@ QR codes are generated from the configured public base URL in:
 - `SovereignStandard/SovereignStandard/Utilities/SiteConfiguration.swift`
 
 When the final domain changes, update that one file and regenerate affected units.
+
+## Release Operations
+
+The canonical production procedure and archive policy live in:
+
+- `release/PRODUCTION.md`
+
+The committed public hash manifest lives in:
+
+- `release/archive-manifest.sha256`
+
+Refresh it with:
+
+```bash
+./scripts/update_archive_manifest.sh
+```
 
 ## Current archive state
 

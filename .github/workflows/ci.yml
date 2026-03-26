@@ -19,3 +19,13 @@ jobs:
 
       - name: Run tests
         run: swift test
+
+      - name: Verify committed artifacts
+        run: swift run SovereignStandard verify-all
+
+      - name: Regenerate committed archive
+        run: swift run SovereignStandard generate {0..135}
+        shell: bash
+
+      - name: Fail on archive drift
+        run: git diff --exit-code -- output units.json

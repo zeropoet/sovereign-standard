@@ -3,15 +3,12 @@ import FoldKernel
 
 struct OutputWriter {
     private let qrCode = QRCode()
-    private let creationDateFormatter = ISO8601DateFormatter()
-
-    init() {
-        creationDateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-    }
+    init() {}
 
     func write(unit: UnitOutput, outputRoot: URL) throws {
         let unitDirectory = outputRoot.appendingPathComponent(String(unit.unitID), isDirectory: true)
         let dataURL = unitDirectory.appendingPathComponent("data.json")
+        let issuanceURL = unitDirectory.appendingPathComponent("issuance.json")
 
         try FileManager.default.createDirectory(
             at: unitDirectory,
@@ -49,12 +46,20 @@ struct OutputWriter {
         let encoder = JSONEncoder()
         encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
 
-        let persistedUnit = PersistedUnitOutput(
-            unit: unit,
-            creationDate: try existingCreationDate(at: dataURL) ?? creationDateFormatter.string(from: Date())
-        )
+        let persistedUnit = PersistedUnitOutput(unit: unit)
         let data = try encoder.encode(persistedUnit)
         try data.write(to: dataURL)
+
+        let issuance = try existingIssuance(at: issuanceURL) ?? ArtifactIssuance(
+            creationDate: Self.creationDateFormatter.string(from: Date()),
+            integrity: Self.initialIntegrity
+        )
+        let normalizedIssuance = ArtifactIssuance(
+            creationDate: normalizedCreationDate(issuance.creationDate),
+            integrity: issuance.integrity
+        )
+        let issuanceData = try encoder.encode(normalizedIssuance)
+        try issuanceData.write(to: issuanceURL)
     }
 
     func delete(unitID: Int, outputRoot: URL) throws {
@@ -87,50 +92,72 @@ struct OutputWriter {
         return unitIDs.sorted()
     }
 
-    private func existingCreationDate(at dataURL: URL) throws -> String? {
-        guard FileManager.default.fileExists(atPath: dataURL.path) else {
+    private func existingIssuance(at issuanceURL: URL) throws -> ArtifactIssuance? {
+        guard FileManager.default.fileExists(atPath: issuanceURL.path) else {
             return nil
         }
 
-        let data = try Data(contentsOf: dataURL)
-        let payload = try JSONDecoder().decode(CreationDatePayload.self, from: data)
-        return payload.creationDate
+        let data = try Data(contentsOf: issuanceURL)
+        return try JSONDecoder().decode(ArtifactIssuance.self, from: data)
+    }
+
+    private static let initialIntegrity = "1.000"
+    private static let creationDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .gregorian)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
+
+    private static let legacyCreationDateFormatter: ISO8601DateFormatter = {
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        return formatter
+    }()
+
+    private func normalizedCreationDate(_ rawValue: String) -> String {
+        if rawValue.range(of: #"^\d{4}-\d{2}-\d{2}$"#, options: .regularExpression) != nil {
+            return rawValue
+        }
+
+        if let parsed = Self.legacyCreationDateFormatter.date(from: rawValue) {
+            return Self.creationDateFormatter.string(from: parsed)
+        }
+
+        return rawValue
     }
 }
 
 private struct PersistedUnitOutput: Encodable {
     let unit: UnitOutput
-    let creationDate: String
 
     enum CodingKeys: String, CodingKey {
         case unitID = "unit_id"
+        case walkerVersion = "walker_version"
+        case kernelVersion = "kernel_version"
+        case stepCount = "step_count"
         case permutation
         case canonicalDistance = "canonical_distance"
         case events
         case memory
         case hash
         case sigilSVG = "sigil_svg"
-        case creationDate = "creation_date"
     }
 
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(unit.unitID, forKey: .unitID)
+        try container.encode(unit.walkerVersion, forKey: .walkerVersion)
+        try container.encode(unit.kernelVersion, forKey: .kernelVersion)
+        try container.encode(unit.stepCount, forKey: .stepCount)
         try container.encode(unit.permutation.values, forKey: .permutation)
         try container.encode(unit.canonicalDistance, forKey: .canonicalDistance)
         try container.encode(unit.events.map(PersistedUnitEvent.init), forKey: .events)
         try container.encode(unit.memory, forKey: .memory)
         try container.encode(unit.hash, forKey: .hash)
         try container.encode(unit.sigilSVG, forKey: .sigilSVG)
-        try container.encode(creationDate, forKey: .creationDate)
-    }
-}
-
-private struct CreationDatePayload: Decodable {
-    let creationDate: String?
-
-    enum CodingKeys: String, CodingKey {
-        case creationDate = "creation_date"
     }
 }
 
@@ -158,5 +185,15 @@ private struct PersistedUnitEvent: Encodable {
             bitmask = nil
             topology = value
         }
+    }
+}
+
+struct ArtifactIssuance: Codable, Equatable {
+    let creationDate: String
+    let integrity: String
+
+    enum CodingKeys: String, CodingKey {
+        case creationDate = "creation_date"
+        case integrity
     }
 }

@@ -28,10 +28,24 @@ Run the generator from the repo root:
 swift run SovereignStandard generate 0 1 2
 ```
 
+`generate` now verifies every written unit before completing.
+
 Delete units:
 
 ```bash
 swift run SovereignStandard delete 135
+```
+
+Verify stored artifacts against a fresh deterministic recomputation:
+
+```bash
+swift run SovereignStandard verify 0 1 42
+```
+
+Verify every generated unit in `output/`:
+
+```bash
+swift run SovereignStandard verify-all
 ```
 
 Default run:
@@ -47,17 +61,28 @@ Generated artifacts are written to `output/<unit-id>/`:
 - `front.svg`
 - `back.svg`
 - `data.json`
+- `issuance.json`
 
-Each `data.json` includes:
+Each deterministic `data.json` includes:
 
+- `unit_id`
+- `walker_version`
+- `kernel_version`
+- `step_count`
 - permutation
 - events
 - memory
 - hash
 - sigil SVG payload
-- `creation_date`
 
-`creation_date` is preserved on regeneration once a unit has been written, and the site derives an `Integrity` value from that date across a 12-month duration.
+Artifacts are now written without wall-clock metadata so regeneration remains bit-identical for a given unit under fixed walker and kernel versions.
+
+`issuance.json` is intentionally separate and may contain non-deterministic creation-time metadata:
+
+- `creation_date`
+- `integrity`
+
+The repository also includes golden-vector tests and a byte-for-byte artifact replay check, and CI runs `swift test` on every push and pull request.
 
 ## QR routing
 

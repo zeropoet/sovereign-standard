@@ -3,6 +3,9 @@ import FoldKernel
 
 struct UnitOutput {
     let unitID: Int
+    let walkerVersion: String
+    let kernelVersion: String
+    let stepCount: Int
     let permutation: Permutation
     let canonicalDistance: Int
     let events: [FoldEvent]
@@ -14,6 +17,9 @@ struct UnitOutput {
 extension UnitOutput: Encodable {
     enum CodingKeys: String, CodingKey {
         case unitID = "unit_id"
+        case walkerVersion = "walker_version"
+        case kernelVersion = "kernel_version"
+        case stepCount = "step_count"
         case permutation
         case canonicalDistance = "canonical_distance"
         case events
@@ -25,6 +31,9 @@ extension UnitOutput: Encodable {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(unitID, forKey: .unitID)
+        try container.encode(walkerVersion, forKey: .walkerVersion)
+        try container.encode(kernelVersion, forKey: .kernelVersion)
+        try container.encode(stepCount, forKey: .stepCount)
         try container.encode(permutation.values, forKey: .permutation)
         try container.encode(canonicalDistance, forKey: .canonicalDistance)
         try container.encode(events.map(UnitEvent.init), forKey: .events)

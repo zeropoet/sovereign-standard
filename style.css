@@ -68,16 +68,18 @@ body {
 .landing-shell {
   display: grid;
   gap: 18px;
-  justify-items: center;
+  justify-items: start;
+  width: fit-content;
+  margin: 0 auto;
 }
 
 .landing-title {
-  font-size: clamp(2.4rem, 5vw, 4rem);
-  line-height: 1;
+  font-size: clamp(1.9rem, 3.8vw, 3.05rem);
+  line-height: 0.94;
   font-weight: 400;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  text-align: center;
+  text-align: left;
 }
 
 .landing-page-didot .landing-title {
@@ -85,7 +87,7 @@ body {
 }
 
 .landing-link {
-  justify-self: center;
+  justify-self: start;
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -288,8 +290,16 @@ h3 {
 }
 
 .artifact-card {
+  display: grid;
+  justify-items: center;
   padding: 20px;
   text-align: center;
+}
+
+.artifact-link {
+  display: grid;
+  justify-items: center;
+  width: 100%;
 }
 
 .artifact-link:hover {
@@ -417,6 +427,10 @@ h3 {
     width: 100%;
   }
 
+  .artifact-link {
+    width: 100%;
+  }
+
   .artifact-card img {
     width: min(100%, 320px);
     height: auto;
@@ -429,14 +443,6 @@ h3 {
 
 @media (max-width: 900px) {
   .landing-shell {
-    justify-items: start;
-  }
-
-  .landing-title {
-    text-align: left;
-  }
-
-  .landing-link {
-    justify-self: start;
+    width: min(100%, fit-content);
   }
 }

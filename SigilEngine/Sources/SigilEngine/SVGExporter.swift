@@ -15,11 +15,17 @@ public struct SVGExporter {
         for point in points.dropFirst() {
             path += " L \(point.x) \(point.y)"
         }
+        path += " Z"
 
         let svg = """
         <svg xmlns="http://www.w3.org/2000/svg"
              viewBox="0 0 1 1">
-            <path d="\(path)" fill="black" />
+            <path d="\(path)"
+                  fill="black"
+                  stroke="black"
+                  stroke-width="0.006"
+                  stroke-linejoin="round"
+                  stroke-linecap="round" />
         </svg>
         """
 

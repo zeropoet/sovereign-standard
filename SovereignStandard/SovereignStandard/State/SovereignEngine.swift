@@ -3,6 +3,8 @@ import FoldKernel
 import SigilEngine
 
 struct SovereignEngine {
+    static let kernelVersion = "FoldKernel-1.0.0"
+
     let canonicalSet: Set<Permutation>
     let adjacencyGraph: AdjacencyGraph
     let invariantEvaluator: InvariantEvaluator
@@ -12,7 +14,7 @@ struct SovereignEngine {
     let hashEngine: HashEngine
     let sigilGenerator: SigilGenerator
     let svgExporter: SVGExporter
-    let pathGenerator: PathGenerator
+    let walker: SovereignWalker
 
     init() {
         let s0 = CanonicalSquare.S0
@@ -35,14 +37,19 @@ struct SovereignEngine {
         hashEngine = HashEngine()
         sigilGenerator = SigilGenerator()
         svgExporter = SVGExporter()
-        pathGenerator = PathGenerator()
+        walker = SovereignWalker(
+            adjacencyGraph: adjacencyGraph,
+            invariantEvaluator: invariantEvaluator,
+            canonicalDistance: canonicalDistance
+        )
     }
 
-    func generateUnit(unitID: Int) -> UnitOutput {
-        let start = permutationFromUnitID(unitID)
-        let startCanonicalDistance = canonicalDistance.distance(from: start)
-        let path = pathGenerator.generatePath(from: start)
-        let events = path.map(FoldEvent.permutationCommit)
+    func generateUnit(unitID: Int) throws -> UnitOutput {
+        let unitNumber = try validatedUnitNumber(from: unitID)
+        let traversal = try walker.generateTraversal(unitNumber: unitNumber)
+        let initialPermutation = traversal.initialPermutation
+        let startCanonicalDistance = canonicalDistance.distance(from: initialPermutation)
+        let events = traversal.events
         let memory = memoryEncoder.encode(events)
         let hash = hashEngine
             .convergenceHash(memorySignature: memory)
@@ -57,12 +64,34 @@ struct SovereignEngine {
 
         return UnitOutput(
             unitID: unitID,
-            permutation: start,
+            walkerVersion: SovereignWalker.version,
+            kernelVersion: Self.kernelVersion,
+            stepCount: SovereignWalker.stepCount,
+            permutation: initialPermutation,
             canonicalDistance: startCanonicalDistance,
             events: events,
             memory: memory,
             hash: hash,
             sigilSVG: svg
         )
+    }
+
+    private func validatedUnitNumber(from unitID: Int) throws -> UInt64 {
+        guard unitID >= 0, let unitNumber = UInt64(exactly: unitID) else {
+            throw SovereignEngineError.invalidUnitID(unitID)
+        }
+
+        return unitNumber
+    }
+}
+
+enum SovereignEngineError: Error, LocalizedError {
+    case invalidUnitID(Int)
+
+    var errorDescription: String? {
+        switch self {
+        case .invalidUnitID(let unitID):
+            return "Unit id must be a non-negative 64-bit value. Received \(unitID)."
+        }
     }
 }

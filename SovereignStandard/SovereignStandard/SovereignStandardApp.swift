@@ -4,34 +4,59 @@ struct SovereignStandardApp {
     let engine = SovereignEngine()
     let outputWriter = OutputWriter()
     let siteWriter = SiteWriter()
+    let artifactVerifier = ArtifactVerifier()
 
     func run(arguments: [String] = CommandLine.arguments) throws {
         let command = try SovereignCommand(arguments: arguments)
         let outputRoot = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
             .appendingPathComponent("output", isDirectory: true)
+        let shouldSyncSite: Bool
 
         switch command {
         case .generate(let unitIDs):
             for unitID in unitIDs {
-                let unit = engine.generateUnit(unitID: unitID)
+                let unit = try engine.generateUnit(unitID: unitID)
                 try outputWriter.write(unit: unit, outputRoot: outputRoot)
             }
+            for unitID in unitIDs {
+                try artifactVerifier.verify(unitID: unitID, outputRoot: outputRoot)
+                print("verified \(unitID)")
+            }
+            shouldSyncSite = true
         case .delete(let unitIDs):
             for unitID in unitIDs {
                 try outputWriter.delete(unitID: unitID, outputRoot: outputRoot)
             }
+            shouldSyncSite = true
+        case .verify(let unitIDs):
+            for unitID in unitIDs {
+                try artifactVerifier.verify(unitID: unitID, outputRoot: outputRoot)
+                print("verified \(unitID)")
+            }
+            shouldSyncSite = false
+        case .verifyAll:
+            let unitIDs = try outputWriter.existingUnitIDs(outputRoot: outputRoot)
+            for unitID in unitIDs {
+                try artifactVerifier.verify(unitID: unitID, outputRoot: outputRoot)
+                print("verified \(unitID)")
+            }
+            shouldSyncSite = false
         case .syncSite:
-            break
+            shouldSyncSite = true
         }
 
-        let unitIDs = try outputWriter.existingUnitIDs(outputRoot: outputRoot)
-        try siteWriter.write(units: unitIDs, root: URL(fileURLWithPath: FileManager.default.currentDirectoryPath))
+        if shouldSyncSite {
+            let unitIDs = try outputWriter.existingUnitIDs(outputRoot: outputRoot)
+            try siteWriter.write(units: unitIDs, root: URL(fileURLWithPath: FileManager.default.currentDirectoryPath))
+        }
     }
 }
 
 private enum SovereignCommand {
     case generate([Int])
     case delete([Int])
+    case verify([Int])
+    case verifyAll
     case syncSite
 
     init(arguments: [String]) throws {
@@ -47,6 +72,10 @@ private enum SovereignCommand {
             self = .generate(try Self.unitIDs(from: Array(payload.dropFirst())))
         case "delete":
             self = .delete(try Self.unitIDs(from: Array(payload.dropFirst())))
+        case "verify":
+            self = .verify(try Self.unitIDs(from: Array(payload.dropFirst())))
+        case "verify-all":
+            self = .verifyAll
         case "sync-site":
             self = .syncSite
         default:
@@ -83,7 +112,7 @@ private enum SovereignCommandError: Error, LocalizedError {
     var errorDescription: String? {
         switch self {
         case .invalidCommand(let command):
-            return "Unknown command '\(command)'. Use generate, delete, or sync-site."
+            return "Unknown command '\(command)'. Use generate, delete, verify, verify-all, or sync-site."
         case .invalidUnitID(let value):
             return "Invalid unit id '\(value)'."
         case .missingUnitIDs:

@@ -1,8 +1,8 @@
+import Foundation
 import CoreGraphics
 import FoldKernel
 
 public struct SigilGenerator {
-    private let scaleX: CGFloat = 1.0 / 16.0
 
     public init() {}
 
@@ -15,83 +15,78 @@ public struct SigilGenerator {
             return SigilGeometry(points: [])
         }
 
+        let distances = events.compactMap { event -> Int? in
+            guard case .permutationCommit(let permutation) = event else {
+                return nil
+            }
+
+            return canonicalDistance.distance(from: permutation)
+        }
+        let maxDistance = distances.max() ?? 0
+        let normalizedMaxDistance = CGFloat(max(maxDistance, 1))
+        let diagonalStart = CGPoint(x: 0.12, y: 0.88)
+        let diagonalEnd = CGPoint(x: 0.88, y: 0.12)
+        let diagonalVector = CGPoint(
+            x: diagonalEnd.x - diagonalStart.x,
+            y: diagonalEnd.y - diagonalStart.y
+        )
+        let diagonalLength = sqrt(
+            (diagonalVector.x * diagonalVector.x) +
+            (diagonalVector.y * diagonalVector.y)
+        )
+        let tangent = CGPoint(
+            x: diagonalVector.x / diagonalLength,
+            y: diagonalVector.y / diagonalLength
+        )
+        let normal = CGPoint(
+            x: -tangent.y,
+            y: tangent.x
+        )
+
         var points: [CGPoint] = []
-        var previousSum = false
-        var previousAdj = false
-        var previousOrbit = false
-        var previousDistance: Int?
-        var previousX: CGFloat?
-        var previousY: CGFloat?
-        let scaleY = 1.0 / CGFloat(max(events.count, 1))
-        let dwellSteps = 2
-        let inflect: CGFloat = 1.4
+        let stepCount = max(events.count - 1, 1)
+        let maxNormalOffset: CGFloat = 0.09
+        let crossingAmplitude: CGFloat = 0.03
+        let minimumXStep: CGFloat = 0.004
 
         for (index, event) in events.enumerated() {
-            switch event {
-            case .permutationCommit(let permutation):
-                let currentDistance = canonicalDistance.distance(from: permutation)
-                let improving = previousDistance == nil
-                    ? true
-                    : currentDistance < previousDistance!
-                let state = convergenceEvaluator.evaluate(permutation)
-                let sumNow = state.sumSatisfied
-                let adjNow = state.adjacencySatisfied
-                let orbitNow = currentDistance == 0
+            guard case .permutationCommit(let permutation) = event else {
+                continue
+            }
 
-                let sumActivated = !previousSum && sumNow
-                let adjActivated = !previousAdj && adjNow
-                let orbitActivated = !previousOrbit && orbitNow
+            let currentDistance = canonicalDistance.distance(from: permutation)
+            let progress = CGFloat(index) / CGFloat(stepCount)
+            let basePoint = CGPoint(
+                x: diagonalStart.x + (diagonalVector.x * progress),
+                y: diagonalStart.y + (diagonalVector.y * progress)
+            )
+            let normalizedDistance = CGFloat(currentDistance) / normalizedMaxDistance
+            let taperedDistanceOffset = ((normalizedDistance * 2) - 1) * maxNormalOffset * bladeEnvelope(at: progress)
+            let crossingBias = ((progress * 2) - 1) * crossingAmplitude
+            let spineOffset = taperedDistanceOffset + crossingBias
+            let point = CGPoint(
+                x: basePoint.x + (normal.x * spineOffset),
+                y: basePoint.y + (normal.y * spineOffset)
+            )
 
-                var x = CGFloat(currentDistance)
-                var y = CGFloat(index)
-
-                if sumActivated {
-                    y += inflect
-                }
-
-                if adjActivated {
-                    x += inflect
-                }
-
-                if orbitActivated {
-                    y -= inflect
-                }
-
-                if !improving,
-                    let previousX,
-                    let previousY {
-                    for step in 1...dwellSteps {
-                        let t = CGFloat(step) / CGFloat(dwellSteps + 1)
-                        let intermediateX = previousX + ((x - previousX) * t)
-                        let intermediateY = previousY + ((y - previousY) * t)
-
-                        points.append(
-                            CGPoint(
-                                x: intermediateX * scaleX,
-                                y: intermediateY * scaleY
-                            )
-                        )
-                    }
-                }
-
+            if let previousPoint = points.last {
                 points.append(
                     CGPoint(
-                        x: x * scaleX,
-                        y: y * scaleY
+                        x: max(point.x, previousPoint.x + minimumXStep),
+                        y: point.y
                     )
                 )
-
-                previousDistance = currentDistance
-                previousX = x
-                previousY = y
-                previousSum = sumNow
-                previousAdj = adjNow
-                previousOrbit = orbitNow
-            default:
-                continue
+            } else {
+                points.append(point)
             }
         }
 
         return SigilGeometry(points: points)
+    }
+
+    private func bladeEnvelope(at progress: CGFloat) -> CGFloat {
+        let towardTip = max(0.18, 1 - pow(progress, 1.8))
+        let nearBase = 0.8 + ((1 - progress) * 0.2)
+        return towardTip * nearBase
     }
 }

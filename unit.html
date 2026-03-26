@@ -45,34 +45,6 @@
 
   <script src="site.js"></script>
   <script>
-    function formatCreationDate(value) {
-      const date = new Date(value);
-
-      if (Number.isNaN(date.getTime())) {
-        return 'Unavailable';
-      }
-
-      return new Intl.DateTimeFormat(undefined, {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      }).format(date);
-    }
-
-    function calculateIntegrity(value) {
-      const creationDate = new Date(value);
-
-      if (Number.isNaN(creationDate.getTime())) {
-        return 'Unavailable';
-      }
-
-      const yearInMilliseconds = 365.25 * 24 * 60 * 60 * 1000;
-      const elapsed = Date.now() - creationDate.getTime();
-      const integrity = Math.min(1, Math.max(0, 1 - (elapsed / yearInMilliseconds)));
-
-      return integrity.toFixed(3);
-    }
-
     async function loadUnit() {
       const params = new URLSearchParams(window.location.search);
       const unitID = params.get('id');
@@ -90,6 +62,8 @@
         }
         return response.json();
       });
+      const issuance = await fetch(`output/${unitID}/issuance.json`, { cache: 'no-store' })
+        .then((response) => response.ok ? response.json() : null);
 
       document.getElementById('front').src = `output/${unitID}/front.svg`;
       document.getElementById('back').src = `output/${unitID}/back.svg`;
@@ -100,8 +74,8 @@
         <div class="meta-column">
           <div class="meta-group">
             <div><span>Commit index</span><br><span class="code">${unitID}</span></div>
-            <div><span>Creation date</span><br><span class="code">${formatCreationDate(data.creation_date)}</span></div>
-            <div><span>Integrity - 12 month resolve</span><br><span class="code">${calculateIntegrity(data.creation_date)}</span></div>
+            <div><span>Creation date</span><br><span class="code">${issuance?.creation_date ?? 'Unavailable'}</span></div>
+            <div><span>Integrity number</span><br><span class="code">${issuance?.integrity ?? 'Unavailable'}</span></div>
           </div>
           <div class="meta-group">
             <div><span>Composition</span><br><span class="code">Green Sencha 75g<br>Lemon Balm 33g<br>Kapoor Tulsi 27g<br>Ginger 15g</span></div>
@@ -115,6 +89,11 @@
             <div><span>Starting permutation</span><br><span class="code">${data.permutation.join(', ')}</span></div>
             <div><span>Convergence hash</span><br><span class="code">${data.hash}</span></div>
             <div><span>Canonical distance</span><br><span class="code">${data.canonical_distance}</span></div>
+          </div>
+          <div class="meta-group">
+            <div><span>Walker version</span><br><span class="code">${data.walker_version}</span></div>
+            <div><span>Kernel version</span><br><span class="code">${data.kernel_version}</span></div>
+            <div><span>Step count</span><br><span class="code">${data.step_count}</span></div>
           </div>
           <div class="meta-group">
             <div><span>Engraving depth (µm)</span><br><span class="code">Pending</span></div>

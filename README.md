@@ -69,17 +69,18 @@ Each deterministic `data.json` includes:
 - `walker_version`
 - `kernel_version`
 - `step_count`
-- permutation
-- events
-- memory
-- hash
-- sigil SVG payload
+- `permutation` (the unit-seeded starting permutation)
+- `canonical_distance`
+- `events`
+- `memory`
+- `hash` (the convergence hash)
+- `sigil_svg`
 
 Artifacts are now written without wall-clock metadata so regeneration remains bit-identical for a given unit under fixed walker and kernel versions.
 
 `issuance.json` is intentionally separate and may contain non-deterministic creation-time metadata:
 
-- `creation_date`
+- `creation_date` (`YYYY-MM-DD`)
 - `integrity`
 
 The repository also includes golden-vector tests and a byte-for-byte artifact replay check, and CI runs `swift test` on every push and pull request.

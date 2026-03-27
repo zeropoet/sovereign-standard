@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order | Sovereign Standard</title>
+  <meta name="description" content="Order Sovereign Standard units.">
+  <link rel="canonical" href="https://sovereignstandard.co/order.html">
+  <link rel="icon" href="assets/favicons/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/favicons/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/favicons/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicons/android-chrome-192x192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sovereign Standard">
+  <meta property="og:title" content="Order | Sovereign Standard">
+  <meta property="og:description" content="Order Sovereign Standard units.">
+  <meta property="og:url" content="https://sovereignstandard.co/order.html">
+  <meta property="og:image" content="https://sovereignstandard.co/assets/social-preview.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Order | Sovereign Standard">
+  <meta name="twitter:description" content="Order Sovereign Standard units.">
+  <meta name="twitter:image" content="https://sovereignstandard.co/assets/social-preview.svg">
+  <meta name="theme-color" content="#000000">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="archive-page">
+    <nav class="top-links" aria-label="Primary">
+      <a href="index.html" class="nav">Back</a>
+    </nav>
+    <header class="page-header">
+      <h1 class="page-title">Order</h1>
+      <p class="page-intro">Structured ordering, held in confidence.</p>
+    </header>
+
+    <section class="artifact-section order-layout">
+      <form
+        class="panel section-stack order-form"
+        aria-label="Order form"
+        data-order-form
+        data-order-email="order@sovereignstandard.co"
+      >
+        <div class="section-head">
+          <h2>Order Type</h2>
+        </div>
+
+        <div class="order-toggle-row">
+          <div class="order-toggle" role="radiogroup" aria-label="Order type">
+            <label class="order-toggle-option">
+              <input type="radio" name="order_type" value="individual" checked>
+              <span>Individual</span>
+            </label>
+            <label class="order-toggle-option">
+              <input type="radio" name="order_type" value="partner">
+              <span>Partner</span>
+            </label>
+          </div>
+          <span
+            class="muted order-helper-note order-type-note"
+            data-order-type-note
+            data-individual-note="For private collectors and single-unit requests."
+            data-partner-note="Recurring monthly allocations with a minimum of 20 units per cycle."
+          >For private collectors and single-unit requests.</span>
+        </div>
+
+        <div class="order-grid">
+          <label class="order-field">
+            <span>Name</span>
+            <input type="text" name="name" autocomplete="name" required>
+          </label>
+          <label class="order-field">
+            <span>Email</span>
+            <input type="email" name="email" autocomplete="email" required>
+          </label>
+        </div>
+
+        <input class="order-honeypot" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <section class="order-panel" data-order-panel="individual">
+          <div class="order-grid">
+            <label class="order-field">
+              <span>Requested quantity</span>
+              <input type="number" name="individual_quantity" min="1" step="1" value="1" required>
+            </label>
+            <label class="order-field">
+              <span>Preferred unit or note</span>
+              <input type="text" name="individual_note" placeholder="Optional">
+            </label>
+          </div>
+        </section>
+
+        <section class="order-panel is-hidden" data-order-panel="partner">
+          <div class="order-grid">
+            <label class="order-field">
+              <span>Requested quantity</span>
+              <input type="number" name="partner_quantity" min="20" step="1" value="20" required>
+            </label>
+            <label class="order-field">
+              <span>Organization</span>
+              <input type="text" name="organization" autocomplete="organization" required>
+            </label>
+          </div>
+        </section>
+
+        <label class="order-field">
+          <span>Message</span>
+          <textarea name="message" rows="6" placeholder="Share your order context, timing, and any relevant notes." required></textarea>
+        </label>
+
+        <div class="order-actions">
+          <button class="order-submit" data-order-submit type="submit">Prepare Email</button>
+          <span class="muted order-helper-note order-status" data-order-status data-tone="muted">Submitting opens your email app with the order details prefilled.</span>
+          <span class="muted order-helper-note">Upon receipt, an order confirmation with relevant responses and details will be sent within 24 hours.</span>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script src="site.js"></script>
+  <script src="order.js"></script>
+</body>
+</html>

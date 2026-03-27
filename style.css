@@ -49,13 +49,17 @@ body {
   z-index: 9999;
   transform: translate(-100px, -100px);
   opacity: 0;
-  transition: opacity 120ms ease;
+  transition: opacity 120ms ease, background-color 120ms ease;
   margin-left: -6px;
   margin-top: -6px;
 }
 
 .cursor-dot.is-visible {
   opacity: 1;
+}
+
+.cursor-dot.is-inverted {
+  background: #ffffff;
 }
 
 .landing-page {
@@ -212,6 +216,35 @@ h3 {
   overflow-wrap: anywhere;
 }
 
+.archive-search {
+  display: grid;
+  margin-top: 18px;
+  max-width: 320px;
+}
+
+.archive-search input {
+  width: 100%;
+  min-height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 0.65rem 0.8rem;
+  appearance: none;
+}
+
+.archive-search input:focus {
+  outline: none;
+  border-color: var(--text);
+}
+
+.archive-search input::placeholder {
+  color: var(--muted);
+}
+
 .artifact-header,
 .artifact-section {
   margin-left: 16px;
@@ -228,6 +261,29 @@ h3 {
 .meta-list strong {
   font-weight: 400;
   color: var(--text);
+}
+
+.unit-pagination {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, max-content));
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: -16px;
+  margin-bottom: 28px;
+}
+
+.unit-pagination-link {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.unit-pagination-link[aria-disabled="true"] {
+  opacity: 0.45;
+  pointer-events: none;
+  text-decoration: none;
 }
 
 .section-stack {
@@ -282,9 +338,9 @@ h3 {
 
 #gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 200px);
-  gap: 24px;
-  justify-content: center;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 0;
+  justify-content: stretch;
   margin: 40px 0 0;
   width: 100%;
 }
@@ -292,28 +348,58 @@ h3 {
 .artifact-card {
   display: grid;
   justify-items: center;
-  padding: 20px;
+  padding: 0;
   text-align: center;
+  min-width: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  transition: background-color 120ms ease;
+}
+
+.artifact-card:hover,
+.artifact-card:focus-within {
+  background: #000;
 }
 
 .artifact-link {
   display: grid;
   justify-items: center;
   width: 100%;
+  padding: 0;
+  background: transparent;
+  transition: background-color 120ms ease;
 }
 
 .artifact-link:hover {
   text-decoration: none;
 }
 
+.artifact-link:hover,
+.artifact-link:focus-visible {
+  background: #000;
+}
+
+.artifact-link:hover img,
+.artifact-link:focus-visible img {
+  filter: invert(1);
+}
+
+.artifact-link:hover code,
+.artifact-link:focus-visible code {
+  background: var(--text);
+  color: var(--bg);
+}
+
 .artifact-card img {
   display: block;
-  width: 180px;
-  height: 180px;
+  width: min(100%, 104px);
+  height: min(100%, 104px);
   object-fit: contain;
-  margin: 0 auto 16px;
+  margin: 0 auto 12px;
   border: 0;
   background: transparent;
+  transition: filter 120ms ease;
 }
 
 .artifact-grid img {
@@ -325,11 +411,13 @@ h3 {
   display: inline-block;
   color: var(--muted);
   font-family: var(--mono-sans);
-  font-size: 14px;
-  line-height: 1.7;
+  font-size: 12px;
+  line-height: 1.5;
   font-weight: 400;
   letter-spacing: 0;
   text-transform: none;
+  padding: 0 0.2rem;
+  transition: color 120ms ease, background-color 120ms ease;
 }
 
 .meta-list {
@@ -417,8 +505,16 @@ h3 {
     margin-right: 8px;
   }
 
-  #gallery {
+  .unit-pagination {
     grid-template-columns: 1fr;
+    gap: 0.6rem;
+    justify-content: start;
+    margin-top: -10px;
+    margin-bottom: 24px;
+  }
+
+  #gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
     justify-content: stretch;
   }

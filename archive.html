@@ -34,6 +34,9 @@
       <h1 class="page-title">Artifact Archive</h1>
       <p class="page-intro">Each unit represents a deterministic Sovereign Engine output.</p>
       <p class="page-intro" id="unit-count">0 units created</p>
+      <label class="archive-search" for="unit-search">
+        <input id="unit-search" name="unit-search" type="search" inputmode="numeric" placeholder="Enter a unit number" autocomplete="off">
+      </label>
     </header>
     <div id="gallery"></div>
     <footer class="site-footer">SOVEREIGN STANDARD - <span id="site-year"></span></footer>
@@ -46,6 +49,7 @@
       const manifest = await response.json();
       const gallery = document.getElementById('gallery');
       const unitCount = document.getElementById('unit-count');
+      const unitSearch = document.getElementById('unit-search');
 
       unitCount.textContent = `${manifest.units.length} units created`;
 
@@ -54,28 +58,48 @@
         return;
       }
 
-      for (const unitID of manifest.units) {
-        const card = document.createElement('article');
-        card.className = 'artifact-card panel';
+      const renderGallery = (query = '') => {
+        const normalizedQuery = query.trim();
+        const filteredUnits = normalizedQuery
+          ? manifest.units.filter((unitID) => `${unitID}`.includes(normalizedQuery))
+          : manifest.units;
 
-        const link = document.createElement('a');
-        link.href = `unit.html?id=${unitID}`;
-        link.className = 'artifact-link';
+        gallery.innerHTML = '';
 
-        const img = document.createElement('img');
-        img.loading = 'lazy';
-        img.width = 180;
-        img.height = 180;
-        img.src = `output/${unitID}/sigil.svg`;
-        img.alt = `Sigil for unit ${unitID}`;
+        if (!filteredUnits.length) {
+          gallery.innerHTML = '<p class="muted">No units match that search.</p>';
+          return;
+        }
 
-        const code = document.createElement('code');
-        code.textContent = `${unitID}`;
+        for (const unitID of filteredUnits) {
+          const card = document.createElement('article');
+          card.className = 'artifact-card panel';
 
-        link.append(img, code);
-        card.append(link);
-        gallery.append(card);
-      }
+          const link = document.createElement('a');
+          link.href = `unit.html?id=${unitID}`;
+          link.className = 'artifact-link';
+
+          const img = document.createElement('img');
+          img.loading = 'lazy';
+          img.width = 180;
+          img.height = 180;
+          img.src = `output/${unitID}/sigil.svg`;
+          img.alt = `Sigil for unit ${unitID}`;
+
+          const code = document.createElement('code');
+          code.textContent = `${unitID}`;
+
+          link.append(img, code);
+          card.append(link);
+          gallery.append(card);
+        }
+      };
+
+      unitSearch.addEventListener('input', (event) => {
+        renderGallery(event.target.value);
+      });
+
+      renderGallery(unitSearch.value);
     }
 
     loadUnits().catch(() => {

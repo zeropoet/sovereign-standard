@@ -29,7 +29,7 @@ jobs:
       - name: Stage static site
         run: |
           mkdir -p _site
-          cp index.html archive.html unit.html style.css site.js units.json manifest.webmanifest CNAME .nojekyll _site/
+          cp index.html archive.html system.html unit.html style.css site.js units.json manifest.webmanifest CNAME .nojekyll _site/
           cp -R assets output _site/
 
       - name: Upload Pages artifact

@@ -30,7 +30,7 @@
 <body>
   <main class="artifact-page">
     <nav class="top-links" aria-label="Primary">
-      <a href="index.html" class="nav">Sovereign Standard</a>
+      <a href="index.html" class="nav">Back</a>
     </nav>
     <header class="page-header artifact-header">
       <h1 class="page-title" id="unit-title">Unit</h1>
@@ -60,14 +60,13 @@
       </article>
     </section>
 
-    <section class="panel section-stack artifact-section">
+    <section class="panel section-stack artifact-section metadata-section">
       <div class="section-head">
         <h2>Metadata</h2>
       </div>
       <div id="meta-list" class="meta-list"></div>
     </section>
 
-    <footer class="site-footer">SOVEREIGN STANDARD - <span id="site-year"></span></footer>
   </main>
 
   <script src="site.js"></script>
@@ -121,6 +120,23 @@
         nextLink.setAttribute('aria-disabled', 'true');
         nextLink.textContent = 'Next';
       }
+
+      document.addEventListener('keydown', (event) => {
+        const activeTag = document.activeElement?.tagName;
+        const isTypingContext = activeTag === 'INPUT' || activeTag === 'TEXTAREA' || document.activeElement?.isContentEditable;
+
+        if (isTypingContext) {
+          return;
+        }
+
+        if (event.key === 'ArrowLeft' && previousLink.hasAttribute('href')) {
+          window.location.href = previousLink.href;
+        }
+
+        if (event.key === 'ArrowRight' && nextLink.hasAttribute('href')) {
+          window.location.href = nextLink.href;
+        }
+      });
 
       const data = await fetch(`output/${unitID}/data.json`, { cache: 'no-store' }).then((response) => {
         if (!response.ok) {

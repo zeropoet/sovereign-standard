@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 700 210">
+  <!-- Generator: Adobe Illustrator 30.2.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 1)  -->
+  <defs>
+    <style>
+      .st0 {
+        letter-spacing: .17em;
+      }
+
+      .st1 {
+        fill: #111;
+        font-family: Didot, Didot;
+        font-size: 86px;
+        isolation: isolate;
+      }
+
+      .st2 {
+        letter-spacing: .11em;
+      }
+    </style>
+  </defs>
+  <text class="st1" transform="translate(0 85.14)"><tspan class="st2" x="0" y="0">SOVEREIG</tspan><tspan x="549.91" y="0">N</tspan></text>
+  <text class="st1" transform="translate(0 173.14)"><tspan class="st0" x="0" y="0">STANDAR</tspan><tspan x="541.91" y="0">D</tspan></text>
+</svg>

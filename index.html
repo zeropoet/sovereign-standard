@@ -28,15 +28,35 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="landing-page landing-page-didot">
+  <main class="landing-page">
     <section class="landing-shell">
-      <h1 class="landing-title">Sovereign Standard</h1>
+      <h1 class="visually-hidden">Sovereign Standard</h1>
+      <img
+        src="assets/sovereign-standard-lockup.svg"
+        alt="Sovereign Standard"
+        class="landing-wordmark"
+        width="700"
+        height="210"
+      >
       <nav class="top-links landing-links" aria-label="Primary">
         <a href="archive.html" class="landing-link">Artifact Archive</a>
         <a href="system.html" class="landing-link">The System</a>
       </nav>
     </section>
+    <section
+      class="landing-sequence"
+      aria-label="Sigil sequence"
+      data-sigil-sequence
+      data-sequence-mode="display"
+      data-sequence-fps="8"
+      data-sequence-autoplay="true"
+    >
+      <div class="sequence-stage">
+        <img data-sequence-image alt="Sigil sequence frame">
+      </div>
+    </section>
   </main>
   <script src="site.js"></script>
+  <script src="sigil-sequence.js"></script>
 </body>
 </html>

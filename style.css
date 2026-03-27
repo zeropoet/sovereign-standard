@@ -196,6 +196,11 @@ h3 {
   border-bottom: 1px solid var(--line);
 }
 
+.archive-page .page-header {
+  max-width: 980px;
+  margin-bottom: 52px;
+}
+
 .page-kicker {
   margin: 0 0 10px;
   color: var(--muted);
@@ -217,8 +222,9 @@ h3 {
   max-width: 44ch;
   margin: 14px 0 0;
   color: var(--muted);
-  font-size: 14px;
-  line-height: 1.7;
+  font-size: 15px;
+  line-height: 1.9;
+  letter-spacing: 0.01em;
 }
 
 .archive-page .page-intro {
@@ -264,19 +270,38 @@ h3 {
 
 .artifact-section {
   color: var(--muted);
-  font-size: 14px;
-  line-height: 1.7;
+  font-size: 15px;
+  line-height: 1.9;
+  letter-spacing: 0.01em;
 }
 
 .system-grid {
   column-count: 2;
-  column-gap: 3rem;
-  max-width: 960px;
+  column-gap: 3.5rem;
+  max-width: 980px;
+  column-fill: balance;
 }
 
 .system-grid p {
   break-inside: avoid;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.7rem;
+}
+
+.system-grid {
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+
+.system-grid + .site-footer,
+.archive-page .system-grid + .site-footer {
+  margin-top: 84px;
+}
+
+.archive-page .system-grid,
+.archive-page .system-grid + .site-footer,
+.archive-page .system-grid ~ .site-footer {
+  max-width: 980px;
 }
 
 .artifact-section strong,
@@ -566,5 +591,13 @@ h3 {
 @media (max-width: 900px) {
   .landing-shell {
     width: min(100%, fit-content);
+  }
+}
+
+@media (max-width: 560px) {
+  .landing-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
   }
 }

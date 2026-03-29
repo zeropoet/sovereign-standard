@@ -64,7 +64,7 @@ Each generated unit is written to `output/<unit-id>/` with:
 `issuance.json` is intentionally separate from the deterministic payload and carries creation-time metadata:
 
 - `creation_date`
-- `integrity`
+- `integrity` (derived from `creation_date` as a 12-month decay value)
 
 Rewriting an existing unit preserves the existing `issuance.json`. Deleting and recreating a unit may produce a new issuance sidecar.
 

@@ -52,11 +52,12 @@ struct OutputWriter {
 
         let issuance = try existingIssuance(at: issuanceURL) ?? ArtifactIssuance(
             creationDate: Self.creationDateFormatter.string(from: Date()),
-            integrity: Self.initialIntegrity
+            integrity: Self.integrity(for: Date())
         )
+        let creationDate = normalizedCreationDate(issuance.creationDate)
         let normalizedIssuance = ArtifactIssuance(
-            creationDate: normalizedCreationDate(issuance.creationDate),
-            integrity: issuance.integrity
+            creationDate: creationDate,
+            integrity: recalculatedIntegrity(from: creationDate)
         )
         let issuanceData = try encoder.encode(normalizedIssuance)
         try issuanceData.write(to: issuanceURL)
@@ -101,7 +102,6 @@ struct OutputWriter {
         return try JSONDecoder().decode(ArtifactIssuance.self, from: data)
     }
 
-    private static let initialIntegrity = "1.000"
     private static let creationDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .gregorian)
@@ -117,6 +117,13 @@ struct OutputWriter {
         return formatter
     }()
 
+    private static func integrity(for creationDate: Date, now: Date = Date()) -> String {
+        let yearInSeconds = 365.25 * 24 * 60 * 60
+        let elapsed = now.timeIntervalSince(creationDate)
+        let normalizedIntegrity = min(1, max(0, 1 - (elapsed / yearInSeconds)))
+        return String(format: "%.3f", normalizedIntegrity)
+    }
+
     private func normalizedCreationDate(_ rawValue: String) -> String {
         if rawValue.range(of: #"^\d{4}-\d{2}-\d{2}$"#, options: .regularExpression) != nil {
             return rawValue
@@ -127,6 +134,14 @@ struct OutputWriter {
         }
 
         return rawValue
+    }
+
+    private func recalculatedIntegrity(from creationDate: String) -> String {
+        guard let parsed = Self.creationDateFormatter.date(from: creationDate) else {
+            return Self.integrity(for: Date())
+        }
+
+        return Self.integrity(for: parsed)
     }
 }
 

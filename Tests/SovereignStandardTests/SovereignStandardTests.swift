@@ -109,6 +109,37 @@ final class SovereignStandardTests: XCTestCase {
         XCTAssertEqual(firstIssuance, secondIssuance)
     }
 
+    func testOutputWriterRecalculatesIntegrityFromCreationDateOnRewrite() throws {
+        let engine = SovereignEngine()
+        let writer = OutputWriter()
+        let outputRoot = FileManager.default.temporaryDirectory
+            .appendingPathComponent(UUID().uuidString, isDirectory: true)
+
+        try FileManager.default.createDirectory(at: outputRoot, withIntermediateDirectories: true)
+        defer {
+            try? FileManager.default.removeItem(at: outputRoot)
+        }
+
+        let unit = try engine.generateUnit(unitID: 42)
+        let unitDirectory = outputRoot.appendingPathComponent(String(unit.unitID), isDirectory: true)
+        try FileManager.default.createDirectory(at: unitDirectory, withIntermediateDirectories: true)
+
+        let staleIssuance = ArtifactIssuance(
+            creationDate: "2000-01-01",
+            integrity: "1.000"
+        )
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        let issuanceData = try encoder.encode(staleIssuance)
+        try issuanceData.write(to: unitDirectory.appendingPathComponent("issuance.json"))
+
+        try writer.write(unit: unit, outputRoot: outputRoot)
+        let rewrittenIssuance = try issuancePayload(for: unit.unitID, outputRoot: outputRoot)
+
+        XCTAssertEqual(rewrittenIssuance.creationDate, "2000-01-01")
+        XCTAssertEqual(rewrittenIssuance.integrity, "0.000")
+    }
+
     func testArtifactVerifierAcceptsMatchingArtifacts() throws {
         let engine = SovereignEngine()
         let writer = OutputWriter()

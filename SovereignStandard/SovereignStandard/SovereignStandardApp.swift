@@ -8,6 +8,7 @@ struct SovereignStandardApp {
 
     func run(arguments: [String] = CommandLine.arguments) throws {
         let command = try SovereignCommand(arguments: arguments)
+        let rootURL = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
         let outputRoot = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
             .appendingPathComponent("output", isDirectory: true)
         let shouldSyncSite: Bool
@@ -43,11 +44,16 @@ struct SovereignStandardApp {
             shouldSyncSite = false
         case .syncSite:
             shouldSyncSite = true
+        case .persistClaim(let claimFilePath):
+            let claimData = try Data(contentsOf: URL(fileURLWithPath: claimFilePath, relativeTo: rootURL))
+            let submission = try JSONDecoder().decode(ClaimSubmission.self, from: claimData)
+            try ClaimsStore(root: rootURL).persist(submission: submission, outputRoot: outputRoot)
+            shouldSyncSite = true
         }
 
         if shouldSyncSite {
             let unitIDs = try outputWriter.existingUnitIDs(outputRoot: outputRoot)
-            try siteWriter.write(units: unitIDs, root: URL(fileURLWithPath: FileManager.default.currentDirectoryPath))
+            try siteWriter.write(units: unitIDs, root: rootURL)
         }
     }
 }
@@ -58,6 +64,7 @@ private enum SovereignCommand {
     case verify([Int])
     case verifyAll
     case syncSite
+    case persistClaim(String)
 
     init(arguments: [String]) throws {
         let payload = Array(arguments.dropFirst())
@@ -78,6 +85,11 @@ private enum SovereignCommand {
             self = .verifyAll
         case "sync-site":
             self = .syncSite
+        case "persist-claim":
+            guard let claimFilePath = payload.dropFirst().first else {
+                throw SovereignCommandError.missingClaimFile
+            }
+            self = .persistClaim(claimFilePath)
         default:
             throw SovereignCommandError.invalidCommand(verb)
         }
@@ -108,15 +120,18 @@ private enum SovereignCommandError: Error, LocalizedError {
     case invalidCommand(String)
     case invalidUnitID(String)
     case missingUnitIDs
+    case missingClaimFile
 
     var errorDescription: String? {
         switch self {
         case .invalidCommand(let command):
-            return "Unknown command '\(command)'. Use generate, delete, verify, verify-all, or sync-site."
+            return "Unknown command '\(command)'. Use generate, delete, verify, verify-all, sync-site, or persist-claim."
         case .invalidUnitID(let value):
             return "Invalid unit id '\(value)'."
         case .missingUnitIDs:
             return "No unit ids were provided."
+        case .missingClaimFile:
+            return "No claim submission file was provided."
         }
     }
 }

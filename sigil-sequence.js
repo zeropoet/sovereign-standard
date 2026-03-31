@@ -13,7 +13,7 @@
       throw new Error('No units available');
     }
 
-    return manifest.units;
+    return manifest.units.map((unit) => typeof unit === 'number' ? unit : unit.unit);
   }
 
   async function initSigilSequence(root) {

@@ -50,14 +50,10 @@ struct OutputWriter {
         let data = try encoder.encode(persistedUnit)
         try data.write(to: dataURL)
 
-        let issuance = try existingIssuance(at: issuanceURL) ?? ArtifactIssuance(
-            creationDate: Self.creationDateFormatter.string(from: Date()),
-            integrity: Self.integrity(for: Date())
-        )
-        let creationDate = normalizedCreationDate(issuance.creationDate)
+        let issuanceTimestamp = Self.issuanceTimestampFormatter.string(from: Date())
         let normalizedIssuance = ArtifactIssuance(
-            creationDate: creationDate,
-            integrity: recalculatedIntegrity(from: creationDate)
+            creationDate: issuanceTimestamp,
+            integrity: Self.integrity(for: Date())
         )
         let issuanceData = try encoder.encode(normalizedIssuance)
         try issuanceData.write(to: issuanceURL)
@@ -93,27 +89,10 @@ struct OutputWriter {
         return unitIDs.sorted()
     }
 
-    private func existingIssuance(at issuanceURL: URL) throws -> ArtifactIssuance? {
-        guard FileManager.default.fileExists(atPath: issuanceURL.path) else {
-            return nil
-        }
-
-        let data = try Data(contentsOf: issuanceURL)
-        return try JSONDecoder().decode(ArtifactIssuance.self, from: data)
-    }
-
-    private static let creationDateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.calendar = Calendar(identifier: .gregorian)
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter
-    }()
-
-    private static let legacyCreationDateFormatter: ISO8601DateFormatter = {
+    private static let issuanceTimestampFormatter: ISO8601DateFormatter = {
         let formatter = ISO8601DateFormatter()
-        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.formatOptions = [.withInternetDateTime]
         return formatter
     }()
 
@@ -122,26 +101,6 @@ struct OutputWriter {
         let elapsed = now.timeIntervalSince(creationDate)
         let normalizedIntegrity = min(1, max(0, 1 - (elapsed / yearInSeconds)))
         return String(format: "%.3f", normalizedIntegrity)
-    }
-
-    private func normalizedCreationDate(_ rawValue: String) -> String {
-        if rawValue.range(of: #"^\d{4}-\d{2}-\d{2}$"#, options: .regularExpression) != nil {
-            return rawValue
-        }
-
-        if let parsed = Self.legacyCreationDateFormatter.date(from: rawValue) {
-            return Self.creationDateFormatter.string(from: parsed)
-        }
-
-        return rawValue
-    }
-
-    private func recalculatedIntegrity(from creationDate: String) -> String {
-        guard let parsed = Self.creationDateFormatter.date(from: creationDate) else {
-            return Self.integrity(for: Date())
-        }
-
-        return Self.integrity(for: parsed)
     }
 }
 

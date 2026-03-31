@@ -5,7 +5,7 @@ enum SiteConfiguration {
 
     static func unitURL(for unitID: Int) -> String {
         publicBaseURL
-            .appendingPathComponent("unit.html")
-            .absoluteString + "?id=\(unitID)"
+            .appendingPathComponent("standardcontrol.html")
+            .absoluteString + "?unit=\(unitID)"
     }
 }

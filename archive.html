@@ -34,25 +34,46 @@
     </nav>
     <header class="page-header">
       <h1 class="page-title">Artifact Archive</h1>
-      <p class="page-intro">Each unit represents a deterministic Sovereign Engine output.</p>
+      <p class="page-intro">Each unit is a state-bearing object in the registry.</p>
       <div class="archive-search-row">
         <label class="archive-search" for="unit-search">
           <input id="unit-search" name="unit-search" type="search" inputmode="numeric" placeholder="Enter a unit number" autocomplete="off">
         </label>
         <p class="archive-count" id="unit-count">/ 0 units created</p>
       </div>
+      <div class="archive-filter-row" aria-label="Archive filters">
+        <div class="order-toggle" role="radiogroup" aria-label="State">
+          <label class="order-toggle-option">
+            <input type="radio" name="state-filter" value="ALL" checked>
+            <span>All</span>
+          </label>
+          <label class="order-toggle-option">
+            <input type="radio" name="state-filter" value="CLAIMABLE">
+            <span>Claimable</span>
+          </label>
+          <label class="order-toggle-option">
+            <input type="radio" name="state-filter" value="CLAIMED">
+            <span>Claimed</span>
+          </label>
+          <label class="order-toggle-option">
+            <input type="radio" name="state-filter" value="PARTNER">
+            <span>Partner</span>
+          </label>
+        </div>
+      </div>
     </header>
     <div id="gallery"></div>
   </main>
 
   <script src="site.js"></script>
+  <script src="registry.js"></script>
   <script>
     async function loadUnits() {
-      const response = await fetch('units.json', { cache: 'no-store' });
-      const manifest = await response.json();
+      const manifest = await window.SovereignRegistry.loadRegistry();
       const gallery = document.getElementById('gallery');
       const unitCount = document.getElementById('unit-count');
       const unitSearch = document.getElementById('unit-search');
+      const stateInputs = Array.from(document.querySelectorAll('input[name="state-filter"]'));
 
       unitCount.textContent = `/ ${manifest.units.length} units created`;
 
@@ -61,25 +82,33 @@
         return;
       }
 
-      const renderGallery = (query = '') => {
+      const renderGallery = () => {
+        const query = unitSearch.value.trim();
+        const selectedState = stateInputs.find((input) => input.checked)?.value || 'ALL';
+
         const normalizedQuery = query.trim();
-        const filteredUnits = normalizedQuery
-          ? manifest.units.filter((unitID) => `${unitID}`.includes(normalizedQuery))
-          : manifest.units;
+        const filteredUnits = manifest.units.filter((record) => {
+          const unitID = Number(record.unit);
+          const matchesQuery = normalizedQuery ? `${unitID}`.includes(normalizedQuery) : true;
+          const matchesState = selectedState === 'ALL' || record.state === selectedState;
+
+          return matchesQuery && matchesState;
+        });
 
         gallery.innerHTML = '';
 
         if (!filteredUnits.length) {
-          gallery.innerHTML = '<p class="muted">No units match that search.</p>';
+          gallery.innerHTML = '<p class="muted">No units match the active filters.</p>';
           return;
         }
 
-        for (const unitID of filteredUnits) {
+        for (const record of filteredUnits) {
+          const unitID = Number(record.unit);
           const card = document.createElement('article');
           card.className = 'artifact-card panel';
 
           const link = document.createElement('a');
-          link.href = `unit.html?id=${unitID}`;
+          link.href = `standardcontrol.html?unit=${unitID}`;
           link.className = 'artifact-link';
 
           const img = document.createElement('img');
@@ -89,20 +118,20 @@
           img.src = `output/${unitID}/sigil.svg`;
           img.alt = `Sigil for unit ${unitID}`;
 
-          const code = document.createElement('code');
-          code.textContent = `${unitID}`;
+          const label = document.createElement('div');
+          label.className = 'artifact-card-meta';
+          label.innerHTML = `<code>${unitID}</code><span>${record.state}</span>`;
 
-          link.append(img, code);
+          link.append(img, label);
           card.append(link);
           gallery.append(card);
         }
       };
 
-      unitSearch.addEventListener('input', (event) => {
-        renderGallery(event.target.value);
-      });
+      unitSearch.addEventListener('input', renderGallery);
+      stateInputs.forEach((input) => input.addEventListener('change', renderGallery));
 
-      renderGallery(unitSearch.value);
+      renderGallery();
     }
 
     loadUnits().catch(() => {

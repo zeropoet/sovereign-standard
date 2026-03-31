@@ -1,0 +1,95 @@
+name: Persist Claim
+
+on:
+  repository_dispatch:
+    types:
+      - persist-claim
+  workflow_dispatch:
+    inputs:
+      unit:
+        description: Unit number
+        required: true
+      email:
+        description: Collector email
+        required: true
+      name:
+        description: Collector name
+        required: false
+      claimed_at:
+        description: Claim timestamp ISO8601
+        required: true
+      claim_hash:
+        description: Claim hash
+        required: true
+      tin_serial:
+        description: Tin serial
+        required: true
+      proof_phrase:
+        description: Proof phrase
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  persist:
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Select Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+
+      - name: Build claim submission
+        env:
+          DISPATCH_PAYLOAD: ${{ toJson(github.event.client_payload) }}
+          INPUT_UNIT: ${{ inputs.unit }}
+          INPUT_EMAIL: ${{ inputs.email }}
+          INPUT_NAME: ${{ inputs.name }}
+          INPUT_CLAIMED_AT: ${{ inputs.claimed_at }}
+          INPUT_CLAIM_HASH: ${{ inputs.claim_hash }}
+          INPUT_TIN_SERIAL: ${{ inputs.tin_serial }}
+          INPUT_PROOF_PHRASE: ${{ inputs.proof_phrase }}
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+
+          payload = json.loads(os.environ.get("DISPATCH_PAYLOAD") or "{}")
+          use_dispatch = bool(payload)
+          data = {
+              "unit": int(payload.get("unit") if use_dispatch else os.environ["INPUT_UNIT"]),
+              "email": payload.get("email") if use_dispatch else os.environ["INPUT_EMAIL"],
+              "name": payload.get("name") if use_dispatch else os.environ.get("INPUT_NAME") or None,
+              "claimed_at": payload.get("claimed_at") if use_dispatch else os.environ["INPUT_CLAIMED_AT"],
+              "claim_hash": payload.get("claim_hash") if use_dispatch else os.environ["INPUT_CLAIM_HASH"],
+              "tin_serial": payload.get("tin_serial") if use_dispatch else os.environ["INPUT_TIN_SERIAL"],
+              "proof_phrase": payload.get("proof_phrase") if use_dispatch else os.environ["INPUT_PROOF_PHRASE"],
+              "verification": {
+                  "method": "hash",
+                  "confidence": 1.0
+              }
+          }
+          with open("claim-submission.json", "w", encoding="utf-8") as handle:
+              json.dump(data, handle, indent=2, sort_keys=True)
+          PY
+
+      - name: Persist claim and refresh site
+        run: swift run SovereignStandard persist-claim claim-submission.json
+
+      - name: Run tests
+        run: swift test
+
+      - name: Commit claim
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add claims.json units.json
+          git commit -m "Persist claim for unit $(python3 -c 'import json; print(json.load(open("claim-submission.json"))["unit"])')" || exit 0
+          git push

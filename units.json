@@ -1,140 +1,2862 @@
 {
+  "generated_at" : "2026-03-31T02:20:58Z",
+  "kernel_version" : "1.0.0",
   "units" : [
-    0,
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18,
-    19,
-    20,
-    21,
-    22,
-    23,
-    24,
-    25,
-    26,
-    27,
-    28,
-    29,
-    30,
-    31,
-    32,
-    33,
-    34,
-    35,
-    36,
-    37,
-    38,
-    39,
-    40,
-    41,
-    42,
-    43,
-    44,
-    45,
-    46,
-    47,
-    48,
-    49,
-    50,
-    51,
-    52,
-    53,
-    54,
-    55,
-    56,
-    57,
-    58,
-    59,
-    60,
-    61,
-    62,
-    63,
-    64,
-    65,
-    66,
-    67,
-    68,
-    69,
-    70,
-    71,
-    72,
-    73,
-    74,
-    75,
-    76,
-    77,
-    78,
-    79,
-    80,
-    81,
-    82,
-    83,
-    84,
-    85,
-    86,
-    87,
-    88,
-    89,
-    90,
-    91,
-    92,
-    93,
-    94,
-    95,
-    96,
-    97,
-    98,
-    99,
-    100,
-    101,
-    102,
-    103,
-    104,
-    105,
-    106,
-    107,
-    108,
-    109,
-    110,
-    111,
-    112,
-    113,
-    114,
-    115,
-    116,
-    117,
-    118,
-    119,
-    120,
-    121,
-    122,
-    123,
-    124,
-    125,
-    126,
-    127,
-    128,
-    129,
-    130,
-    131,
-    132,
-    133,
-    134,
-    135
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "1500739fcaa8af0f5a34e5c02438cb81f795c7ae5ea5601daf1b6f3560f1a837",
+        "sigil" : "output\/0\/sigil.svg",
+        "tin_serial" : "SS-0000"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "1500739fcaa8af0f5a34e5c02438cb81f795c7ae5ea5601daf1b6f3560f1a837",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "0"
+      },
+      "timestamp" : "2026-03-31T02:01:29Z",
+      "unit" : 0
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "67693a38c1b5946a2670af7c769a7c18ed80d01356266c687f5a19b7be235572",
+        "sigil" : "output\/1\/sigil.svg",
+        "tin_serial" : "SS-0001"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "67693a38c1b5946a2670af7c769a7c18ed80d01356266c687f5a19b7be235572",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2168,
+        "seed" : "1"
+      },
+      "timestamp" : "2026-03-31T02:01:30Z",
+      "unit" : 1
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "0195c3ac182040b994fa88b373866428116566cd9498596012ac143250712cd5",
+        "sigil" : "output\/2\/sigil.svg",
+        "tin_serial" : "SS-0002"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "0195c3ac182040b994fa88b373866428116566cd9498596012ac143250712cd5",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2152,
+        "seed" : "2"
+      },
+      "timestamp" : "2026-03-31T02:01:31Z",
+      "unit" : 2
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "a1780977b51c4c13732486bda61130d9d4329667f7d444560ac2805380771d7c",
+        "sigil" : "output\/3\/sigil.svg",
+        "tin_serial" : "SS-0003"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "a1780977b51c4c13732486bda61130d9d4329667f7d444560ac2805380771d7c",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2166,
+        "seed" : "3"
+      },
+      "timestamp" : "2026-03-31T02:01:32Z",
+      "unit" : 3
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "742fb915d9a1d261e7dd36a5c8f86829e780d22ea6f62c0cb62ed72c022a2bce",
+        "sigil" : "output\/4\/sigil.svg",
+        "tin_serial" : "SS-0004"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "742fb915d9a1d261e7dd36a5c8f86829e780d22ea6f62c0cb62ed72c022a2bce",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2144,
+        "seed" : "4"
+      },
+      "timestamp" : "2026-03-31T02:01:33Z",
+      "unit" : 4
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "b5a645b0a8e51b47871194ec91f341c576fedb1097f4a880d1fed6febc323e2e",
+        "sigil" : "output\/5\/sigil.svg",
+        "tin_serial" : "SS-0005"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "b5a645b0a8e51b47871194ec91f341c576fedb1097f4a880d1fed6febc323e2e",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "5"
+      },
+      "timestamp" : "2026-03-31T02:01:33Z",
+      "unit" : 5
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "96fea7aefdb02a961b19525afd7d7e4deca34211621cde0e17c50e519ea18063",
+        "sigil" : "output\/6\/sigil.svg",
+        "tin_serial" : "SS-0006"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "96fea7aefdb02a961b19525afd7d7e4deca34211621cde0e17c50e519ea18063",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "6"
+      },
+      "timestamp" : "2026-03-31T02:01:34Z",
+      "unit" : 6
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "310c28c6efe6162a4b405aa36d5595fbb034121f86f1e846079e8bbd0a72b223",
+        "sigil" : "output\/7\/sigil.svg",
+        "tin_serial" : "SS-0007"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "310c28c6efe6162a4b405aa36d5595fbb034121f86f1e846079e8bbd0a72b223",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2162,
+        "seed" : "7"
+      },
+      "timestamp" : "2026-03-31T02:01:35Z",
+      "unit" : 7
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "6053eb82ef38f3c63f79a3207082d22e46bb95efa043c90d7f4db832917669b0",
+        "sigil" : "output\/8\/sigil.svg",
+        "tin_serial" : "SS-0008"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "6053eb82ef38f3c63f79a3207082d22e46bb95efa043c90d7f4db832917669b0",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "8"
+      },
+      "timestamp" : "2026-03-31T02:01:36Z",
+      "unit" : 8
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "bbc6612e0a0adb64ce0d2d019ac83633f13179247ac78a9f81c3b1bc84088b6d",
+        "sigil" : "output\/9\/sigil.svg",
+        "tin_serial" : "SS-0009"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "bbc6612e0a0adb64ce0d2d019ac83633f13179247ac78a9f81c3b1bc84088b6d",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "9"
+      },
+      "timestamp" : "2026-03-31T02:01:36Z",
+      "unit" : 9
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "b72544d06e8c5448606c786cc7d7bb2219a5a9b0d9015340d6fb054f6cefbc0c",
+        "sigil" : "output\/10\/sigil.svg",
+        "tin_serial" : "SS-0010"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "b72544d06e8c5448606c786cc7d7bb2219a5a9b0d9015340d6fb054f6cefbc0c",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "10"
+      },
+      "timestamp" : "2026-03-31T02:01:37Z",
+      "unit" : 10
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "5a6a32343ef4866c49c422e849237ee6dba26c0caf7c7f21c5801c6684b2e2b1",
+        "sigil" : "output\/11\/sigil.svg",
+        "tin_serial" : "SS-0011"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "5a6a32343ef4866c49c422e849237ee6dba26c0caf7c7f21c5801c6684b2e2b1",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "11"
+      },
+      "timestamp" : "2026-03-31T02:01:38Z",
+      "unit" : 11
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "004ea877f49a2056adc9716d4e5eaea4f66b0b10b984de160a1c72bf0530c822",
+        "sigil" : "output\/12\/sigil.svg",
+        "tin_serial" : "SS-0012"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "004ea877f49a2056adc9716d4e5eaea4f66b0b10b984de160a1c72bf0530c822",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2170,
+        "seed" : "12"
+      },
+      "timestamp" : "2026-03-31T02:01:39Z",
+      "unit" : 12
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "5a371917db18a2e1ee310133dacbf5cd03d16ded039215db5eacd23bd20e0c11",
+        "sigil" : "output\/13\/sigil.svg",
+        "tin_serial" : "SS-0013"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "5a371917db18a2e1ee310133dacbf5cd03d16ded039215db5eacd23bd20e0c11",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "13"
+      },
+      "timestamp" : "2026-03-31T02:01:40Z",
+      "unit" : 13
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "863f6d13033993ba3c1d5d6a4b452b21bcce5edb8646091d9720ddd558db6c26",
+        "sigil" : "output\/14\/sigil.svg",
+        "tin_serial" : "SS-0014"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "863f6d13033993ba3c1d5d6a4b452b21bcce5edb8646091d9720ddd558db6c26",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2108,
+        "seed" : "14"
+      },
+      "timestamp" : "2026-03-31T02:01:40Z",
+      "unit" : 14
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "1c46d9bd2237f8d23dabef7ced3cb03d70fc7d0688d14c22b1b1d96c50d17f06",
+        "sigil" : "output\/15\/sigil.svg",
+        "tin_serial" : "SS-0015"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "1c46d9bd2237f8d23dabef7ced3cb03d70fc7d0688d14c22b1b1d96c50d17f06",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2172,
+        "seed" : "15"
+      },
+      "timestamp" : "2026-03-31T02:01:41Z",
+      "unit" : 15
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "ed3ac2b0e7e60e32acb86bc520ebe8ccbdf3eae5801448e832b2aca579934c76",
+        "sigil" : "output\/16\/sigil.svg",
+        "tin_serial" : "SS-0016"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "ed3ac2b0e7e60e32acb86bc520ebe8ccbdf3eae5801448e832b2aca579934c76",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2160,
+        "seed" : "16"
+      },
+      "timestamp" : "2026-03-31T02:01:42Z",
+      "unit" : 16
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "949f35353249fa9f0be29fcc87ffd69b9d7e2e501a6d170b435d8118fe1bb12d",
+        "sigil" : "output\/17\/sigil.svg",
+        "tin_serial" : "SS-0017"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "949f35353249fa9f0be29fcc87ffd69b9d7e2e501a6d170b435d8118fe1bb12d",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2174,
+        "seed" : "17"
+      },
+      "timestamp" : "2026-03-31T02:01:43Z",
+      "unit" : 17
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "9ec7aec0f42c6472a9d058a049fba7fef2509a87e711504de90df28046d46849",
+        "sigil" : "output\/18\/sigil.svg",
+        "tin_serial" : "SS-0018"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "9ec7aec0f42c6472a9d058a049fba7fef2509a87e711504de90df28046d46849",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "18"
+      },
+      "timestamp" : "2026-03-31T02:01:43Z",
+      "unit" : 18
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "f8fa6f4cc7c61558e1967f90dbe14f1a0d77dd33519aef632a00de0068a49e11",
+        "sigil" : "output\/19\/sigil.svg",
+        "tin_serial" : "SS-0019"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "f8fa6f4cc7c61558e1967f90dbe14f1a0d77dd33519aef632a00de0068a49e11",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "19"
+      },
+      "timestamp" : "2026-03-31T02:01:44Z",
+      "unit" : 19
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "0a85756800c72061c2aa598cd9f4cb0cdc813cfbb62cd2f93a6c7f094690f381",
+        "sigil" : "output\/20\/sigil.svg",
+        "tin_serial" : "SS-0020"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "0a85756800c72061c2aa598cd9f4cb0cdc813cfbb62cd2f93a6c7f094690f381",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2124,
+        "seed" : "20"
+      },
+      "timestamp" : "2026-03-31T02:01:45Z",
+      "unit" : 20
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "09f16f2b701efc958a7895e4f03d8649c95347e4a08bef507d973f1208d34e15",
+        "sigil" : "output\/21\/sigil.svg",
+        "tin_serial" : "SS-0021"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "09f16f2b701efc958a7895e4f03d8649c95347e4a08bef507d973f1208d34e15",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2136,
+        "seed" : "21"
+      },
+      "timestamp" : "2026-03-31T02:01:46Z",
+      "unit" : 21
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "0814cffec595480e6a37b0b387edf8615942498177dd6fd53d47aa29b832d9ef",
+        "sigil" : "output\/22\/sigil.svg",
+        "tin_serial" : "SS-0022"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "0814cffec595480e6a37b0b387edf8615942498177dd6fd53d47aa29b832d9ef",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2172,
+        "seed" : "22"
+      },
+      "timestamp" : "2026-03-31T02:01:47Z",
+      "unit" : 22
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "3d41287d83727516819f8dc8252d678fc9999755fcf55800c520dce0b8af01a9",
+        "sigil" : "output\/23\/sigil.svg",
+        "tin_serial" : "SS-0023"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "3d41287d83727516819f8dc8252d678fc9999755fcf55800c520dce0b8af01a9",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "23"
+      },
+      "timestamp" : "2026-03-31T02:01:47Z",
+      "unit" : 23
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "442ecf262e9d6035351a2f4d43f1ced5f502e33e9d854886803eb3624cee35f6",
+        "sigil" : "output\/24\/sigil.svg",
+        "tin_serial" : "SS-0024"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "442ecf262e9d6035351a2f4d43f1ced5f502e33e9d854886803eb3624cee35f6",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2164,
+        "seed" : "24"
+      },
+      "timestamp" : "2026-03-31T02:01:48Z",
+      "unit" : 24
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "88608c320cc0e03c50f9dec3411dd4d5b125fb00193d0a70e01e06fbbf14becc",
+        "sigil" : "output\/25\/sigil.svg",
+        "tin_serial" : "SS-0025"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "88608c320cc0e03c50f9dec3411dd4d5b125fb00193d0a70e01e06fbbf14becc",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "25"
+      },
+      "timestamp" : "2026-03-31T02:01:49Z",
+      "unit" : 25
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "ab8f60be9dbec94954307258ff94af4a757607938eb8a4d054a201a1200c69b1",
+        "sigil" : "output\/26\/sigil.svg",
+        "tin_serial" : "SS-0026"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "ab8f60be9dbec94954307258ff94af4a757607938eb8a4d054a201a1200c69b1",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "26"
+      },
+      "timestamp" : "2026-03-31T02:01:50Z",
+      "unit" : 26
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "dc2d2aae7cc7ee0d9d8ba544e1133df0d56d5e515a67eefec67f6d1d1c465131",
+        "sigil" : "output\/27\/sigil.svg",
+        "tin_serial" : "SS-0027"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "dc2d2aae7cc7ee0d9d8ba544e1133df0d56d5e515a67eefec67f6d1d1c465131",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "27"
+      },
+      "timestamp" : "2026-03-31T02:01:50Z",
+      "unit" : 27
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "7eb02c3a40d968181b489f7a8d4a75fda2c321a17adec4ee2f83d149a0b7aeab",
+        "sigil" : "output\/28\/sigil.svg",
+        "tin_serial" : "SS-0028"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "7eb02c3a40d968181b489f7a8d4a75fda2c321a17adec4ee2f83d149a0b7aeab",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2172,
+        "seed" : "28"
+      },
+      "timestamp" : "2026-03-31T02:01:51Z",
+      "unit" : 28
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "1b102037d4cfe1d16d8cf8bb4a3c259f983eec1fd1cb816d2ee6a16291e2db0d",
+        "sigil" : "output\/29\/sigil.svg",
+        "tin_serial" : "SS-0029"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "1b102037d4cfe1d16d8cf8bb4a3c259f983eec1fd1cb816d2ee6a16291e2db0d",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2164,
+        "seed" : "29"
+      },
+      "timestamp" : "2026-03-31T02:01:52Z",
+      "unit" : 29
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "45ab29e6a8042628542caf95a5a095b5571a7199d4d9ee1869ef4fcd19f6320a",
+        "sigil" : "output\/30\/sigil.svg",
+        "tin_serial" : "SS-0030"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "45ab29e6a8042628542caf95a5a095b5571a7199d4d9ee1869ef4fcd19f6320a",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "30"
+      },
+      "timestamp" : "2026-03-31T02:01:53Z",
+      "unit" : 30
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "63fb535b56cd71db33f382c160b2128456bda36225fe1971f6a835972356ecd5",
+        "sigil" : "output\/31\/sigil.svg",
+        "tin_serial" : "SS-0031"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "63fb535b56cd71db33f382c160b2128456bda36225fe1971f6a835972356ecd5",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "31"
+      },
+      "timestamp" : "2026-03-31T02:01:54Z",
+      "unit" : 31
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "257f48d3b41680b4fe6938eff627f6ed0bccec7450c17d6ecbb5998949ae2205",
+        "sigil" : "output\/32\/sigil.svg",
+        "tin_serial" : "SS-0032"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "257f48d3b41680b4fe6938eff627f6ed0bccec7450c17d6ecbb5998949ae2205",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2148,
+        "seed" : "32"
+      },
+      "timestamp" : "2026-03-31T02:01:54Z",
+      "unit" : 32
+    },
+    {
+      "eligible_for_partner" : true,
+      "physical" : {
+        "engraving_hash" : "80829e2f210cbf3633d025ae0359ad691ca5ffcc33509a7ad499fbd31fa2580c",
+        "sigil" : "output\/33\/sigil.svg",
+        "tin_serial" : "SS-0033"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "80829e2f210cbf3633d025ae0359ad691ca5ffcc33509a7ad499fbd31fa2580c",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2162,
+        "seed" : "33"
+      },
+      "timestamp" : "2026-03-31T02:01:55Z",
+      "unit" : 33
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "a4019cf807d11637ca93dd8443e464c3b61a8f34bc66155466fa4734cc95810a",
+        "sigil" : "output\/34\/sigil.svg",
+        "tin_serial" : "SS-0034"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "a4019cf807d11637ca93dd8443e464c3b61a8f34bc66155466fa4734cc95810a",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2162,
+        "seed" : "34"
+      },
+      "timestamp" : "2026-03-31T02:01:56Z",
+      "unit" : 34
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "0095239164bf1949206ed798321a21915e7bb7e42c1ef976a344837fbfc20f8d",
+        "sigil" : "output\/35\/sigil.svg",
+        "tin_serial" : "SS-0035"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "0095239164bf1949206ed798321a21915e7bb7e42c1ef976a344837fbfc20f8d",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "35"
+      },
+      "timestamp" : "2026-03-31T02:01:57Z",
+      "unit" : 35
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "279aaf935d68b26e9328c35f53f15ebc89271833e4cee8df0bb800fb2da3f0db",
+        "sigil" : "output\/36\/sigil.svg",
+        "tin_serial" : "SS-0036"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "279aaf935d68b26e9328c35f53f15ebc89271833e4cee8df0bb800fb2da3f0db",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2152,
+        "seed" : "36"
+      },
+      "timestamp" : "2026-03-31T02:01:57Z",
+      "unit" : 36
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "3156b82eb0d2fad3fbef2e944ede6b0055b72be201b07370889ecedf2abb561a",
+        "sigil" : "output\/37\/sigil.svg",
+        "tin_serial" : "SS-0037"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "3156b82eb0d2fad3fbef2e944ede6b0055b72be201b07370889ecedf2abb561a",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "37"
+      },
+      "timestamp" : "2026-03-31T02:01:58Z",
+      "unit" : 37
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "a20d580347f29bdfade2b6bff030fdb6186c12fef13e7b155eee9ee1ade2cefd",
+        "sigil" : "output\/38\/sigil.svg",
+        "tin_serial" : "SS-0038"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "a20d580347f29bdfade2b6bff030fdb6186c12fef13e7b155eee9ee1ade2cefd",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2158,
+        "seed" : "38"
+      },
+      "timestamp" : "2026-03-31T02:01:59Z",
+      "unit" : 38
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "dd5ff08fff68066809a2b42add30190ba631b9a5b91a1fcd76903f697f4599d3",
+        "sigil" : "output\/39\/sigil.svg",
+        "tin_serial" : "SS-0039"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "dd5ff08fff68066809a2b42add30190ba631b9a5b91a1fcd76903f697f4599d3",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2116,
+        "seed" : "39"
+      },
+      "timestamp" : "2026-03-31T02:02:00Z",
+      "unit" : 39
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "a1a997237b5306d4dfcf86fb6754348f657a17344444bb67066a95296241f549",
+        "sigil" : "output\/40\/sigil.svg",
+        "tin_serial" : "SS-0040"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "a1a997237b5306d4dfcf86fb6754348f657a17344444bb67066a95296241f549",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "40"
+      },
+      "timestamp" : "2026-03-31T02:02:00Z",
+      "unit" : 40
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "12936ad0f1ddd3146d53ec6365b167f6bfdb3a7002061cbbde1c8846cf15dcf7",
+        "sigil" : "output\/41\/sigil.svg",
+        "tin_serial" : "SS-0041"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "12936ad0f1ddd3146d53ec6365b167f6bfdb3a7002061cbbde1c8846cf15dcf7",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2114,
+        "seed" : "41"
+      },
+      "timestamp" : "2026-03-31T02:02:01Z",
+      "unit" : 41
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "edeb73e5ff5800a391479e777a53a5e1cdf44fe1aa6c435887188ae31acc67b9",
+        "sigil" : "output\/42\/sigil.svg",
+        "tin_serial" : "SS-0042"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "edeb73e5ff5800a391479e777a53a5e1cdf44fe1aa6c435887188ae31acc67b9",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2160,
+        "seed" : "42"
+      },
+      "timestamp" : "2026-03-31T02:02:02Z",
+      "unit" : 42
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "f87eee389b8cf431164584d833b7a2f03cdba5aa8b616e258cebbd78995efdea",
+        "sigil" : "output\/43\/sigil.svg",
+        "tin_serial" : "SS-0043"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "f87eee389b8cf431164584d833b7a2f03cdba5aa8b616e258cebbd78995efdea",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2128,
+        "seed" : "43"
+      },
+      "timestamp" : "2026-03-31T02:02:03Z",
+      "unit" : 43
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "e7d31b7bf49f4884dcdcf52c50de1a4fca0e7db958eeb603bd03d42e4e1eef82",
+        "sigil" : "output\/44\/sigil.svg",
+        "tin_serial" : "SS-0044"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "e7d31b7bf49f4884dcdcf52c50de1a4fca0e7db958eeb603bd03d42e4e1eef82",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "44"
+      },
+      "timestamp" : "2026-03-31T02:02:04Z",
+      "unit" : 44
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "cd8e7ec526b4a4690c1ff6d8607ccf6286a5708c2b7c24ec68f1724885a04e2e",
+        "sigil" : "output\/45\/sigil.svg",
+        "tin_serial" : "SS-0045"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "cd8e7ec526b4a4690c1ff6d8607ccf6286a5708c2b7c24ec68f1724885a04e2e",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2172,
+        "seed" : "45"
+      },
+      "timestamp" : "2026-03-31T02:02:04Z",
+      "unit" : 45
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "b31566eb1a4e3a68545414d006f4170609be6d49c363b6c9ac930eda9f407a33",
+        "sigil" : "output\/46\/sigil.svg",
+        "tin_serial" : "SS-0046"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "b31566eb1a4e3a68545414d006f4170609be6d49c363b6c9ac930eda9f407a33",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2172,
+        "seed" : "46"
+      },
+      "timestamp" : "2026-03-31T02:02:05Z",
+      "unit" : 46
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "a52a52641e740daef147012f9d2d0055daaf61f6b6db3321586327cc1d914182",
+        "sigil" : "output\/47\/sigil.svg",
+        "tin_serial" : "SS-0047"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "a52a52641e740daef147012f9d2d0055daaf61f6b6db3321586327cc1d914182",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2166,
+        "seed" : "47"
+      },
+      "timestamp" : "2026-03-31T02:02:06Z",
+      "unit" : 47
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "a60b76032bedd6de39e63ba9f5d5e5c1d543dd08dcea94b938562de912f5705d",
+        "sigil" : "output\/48\/sigil.svg",
+        "tin_serial" : "SS-0048"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "a60b76032bedd6de39e63ba9f5d5e5c1d543dd08dcea94b938562de912f5705d",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "48"
+      },
+      "timestamp" : "2026-03-31T02:02:07Z",
+      "unit" : 48
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "ce30177ff54c0b07edaec1e32424410cae445698dd1bde4ca491d46d2af66ae9",
+        "sigil" : "output\/49\/sigil.svg",
+        "tin_serial" : "SS-0049"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "ce30177ff54c0b07edaec1e32424410cae445698dd1bde4ca491d46d2af66ae9",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "49"
+      },
+      "timestamp" : "2026-03-31T02:02:07Z",
+      "unit" : 49
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "512ce0f49982b26ed501be9db5b1495d422bff84ca4ae92b606ab21401e8afc3",
+        "sigil" : "output\/50\/sigil.svg",
+        "tin_serial" : "SS-0050"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "512ce0f49982b26ed501be9db5b1495d422bff84ca4ae92b606ab21401e8afc3",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2154,
+        "seed" : "50"
+      },
+      "timestamp" : "2026-03-31T02:02:08Z",
+      "unit" : 50
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "732dbcd43bca4f7aec193a09eee81da51e71e28b05ddd83c2d743f1d9768d535",
+        "sigil" : "output\/51\/sigil.svg",
+        "tin_serial" : "SS-0051"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "732dbcd43bca4f7aec193a09eee81da51e71e28b05ddd83c2d743f1d9768d535",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "51"
+      },
+      "timestamp" : "2026-03-31T02:02:09Z",
+      "unit" : 51
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "fcef25235f236709e7aefa4cbb146f6918edd2131111edaab20f628e4293f25e",
+        "sigil" : "output\/52\/sigil.svg",
+        "tin_serial" : "SS-0052"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "fcef25235f236709e7aefa4cbb146f6918edd2131111edaab20f628e4293f25e",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2140,
+        "seed" : "52"
+      },
+      "timestamp" : "2026-03-31T02:02:10Z",
+      "unit" : 52
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "6e8e177c834c36d32aeb2b584dd47ae34d9f4c14e7a5c1d58db002d944bf5b65",
+        "sigil" : "output\/53\/sigil.svg",
+        "tin_serial" : "SS-0053"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "6e8e177c834c36d32aeb2b584dd47ae34d9f4c14e7a5c1d58db002d944bf5b65",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2144,
+        "seed" : "53"
+      },
+      "timestamp" : "2026-03-31T02:02:11Z",
+      "unit" : 53
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "139001a8c60177b9fab69c2ee3f3fe9563ca3156488956d9b7777880e81545b2",
+        "sigil" : "output\/54\/sigil.svg",
+        "tin_serial" : "SS-0054"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "139001a8c60177b9fab69c2ee3f3fe9563ca3156488956d9b7777880e81545b2",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2160,
+        "seed" : "54"
+      },
+      "timestamp" : "2026-03-31T02:02:11Z",
+      "unit" : 54
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "15e43fed5a0e26e96996511c0a1f2fdf92d75ea1de0bf88d1fc4deb55c41b032",
+        "sigil" : "output\/55\/sigil.svg",
+        "tin_serial" : "SS-0055"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "15e43fed5a0e26e96996511c0a1f2fdf92d75ea1de0bf88d1fc4deb55c41b032",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2158,
+        "seed" : "55"
+      },
+      "timestamp" : "2026-03-31T02:02:12Z",
+      "unit" : 55
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "8929bea623dfe4df25fab4494297f9517f3f7de89d42210e676f5e062f519e9a",
+        "sigil" : "output\/56\/sigil.svg",
+        "tin_serial" : "SS-0056"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "8929bea623dfe4df25fab4494297f9517f3f7de89d42210e676f5e062f519e9a",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "56"
+      },
+      "timestamp" : "2026-03-31T02:02:13Z",
+      "unit" : 56
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "48ccf31846de5816c1cb3dc960bea984380f7c73c7c6e6b1cea27f8fc3519a70",
+        "sigil" : "output\/57\/sigil.svg",
+        "tin_serial" : "SS-0057"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "48ccf31846de5816c1cb3dc960bea984380f7c73c7c6e6b1cea27f8fc3519a70",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2168,
+        "seed" : "57"
+      },
+      "timestamp" : "2026-03-31T02:02:14Z",
+      "unit" : 57
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "53d0f95f7e330738d0123210d47dab4aa0f0e64c8cbc8c27cdacbc2a33cebd51",
+        "sigil" : "output\/58\/sigil.svg",
+        "tin_serial" : "SS-0058"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "53d0f95f7e330738d0123210d47dab4aa0f0e64c8cbc8c27cdacbc2a33cebd51",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2160,
+        "seed" : "58"
+      },
+      "timestamp" : "2026-03-31T02:02:14Z",
+      "unit" : 58
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "2fc651efeaeab164f0233c9251a0d7f1d0b2f6fba3ff8620268a96b0a990a86e",
+        "sigil" : "output\/59\/sigil.svg",
+        "tin_serial" : "SS-0059"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "2fc651efeaeab164f0233c9251a0d7f1d0b2f6fba3ff8620268a96b0a990a86e",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2114,
+        "seed" : "59"
+      },
+      "timestamp" : "2026-03-31T02:02:15Z",
+      "unit" : 59
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "bd1b69789f51626e23cb84e9b02dcaf8ac89196bf121bb3c64ec9f63c2aca9ba",
+        "sigil" : "output\/60\/sigil.svg",
+        "tin_serial" : "SS-0060"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "bd1b69789f51626e23cb84e9b02dcaf8ac89196bf121bb3c64ec9f63c2aca9ba",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "60"
+      },
+      "timestamp" : "2026-03-31T02:02:16Z",
+      "unit" : 60
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "50db8fe40cf7c83f7228ca62edf12e029419838121060fb5bf372eb4e51e6c1a",
+        "sigil" : "output\/61\/sigil.svg",
+        "tin_serial" : "SS-0061"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "50db8fe40cf7c83f7228ca62edf12e029419838121060fb5bf372eb4e51e6c1a",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2168,
+        "seed" : "61"
+      },
+      "timestamp" : "2026-03-31T02:02:17Z",
+      "unit" : 61
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "dc0033f61dda7409f3ace2ffd440f44b0d335c5265e8849d85b23c394bcdb8af",
+        "sigil" : "output\/62\/sigil.svg",
+        "tin_serial" : "SS-0062"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "dc0033f61dda7409f3ace2ffd440f44b0d335c5265e8849d85b23c394bcdb8af",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2154,
+        "seed" : "62"
+      },
+      "timestamp" : "2026-03-31T02:02:17Z",
+      "unit" : 62
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "60664ee99a25ab8c78c5b2160a9e7f4bebb78f6c5c3b8a28ff3994d83deef73e",
+        "sigil" : "output\/63\/sigil.svg",
+        "tin_serial" : "SS-0063"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "60664ee99a25ab8c78c5b2160a9e7f4bebb78f6c5c3b8a28ff3994d83deef73e",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2166,
+        "seed" : "63"
+      },
+      "timestamp" : "2026-03-31T02:02:18Z",
+      "unit" : 63
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "e2173a9c0638f97eda7f5b7a2abef8d9120899a3838e7571a5836b82a836bfc1",
+        "sigil" : "output\/64\/sigil.svg",
+        "tin_serial" : "SS-0064"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "e2173a9c0638f97eda7f5b7a2abef8d9120899a3838e7571a5836b82a836bfc1",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2112,
+        "seed" : "64"
+      },
+      "timestamp" : "2026-03-31T02:02:19Z",
+      "unit" : 64
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "0c4354567aadade7473c92634c36f0f25381c51712f385b7770071f8b8731c29",
+        "sigil" : "output\/65\/sigil.svg",
+        "tin_serial" : "SS-0065"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "0c4354567aadade7473c92634c36f0f25381c51712f385b7770071f8b8731c29",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2166,
+        "seed" : "65"
+      },
+      "timestamp" : "2026-03-31T02:02:20Z",
+      "unit" : 65
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "ec6972ee39199fe7bd79d7786547c6d113c06cefd35f1d4f4734606642e315f8",
+        "sigil" : "output\/66\/sigil.svg",
+        "tin_serial" : "SS-0066"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "ec6972ee39199fe7bd79d7786547c6d113c06cefd35f1d4f4734606642e315f8",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "66"
+      },
+      "timestamp" : "2026-03-31T02:02:20Z",
+      "unit" : 66
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "5dea9e6799ffbfdc2425b84f6d0513f63f52efaa1406c6fbfdedd6f82cd6daaf",
+        "sigil" : "output\/67\/sigil.svg",
+        "tin_serial" : "SS-0067"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "5dea9e6799ffbfdc2425b84f6d0513f63f52efaa1406c6fbfdedd6f82cd6daaf",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "67"
+      },
+      "timestamp" : "2026-03-31T02:02:21Z",
+      "unit" : 67
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "817ebfd9b50159a66c8786b7d115565a90bfff3c12a9d8ad50cf0e8f6ec4e929",
+        "sigil" : "output\/68\/sigil.svg",
+        "tin_serial" : "SS-0068"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "817ebfd9b50159a66c8786b7d115565a90bfff3c12a9d8ad50cf0e8f6ec4e929",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2172,
+        "seed" : "68"
+      },
+      "timestamp" : "2026-03-31T02:02:22Z",
+      "unit" : 68
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "9a3614d5eecb57689fc9018e7fde13a4e89a3ba80f1e2e359b5b86cce646556b",
+        "sigil" : "output\/69\/sigil.svg",
+        "tin_serial" : "SS-0069"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "9a3614d5eecb57689fc9018e7fde13a4e89a3ba80f1e2e359b5b86cce646556b",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "69"
+      },
+      "timestamp" : "2026-03-31T02:02:23Z",
+      "unit" : 69
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "9e91c1ae645293d732f9161d46cb202c74ad341ede6a264c9278d1419b9d2359",
+        "sigil" : "output\/70\/sigil.svg",
+        "tin_serial" : "SS-0070"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "9e91c1ae645293d732f9161d46cb202c74ad341ede6a264c9278d1419b9d2359",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2164,
+        "seed" : "70"
+      },
+      "timestamp" : "2026-03-31T02:02:24Z",
+      "unit" : 70
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "f1f4525eaefe24708eb98062e2f3ad5096f86073302e8e214bbe766a25e58080",
+        "sigil" : "output\/71\/sigil.svg",
+        "tin_serial" : "SS-0071"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "f1f4525eaefe24708eb98062e2f3ad5096f86073302e8e214bbe766a25e58080",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2168,
+        "seed" : "71"
+      },
+      "timestamp" : "2026-03-31T02:02:25Z",
+      "unit" : 71
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "46be119409be7e3dbfb71de9608ad3ead184987d20dd00ac5606e10fbd9fb089",
+        "sigil" : "output\/72\/sigil.svg",
+        "tin_serial" : "SS-0072"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "46be119409be7e3dbfb71de9608ad3ead184987d20dd00ac5606e10fbd9fb089",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2168,
+        "seed" : "72"
+      },
+      "timestamp" : "2026-03-31T02:02:25Z",
+      "unit" : 72
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "ad12b5a8822f1dedb4f9270dcb568eb25e6830f3a7555fac8f3930031502a7d3",
+        "sigil" : "output\/73\/sigil.svg",
+        "tin_serial" : "SS-0073"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "ad12b5a8822f1dedb4f9270dcb568eb25e6830f3a7555fac8f3930031502a7d3",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2158,
+        "seed" : "73"
+      },
+      "timestamp" : "2026-03-31T02:02:26Z",
+      "unit" : 73
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "e49cf57a02ccf7b44504e3af5c5645e80fdcc75fb58dcf44bfd47eea5e259992",
+        "sigil" : "output\/74\/sigil.svg",
+        "tin_serial" : "SS-0074"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "e49cf57a02ccf7b44504e3af5c5645e80fdcc75fb58dcf44bfd47eea5e259992",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "74"
+      },
+      "timestamp" : "2026-03-31T02:02:27Z",
+      "unit" : 74
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "7c03c49a0714b2be9f0edd99477bfa3d4ee8eecb3b14acb51e2044933e8a840d",
+        "sigil" : "output\/75\/sigil.svg",
+        "tin_serial" : "SS-0075"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "7c03c49a0714b2be9f0edd99477bfa3d4ee8eecb3b14acb51e2044933e8a840d",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "75"
+      },
+      "timestamp" : "2026-03-31T02:02:28Z",
+      "unit" : 75
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "7e25c6b28099f0afd0027f3255be88b70717589fc3ae793f885272291a9b9308",
+        "sigil" : "output\/76\/sigil.svg",
+        "tin_serial" : "SS-0076"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "7e25c6b28099f0afd0027f3255be88b70717589fc3ae793f885272291a9b9308",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "76"
+      },
+      "timestamp" : "2026-03-31T02:02:28Z",
+      "unit" : 76
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "75976d3b5b79c43cdca0c1eef2011dcb6db5c247952d927b32fc769d941043a6",
+        "sigil" : "output\/77\/sigil.svg",
+        "tin_serial" : "SS-0077"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "75976d3b5b79c43cdca0c1eef2011dcb6db5c247952d927b32fc769d941043a6",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2132,
+        "seed" : "77"
+      },
+      "timestamp" : "2026-03-31T02:02:29Z",
+      "unit" : 77
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "ed066401e54bf4d09df758b58a64afb039d9fad1d3b096709e3eb0e072867bdc",
+        "sigil" : "output\/78\/sigil.svg",
+        "tin_serial" : "SS-0078"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "ed066401e54bf4d09df758b58a64afb039d9fad1d3b096709e3eb0e072867bdc",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "78"
+      },
+      "timestamp" : "2026-03-31T02:02:30Z",
+      "unit" : 78
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "3bf02a0af10041963cd209cbe3d3f692c4df8ac3183eadd565fb30439a104f39",
+        "sigil" : "output\/79\/sigil.svg",
+        "tin_serial" : "SS-0079"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "3bf02a0af10041963cd209cbe3d3f692c4df8ac3183eadd565fb30439a104f39",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2164,
+        "seed" : "79"
+      },
+      "timestamp" : "2026-03-31T02:02:31Z",
+      "unit" : 79
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "9ffe4fd59499157d68bfdf10102114c26397dddae07eb4c3be3e1da27db615eb",
+        "sigil" : "output\/80\/sigil.svg",
+        "tin_serial" : "SS-0080"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "9ffe4fd59499157d68bfdf10102114c26397dddae07eb4c3be3e1da27db615eb",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "80"
+      },
+      "timestamp" : "2026-03-31T02:02:31Z",
+      "unit" : 80
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "19234283f8f5a2ac684e1fba64b327cab6dcca54e3c8d4bddf769d7c40fa957f",
+        "sigil" : "output\/81\/sigil.svg",
+        "tin_serial" : "SS-0081"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "19234283f8f5a2ac684e1fba64b327cab6dcca54e3c8d4bddf769d7c40fa957f",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2144,
+        "seed" : "81"
+      },
+      "timestamp" : "2026-03-31T02:02:32Z",
+      "unit" : 81
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "2318cde76d4074f1c7f7f7d3008450a585a610d3b0358a37c4f4a76866ff3b37",
+        "sigil" : "output\/82\/sigil.svg",
+        "tin_serial" : "SS-0082"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "2318cde76d4074f1c7f7f7d3008450a585a610d3b0358a37c4f4a76866ff3b37",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2164,
+        "seed" : "82"
+      },
+      "timestamp" : "2026-03-31T02:02:33Z",
+      "unit" : 82
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "7b295ddf0f3ecaa74e45553524995f1aa5b262e6dcf9a5e4e119e6db7e176867",
+        "sigil" : "output\/83\/sigil.svg",
+        "tin_serial" : "SS-0083"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "7b295ddf0f3ecaa74e45553524995f1aa5b262e6dcf9a5e4e119e6db7e176867",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2172,
+        "seed" : "83"
+      },
+      "timestamp" : "2026-03-31T02:02:34Z",
+      "unit" : 83
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "80a7e10a31c0455365141509a1303931c91a0f5491315b957f7004de245bdc6d",
+        "sigil" : "output\/84\/sigil.svg",
+        "tin_serial" : "SS-0084"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "80a7e10a31c0455365141509a1303931c91a0f5491315b957f7004de245bdc6d",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2144,
+        "seed" : "84"
+      },
+      "timestamp" : "2026-03-31T02:02:35Z",
+      "unit" : 84
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "b74b05a6730cc15eaf4f9a912d6a37c45e880bf42bdb90da10f37a1e564421c2",
+        "sigil" : "output\/85\/sigil.svg",
+        "tin_serial" : "SS-0085"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "b74b05a6730cc15eaf4f9a912d6a37c45e880bf42bdb90da10f37a1e564421c2",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "85"
+      },
+      "timestamp" : "2026-03-31T02:02:35Z",
+      "unit" : 85
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "ef1d9e83c76e7ac017e917efe5d12eda070ddc537be16659f45826a071f56702",
+        "sigil" : "output\/86\/sigil.svg",
+        "tin_serial" : "SS-0086"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "ef1d9e83c76e7ac017e917efe5d12eda070ddc537be16659f45826a071f56702",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "86"
+      },
+      "timestamp" : "2026-03-31T02:02:36Z",
+      "unit" : 86
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "32fe71589cf4a4e4378147dccf75afb4fd09dd629252ef1b7999fd1c68e52181",
+        "sigil" : "output\/87\/sigil.svg",
+        "tin_serial" : "SS-0087"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "32fe71589cf4a4e4378147dccf75afb4fd09dd629252ef1b7999fd1c68e52181",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "87"
+      },
+      "timestamp" : "2026-03-31T02:02:37Z",
+      "unit" : 87
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "cad9a2968924704b9e0bb05a1351a24a323b32c58f02cc51e8bcaa3c4b49a887",
+        "sigil" : "output\/88\/sigil.svg",
+        "tin_serial" : "SS-0088"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "cad9a2968924704b9e0bb05a1351a24a323b32c58f02cc51e8bcaa3c4b49a887",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2170,
+        "seed" : "88"
+      },
+      "timestamp" : "2026-03-31T02:02:38Z",
+      "unit" : 88
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "47b273d33e6e6dc630c8d48cfe305970e43c8ca9087c72f5e738e59a46f47415",
+        "sigil" : "output\/89\/sigil.svg",
+        "tin_serial" : "SS-0089"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "47b273d33e6e6dc630c8d48cfe305970e43c8ca9087c72f5e738e59a46f47415",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2128,
+        "seed" : "89"
+      },
+      "timestamp" : "2026-03-31T02:02:39Z",
+      "unit" : 89
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "7c602aa827a3f7b129629cbb286ccfa6f0f19ff34d7f4e628c15b6bc32e73881",
+        "sigil" : "output\/90\/sigil.svg",
+        "tin_serial" : "SS-0090"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "7c602aa827a3f7b129629cbb286ccfa6f0f19ff34d7f4e628c15b6bc32e73881",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2170,
+        "seed" : "90"
+      },
+      "timestamp" : "2026-03-31T02:02:39Z",
+      "unit" : 90
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "ed4c37fe2d645e830532754f65b316f7ea38ec819698baa562baa3692f9043cf",
+        "sigil" : "output\/91\/sigil.svg",
+        "tin_serial" : "SS-0091"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "ed4c37fe2d645e830532754f65b316f7ea38ec819698baa562baa3692f9043cf",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2168,
+        "seed" : "91"
+      },
+      "timestamp" : "2026-03-31T02:02:40Z",
+      "unit" : 91
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "c1f4bf538b7d7420753bb00793da5a1418aa31c3b6c1e697b48acd747d31c183",
+        "sigil" : "output\/92\/sigil.svg",
+        "tin_serial" : "SS-0092"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "c1f4bf538b7d7420753bb00793da5a1418aa31c3b6c1e697b48acd747d31c183",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "92"
+      },
+      "timestamp" : "2026-03-31T02:02:41Z",
+      "unit" : 92
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "e11c8ce7b26f3d52994d5d5a44d3cb52504dde4369fdac46207ef7a1959b6777",
+        "sigil" : "output\/93\/sigil.svg",
+        "tin_serial" : "SS-0093"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "e11c8ce7b26f3d52994d5d5a44d3cb52504dde4369fdac46207ef7a1959b6777",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2154,
+        "seed" : "93"
+      },
+      "timestamp" : "2026-03-31T02:02:42Z",
+      "unit" : 93
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "987d04884b5b9014506c290355ce7ecd314c0300f66794dc4d3f5b0be2939963",
+        "sigil" : "output\/94\/sigil.svg",
+        "tin_serial" : "SS-0094"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "987d04884b5b9014506c290355ce7ecd314c0300f66794dc4d3f5b0be2939963",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2144,
+        "seed" : "94"
+      },
+      "timestamp" : "2026-03-31T02:02:42Z",
+      "unit" : 94
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "128d36ba09e9747fde5094610dccfbe3aac2e2f687edb551bf098f8d57bd4fdc",
+        "sigil" : "output\/95\/sigil.svg",
+        "tin_serial" : "SS-0095"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "128d36ba09e9747fde5094610dccfbe3aac2e2f687edb551bf098f8d57bd4fdc",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2170,
+        "seed" : "95"
+      },
+      "timestamp" : "2026-03-31T02:02:43Z",
+      "unit" : 95
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "3e242f63190881d1ce1fc788b31b356969a6e5699bf78936cee374bdfa803d0c",
+        "sigil" : "output\/96\/sigil.svg",
+        "tin_serial" : "SS-0096"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "3e242f63190881d1ce1fc788b31b356969a6e5699bf78936cee374bdfa803d0c",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2168,
+        "seed" : "96"
+      },
+      "timestamp" : "2026-03-31T02:02:44Z",
+      "unit" : 96
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "120e23b17dbbb98e6ac2a458d598f7bdd4856ee4209a541b91a3be4872a31dda",
+        "sigil" : "output\/97\/sigil.svg",
+        "tin_serial" : "SS-0097"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "120e23b17dbbb98e6ac2a458d598f7bdd4856ee4209a541b91a3be4872a31dda",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "97"
+      },
+      "timestamp" : "2026-03-31T02:02:45Z",
+      "unit" : 97
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "c2303af8fca2a2a702d4d0c4f373f3d8fdc55180faaf4b190a71e60419bc5552",
+        "sigil" : "output\/98\/sigil.svg",
+        "tin_serial" : "SS-0098"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "c2303af8fca2a2a702d4d0c4f373f3d8fdc55180faaf4b190a71e60419bc5552",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2162,
+        "seed" : "98"
+      },
+      "timestamp" : "2026-03-31T02:02:45Z",
+      "unit" : 98
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "97330a27e51b686d323c3beff1f6290c25c2fb37134705ef31d11882521f909a",
+        "sigil" : "output\/99\/sigil.svg",
+        "tin_serial" : "SS-0099"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "97330a27e51b686d323c3beff1f6290c25c2fb37134705ef31d11882521f909a",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2150,
+        "seed" : "99"
+      },
+      "timestamp" : "2026-03-31T02:02:46Z",
+      "unit" : 99
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "52cd862e9ee6edbeb4eba113b5292d4db67a961828e366a93e3b016d9116d6a4",
+        "sigil" : "output\/100\/sigil.svg",
+        "tin_serial" : "SS-0100"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "52cd862e9ee6edbeb4eba113b5292d4db67a961828e366a93e3b016d9116d6a4",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2122,
+        "seed" : "100"
+      },
+      "timestamp" : "2026-03-31T02:02:47Z",
+      "unit" : 100
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "e783d5b511787c904b5b405737891aa9640e8cd8d3ce78986a1ce47fc7fc8da0",
+        "sigil" : "output\/101\/sigil.svg",
+        "tin_serial" : "SS-0101"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "e783d5b511787c904b5b405737891aa9640e8cd8d3ce78986a1ce47fc7fc8da0",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2170,
+        "seed" : "101"
+      },
+      "timestamp" : "2026-03-31T02:02:48Z",
+      "unit" : 101
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "4c8613fc7867b1d77c5b90ebf41005f77b58b3f044f2984a76d76a2f77910c76",
+        "sigil" : "output\/102\/sigil.svg",
+        "tin_serial" : "SS-0102"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "4c8613fc7867b1d77c5b90ebf41005f77b58b3f044f2984a76d76a2f77910c76",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2122,
+        "seed" : "102"
+      },
+      "timestamp" : "2026-03-31T02:02:49Z",
+      "unit" : 102
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "a02bab5cd0e46b0f0d4aa75ede4a75a671388bb2744b82fbd6063d5c1f6f7336",
+        "sigil" : "output\/103\/sigil.svg",
+        "tin_serial" : "SS-0103"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "a02bab5cd0e46b0f0d4aa75ede4a75a671388bb2744b82fbd6063d5c1f6f7336",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "103"
+      },
+      "timestamp" : "2026-03-31T02:02:49Z",
+      "unit" : 103
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "c207be3f70aff58a6d4bebe92a80e8e9be6e8c01ca0efbe2150bbdae51c7ccb2",
+        "sigil" : "output\/104\/sigil.svg",
+        "tin_serial" : "SS-0104"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "c207be3f70aff58a6d4bebe92a80e8e9be6e8c01ca0efbe2150bbdae51c7ccb2",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2168,
+        "seed" : "104"
+      },
+      "timestamp" : "2026-03-31T02:02:50Z",
+      "unit" : 104
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "b82370691041233b211e7e44c11665c8e14be0b077c4c2a5f868446b9d076bd2",
+        "sigil" : "output\/105\/sigil.svg",
+        "tin_serial" : "SS-0105"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "b82370691041233b211e7e44c11665c8e14be0b077c4c2a5f868446b9d076bd2",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "105"
+      },
+      "timestamp" : "2026-03-31T02:02:51Z",
+      "unit" : 105
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "0aaaf7c86fb6890d007e5e672920f9888d606384ade007ddd611819a7166129c",
+        "sigil" : "output\/106\/sigil.svg",
+        "tin_serial" : "SS-0106"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "0aaaf7c86fb6890d007e5e672920f9888d606384ade007ddd611819a7166129c",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2142,
+        "seed" : "106"
+      },
+      "timestamp" : "2026-03-31T02:02:52Z",
+      "unit" : 106
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "9acb6f28e05510c887223de2eff6d453fa1a9898d8e4c3853ecf081b880c2a14",
+        "sigil" : "output\/107\/sigil.svg",
+        "tin_serial" : "SS-0107"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "9acb6f28e05510c887223de2eff6d453fa1a9898d8e4c3853ecf081b880c2a14",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "107"
+      },
+      "timestamp" : "2026-03-31T02:02:53Z",
+      "unit" : 107
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "66f0b9bf9139f6673a01d660202f8277830046d962b49049f8e3fa2854c4fe1d",
+        "sigil" : "output\/108\/sigil.svg",
+        "tin_serial" : "SS-0108"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "66f0b9bf9139f6673a01d660202f8277830046d962b49049f8e3fa2854c4fe1d",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2170,
+        "seed" : "108"
+      },
+      "timestamp" : "2026-03-31T02:02:53Z",
+      "unit" : 108
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "174373ff1a47f3103fadda57a2b644fbdbe2e4a0851845ca55e5d411a495d301",
+        "sigil" : "output\/109\/sigil.svg",
+        "tin_serial" : "SS-0109"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "174373ff1a47f3103fadda57a2b644fbdbe2e4a0851845ca55e5d411a495d301",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2166,
+        "seed" : "109"
+      },
+      "timestamp" : "2026-03-31T02:02:54Z",
+      "unit" : 109
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "7171cae90cdbaf03aa7504845f6e79833e205840019cdb48ceaa5dd5103517a9",
+        "sigil" : "output\/110\/sigil.svg",
+        "tin_serial" : "SS-0110"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "7171cae90cdbaf03aa7504845f6e79833e205840019cdb48ceaa5dd5103517a9",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2158,
+        "seed" : "110"
+      },
+      "timestamp" : "2026-03-31T02:02:55Z",
+      "unit" : 110
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "484ddac2e4e8904136c6a94e2f30f0272b8e36dcf219069e044fa2a7907d0449",
+        "sigil" : "output\/111\/sigil.svg",
+        "tin_serial" : "SS-0111"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "484ddac2e4e8904136c6a94e2f30f0272b8e36dcf219069e044fa2a7907d0449",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2150,
+        "seed" : "111"
+      },
+      "timestamp" : "2026-03-31T02:02:56Z",
+      "unit" : 111
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "2000590e11a4ef950e72cd45e8e6a2ba87ea0867db7ba2c4831c3acd4e61d97a",
+        "sigil" : "output\/112\/sigil.svg",
+        "tin_serial" : "SS-0112"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "2000590e11a4ef950e72cd45e8e6a2ba87ea0867db7ba2c4831c3acd4e61d97a",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2130,
+        "seed" : "112"
+      },
+      "timestamp" : "2026-03-31T02:02:56Z",
+      "unit" : 112
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "91e2af9e2fa0a6cf09265212fcabb7abd65d62ae8dc490f0769543301da74629",
+        "sigil" : "output\/113\/sigil.svg",
+        "tin_serial" : "SS-0113"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "91e2af9e2fa0a6cf09265212fcabb7abd65d62ae8dc490f0769543301da74629",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2136,
+        "seed" : "113"
+      },
+      "timestamp" : "2026-03-31T02:02:57Z",
+      "unit" : 113
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "a1ba98466fed100451da00fd71ce00352bccb31030566d38034e3092d71c2c4b",
+        "sigil" : "output\/114\/sigil.svg",
+        "tin_serial" : "SS-0114"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "a1ba98466fed100451da00fd71ce00352bccb31030566d38034e3092d71c2c4b",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2082,
+        "seed" : "114"
+      },
+      "timestamp" : "2026-03-31T02:02:58Z",
+      "unit" : 114
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "f30ef48de538ac646d07766df3c30d0db68237659bd134f263a041b5660ff152",
+        "sigil" : "output\/115\/sigil.svg",
+        "tin_serial" : "SS-0115"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "f30ef48de538ac646d07766df3c30d0db68237659bd134f263a041b5660ff152",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2166,
+        "seed" : "115"
+      },
+      "timestamp" : "2026-03-31T02:02:59Z",
+      "unit" : 115
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "f0a77a9a131bf0f8193e565e8350a6afd4f0b804f9dccc345328dea3c9a72708",
+        "sigil" : "output\/116\/sigil.svg",
+        "tin_serial" : "SS-0116"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "f0a77a9a131bf0f8193e565e8350a6afd4f0b804f9dccc345328dea3c9a72708",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2130,
+        "seed" : "116"
+      },
+      "timestamp" : "2026-03-31T02:02:59Z",
+      "unit" : 116
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "62dbc1c64f6fdfa1fba61e8279acca3ba15df32a0ccd5cedb327f39a1602971f",
+        "sigil" : "output\/117\/sigil.svg",
+        "tin_serial" : "SS-0117"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "62dbc1c64f6fdfa1fba61e8279acca3ba15df32a0ccd5cedb327f39a1602971f",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "117"
+      },
+      "timestamp" : "2026-03-31T02:03:00Z",
+      "unit" : 117
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "1ba68c55ac7e8d42043dbfbf0208d6534fb4ea9f4b2ddf9eaf2e97dd5fe8284c",
+        "sigil" : "output\/118\/sigil.svg",
+        "tin_serial" : "SS-0118"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "1ba68c55ac7e8d42043dbfbf0208d6534fb4ea9f4b2ddf9eaf2e97dd5fe8284c",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2138,
+        "seed" : "118"
+      },
+      "timestamp" : "2026-03-31T02:03:01Z",
+      "unit" : 118
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "67f729a7165293075a131b304d51e150568fa6debdc0d9e42e2546c271379d52",
+        "sigil" : "output\/119\/sigil.svg",
+        "tin_serial" : "SS-0119"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "67f729a7165293075a131b304d51e150568fa6debdc0d9e42e2546c271379d52",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "119"
+      },
+      "timestamp" : "2026-03-31T02:03:02Z",
+      "unit" : 119
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "116e92e0f79c22a6b4af19c8c475f8ee6efa1b52fcf6159dc1c8d294483e8686",
+        "sigil" : "output\/120\/sigil.svg",
+        "tin_serial" : "SS-0120"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "116e92e0f79c22a6b4af19c8c475f8ee6efa1b52fcf6159dc1c8d294483e8686",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2168,
+        "seed" : "120"
+      },
+      "timestamp" : "2026-03-31T02:03:02Z",
+      "unit" : 120
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "17d158faf243762164d5e17788d1e867bd9f3804bda5c406b7458d4820b1a95e",
+        "sigil" : "output\/121\/sigil.svg",
+        "tin_serial" : "SS-0121"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "17d158faf243762164d5e17788d1e867bd9f3804bda5c406b7458d4820b1a95e",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2162,
+        "seed" : "121"
+      },
+      "timestamp" : "2026-03-31T02:03:03Z",
+      "unit" : 121
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "0b7d63ef26b9cb97bcfc7b043f8e1c333b627188dbfd34ff46ba80749d2be49a",
+        "sigil" : "output\/122\/sigil.svg",
+        "tin_serial" : "SS-0122"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "0b7d63ef26b9cb97bcfc7b043f8e1c333b627188dbfd34ff46ba80749d2be49a",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2152,
+        "seed" : "122"
+      },
+      "timestamp" : "2026-03-31T02:03:04Z",
+      "unit" : 122
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "cb29f3562c57f9c569bd831fc17ce05eefc5c07b5ce54fbf829c57186a2d5c79",
+        "sigil" : "output\/123\/sigil.svg",
+        "tin_serial" : "SS-0123"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "cb29f3562c57f9c569bd831fc17ce05eefc5c07b5ce54fbf829c57186a2d5c79",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "123"
+      },
+      "timestamp" : "2026-03-31T02:03:05Z",
+      "unit" : 123
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "81034e5dd10da9a1b7fe93288bf29ea314294f681a0f5a342723fd9bacf7cf79",
+        "sigil" : "output\/124\/sigil.svg",
+        "tin_serial" : "SS-0124"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "81034e5dd10da9a1b7fe93288bf29ea314294f681a0f5a342723fd9bacf7cf79",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2174,
+        "seed" : "124"
+      },
+      "timestamp" : "2026-03-31T02:03:06Z",
+      "unit" : 124
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "d40b1e2e71fccccb3aa1e29394ee268b3523a091dccda33e712d19e050c65a44",
+        "sigil" : "output\/125\/sigil.svg",
+        "tin_serial" : "SS-0125"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "d40b1e2e71fccccb3aa1e29394ee268b3523a091dccda33e712d19e050c65a44",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2130,
+        "seed" : "125"
+      },
+      "timestamp" : "2026-03-31T02:03:06Z",
+      "unit" : 125
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "355ba96753c21107551685a424b169a44222ea3352b850fd0d7acce77e81414b",
+        "sigil" : "output\/126\/sigil.svg",
+        "tin_serial" : "SS-0126"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "355ba96753c21107551685a424b169a44222ea3352b850fd0d7acce77e81414b",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2150,
+        "seed" : "126"
+      },
+      "timestamp" : "2026-03-31T02:03:07Z",
+      "unit" : 126
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "5e08b1727944ecdfea6f76fd53bfc684581efefeab7bb600b406d3076cfb2732",
+        "sigil" : "output\/127\/sigil.svg",
+        "tin_serial" : "SS-0127"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "5e08b1727944ecdfea6f76fd53bfc684581efefeab7bb600b406d3076cfb2732",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2112,
+        "seed" : "127"
+      },
+      "timestamp" : "2026-03-31T02:03:08Z",
+      "unit" : 127
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "335a709117bf0f7f0580fcc907ae05bb9a000a6113a1f01f8ac54b42319e5282",
+        "sigil" : "output\/128\/sigil.svg",
+        "tin_serial" : "SS-0128"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "335a709117bf0f7f0580fcc907ae05bb9a000a6113a1f01f8ac54b42319e5282",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "128"
+      },
+      "timestamp" : "2026-03-31T02:03:09Z",
+      "unit" : 128
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "0d7c6762d66737127651749f14af708a53343731e9880a2351d4d83875386c6d",
+        "sigil" : "output\/129\/sigil.svg",
+        "tin_serial" : "SS-0129"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "0d7c6762d66737127651749f14af708a53343731e9880a2351d4d83875386c6d",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "129"
+      },
+      "timestamp" : "2026-03-31T02:03:09Z",
+      "unit" : 129
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "a6b2bdfb6eb7bc75fba89e40158df03dcad17eb3205d20a87e7a5a417722d053",
+        "sigil" : "output\/130\/sigil.svg",
+        "tin_serial" : "SS-0130"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "a6b2bdfb6eb7bc75fba89e40158df03dcad17eb3205d20a87e7a5a417722d053",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2156,
+        "seed" : "130"
+      },
+      "timestamp" : "2026-03-31T02:03:10Z",
+      "unit" : 130
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "7532430ea37322a9cf07bd601bbd137425139a411889721baca4a9602b2b373e",
+        "sigil" : "output\/131\/sigil.svg",
+        "tin_serial" : "SS-0131"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "7532430ea37322a9cf07bd601bbd137425139a411889721baca4a9602b2b373e",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2108,
+        "seed" : "131"
+      },
+      "timestamp" : "2026-03-31T02:03:11Z",
+      "unit" : 131
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "de05305113bf9ff261349e17b537c3ee643c7683b927590c6e9b88ae0c32846d",
+        "sigil" : "output\/132\/sigil.svg",
+        "tin_serial" : "SS-0132"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "de05305113bf9ff261349e17b537c3ee643c7683b927590c6e9b88ae0c32846d",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "132"
+      },
+      "timestamp" : "2026-03-31T02:03:12Z",
+      "unit" : 132
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "5c6b30efff2e45deedd9a5608ab0bf40eadb0ccfdad87cad71fbfb17e83e6d68",
+        "sigil" : "output\/133\/sigil.svg",
+        "tin_serial" : "SS-0133"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "5c6b30efff2e45deedd9a5608ab0bf40eadb0ccfdad87cad71fbfb17e83e6d68",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2154,
+        "seed" : "133"
+      },
+      "timestamp" : "2026-03-31T02:03:13Z",
+      "unit" : 133
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "0a5abe6c34ddd0b5eecba2d3a321baab3405eacf6ac84cfc72072442d7a955b8",
+        "sigil" : "output\/134\/sigil.svg",
+        "tin_serial" : "SS-0134"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "0a5abe6c34ddd0b5eecba2d3a321baab3405eacf6ac84cfc72072442d7a955b8",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "134"
+      },
+      "timestamp" : "2026-03-31T02:03:13Z",
+      "unit" : 134
+    },
+    {
+      "eligible_for_partner" : false,
+      "physical" : {
+        "engraving_hash" : "9cebcff625b000838065c3ac64c8532c42e0ce5b6788144ef061911e6c00c199",
+        "sigil" : "output\/135\/sigil.svg",
+        "tin_serial" : "SS-0135"
+      },
+      "product" : {
+        "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
+        "version" : "1.0"
+      },
+      "state" : "CLAIMABLE",
+      "system" : {
+        "convergence_hash" : "9cebcff625b000838065c3ac64c8532c42e0ce5b6788144ef061911e6c00c199",
+        "kernel_version" : "1.0.0",
+        "memory_bytes" : 2176,
+        "seed" : "135"
+      },
+      "timestamp" : "2026-03-31T02:03:14Z",
+      "unit" : 135
+    }
   ]
 }

@@ -87,7 +87,7 @@ final class SovereignStandardTests: XCTestCase {
         XCTAssertEqual(firstArtifacts, secondArtifacts)
     }
 
-    func testOutputWriterPreservesIssuanceAcrossRewrite() throws {
+    func testOutputWriterRefreshesIssuanceAcrossRewrite() throws {
         let engine = SovereignEngine()
         let writer = OutputWriter()
         let outputRoot = FileManager.default.temporaryDirectory
@@ -103,13 +103,14 @@ final class SovereignStandardTests: XCTestCase {
         try writer.write(unit: unit, outputRoot: outputRoot)
         let firstIssuance = try issuancePayload(for: unit.unitID, outputRoot: outputRoot)
 
+        Thread.sleep(forTimeInterval: 1.1)
         try writer.write(unit: unit, outputRoot: outputRoot)
         let secondIssuance = try issuancePayload(for: unit.unitID, outputRoot: outputRoot)
 
-        XCTAssertEqual(firstIssuance, secondIssuance)
+        XCTAssertNotEqual(firstIssuance, secondIssuance)
     }
 
-    func testOutputWriterRecalculatesIntegrityFromCreationDateOnRewrite() throws {
+    func testOutputWriterOverwritesStaleIssuanceOnRewrite() throws {
         let engine = SovereignEngine()
         let writer = OutputWriter()
         let outputRoot = FileManager.default.temporaryDirectory
@@ -136,8 +137,8 @@ final class SovereignStandardTests: XCTestCase {
         try writer.write(unit: unit, outputRoot: outputRoot)
         let rewrittenIssuance = try issuancePayload(for: unit.unitID, outputRoot: outputRoot)
 
-        XCTAssertEqual(rewrittenIssuance.creationDate, "2000-01-01")
-        XCTAssertEqual(rewrittenIssuance.integrity, "0.000")
+        XCTAssertNotEqual(rewrittenIssuance.creationDate, "2000-01-01")
+        XCTAssertEqual(rewrittenIssuance.integrity, "1.000")
     }
 
     func testArtifactVerifierAcceptsMatchingArtifacts() throws {
@@ -179,6 +180,65 @@ final class SovereignStandardTests: XCTestCase {
         try Data("tampered".utf8).write(to: dataURL)
 
         XCTAssertThrowsError(try verifier.verify(unitID: 42, outputRoot: outputRoot))
+    }
+
+    func testPersistClaimWritesClaimLedgerAndPublicRegistryState() throws {
+        let engine = SovereignEngine()
+        let writer = OutputWriter()
+        let siteWriter = SiteWriter()
+        let root = FileManager.default.temporaryDirectory
+            .appendingPathComponent(UUID().uuidString, isDirectory: true)
+        let outputRoot = root.appendingPathComponent("output", isDirectory: true)
+
+        try FileManager.default.createDirectory(at: outputRoot, withIntermediateDirectories: true)
+        defer {
+            try? FileManager.default.removeItem(at: root)
+        }
+
+        let unit = try engine.generateUnit(unitID: 42)
+        try writer.write(unit: unit, outputRoot: outputRoot)
+
+        let claimsStore = ClaimsStore(root: root)
+        let claimedAt = "2026-03-31T03:00:00Z"
+        let tinSerial = "SS-0042"
+        let proofPhrase = ClaimsStore.proofPhrase(tinSerial: tinSerial, engravingHash: unit.hash)
+        let claimHash = ClaimsStore.claimHash(
+            convergenceHash: unit.hash,
+            tinSerial: tinSerial,
+            proofPhrase: proofPhrase,
+            email: "collector@example.com",
+            claimedAt: claimedAt
+        )
+        let submission = ClaimSubmission(
+            unit: 42,
+            email: "collector@example.com",
+            name: "Collector",
+            claimedAt: claimedAt,
+            claimHash: claimHash,
+            tinSerial: tinSerial,
+            proofPhrase: proofPhrase,
+            verification: PersistedClaimVerification(method: "hash", confidence: 1.0)
+        )
+
+        try claimsStore.persist(submission: submission, outputRoot: outputRoot)
+        try siteWriter.write(units: [42], root: root)
+
+        let claims = try claimsStore.load()
+        XCTAssertEqual(claims.count, 1)
+        XCTAssertEqual(claims.first?.unit, 42)
+        XCTAssertEqual(claims.first?.name, "Collector")
+        XCTAssertNotNil(claims.first?.emailHash)
+
+        let unitsData = try Data(contentsOf: root.appendingPathComponent("units.json"))
+        let manifest = try JSONSerialization.jsonObject(with: unitsData) as? [String: Any]
+        let units = manifest?["units"] as? [[String: Any]]
+        let record = try XCTUnwrap(units?.first)
+        let claim = try XCTUnwrap(record["claim"] as? [String: Any])
+
+        XCTAssertEqual(record["state"] as? String, "CLAIMED")
+        XCTAssertEqual(claim["claim_hash"] as? String, claimHash)
+        XCTAssertEqual(claim["signal"] as? String, "Collector")
+        XCTAssertNil(claim["email"])
     }
 
     private func permutations(from events: [FoldEvent]) -> [[UInt8]] {

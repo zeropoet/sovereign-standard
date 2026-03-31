@@ -1,4 +1,16 @@
 {
   "claims" : [
+    {
+      "claim_hash" : "855a9e341a1aefc676a2313651ae9ef93e69202535564a2d34781dda65d735be",
+      "claimed_at" : "2026-03-31T03:52:42.299Z",
+      "email_hash" : "79593866959763251364478b42ba3fdc8bf4bd72bd96ac54ea696fc417ed86e8",
+      "name" : "Zeropoet",
+      "public_signal" : "Zeropoet",
+      "unit" : 0,
+      "verification" : {
+        "confidence" : 1,
+        "method" : "hash"
+      }
+    }
   ]
 }

@@ -1,8 +1,18 @@
 {
-  "generated_at" : "2026-03-31T03:04:38Z",
+  "generated_at" : "2026-03-31T03:53:08Z",
   "kernel_version" : "1.0.0",
   "units" : [
     {
+      "claim" : {
+        "claim_hash" : "855a9e341a1aefc676a2313651ae9ef93e69202535564a2d34781dda65d735be",
+        "claimed_at" : "2026-03-31T03:52:42.299Z",
+        "name" : "Zeropoet",
+        "signal" : "Zeropoet",
+        "verification" : {
+          "confidence" : 1,
+          "method" : "hash"
+        }
+      },
       "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/0\/sigil.svg",
@@ -12,7 +22,7 @@
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
         "version" : "1.0"
       },
-      "state" : "CLAIMABLE",
+      "state" : "CLAIMED",
       "system" : {
         "convergence_hash" : "1500739fcaa8af0f5a34e5c02438cb81f795c7ae5ea5601daf1b6f3560f1a837",
         "kernel_version" : "1.0.0",

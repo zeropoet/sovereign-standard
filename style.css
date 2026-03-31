@@ -453,20 +453,17 @@ h3 {
 
 .archive-filter-link.state-claimable:hover,
 .archive-filter-link.state-claimable.is-active {
-  background: rgba(0, 0, 0, 0.1);
   color: var(--text);
 }
 
 .archive-filter-link.state-claimed:hover,
 .archive-filter-link.state-claimed.is-active {
-  background: rgba(0, 0, 0, 0.1);
   color: var(--text);
 }
 
 .archive-filter-link.state-partner:hover,
 .archive-filter-link.state-partner.is-active {
-  background: #000000;
-  color: #ffffff;
+  color: var(--text);
 }
 
 .order-grid {

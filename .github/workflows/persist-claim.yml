@@ -21,9 +21,9 @@ on:
       claim_hash:
         description: Claim hash
         required: true
-      front_mark:
-        description: Front mark
-        required: true
+      image_sha256:
+        description: Proof image SHA256
+        required: false
 
 permissions:
   contents: write
@@ -51,24 +51,30 @@ jobs:
           INPUT_NAME: ${{ inputs.name }}
           INPUT_CLAIMED_AT: ${{ inputs.claimed_at }}
           INPUT_CLAIM_HASH: ${{ inputs.claim_hash }}
-          INPUT_FRONT_MARK: ${{ inputs.front_mark }}
+          INPUT_IMAGE_SHA256: ${{ inputs.image_sha256 }}
         run: |
           python3 - <<'PY'
+          import base64
           import json
           import os
 
           payload = json.loads(os.environ.get("DISPATCH_PAYLOAD") or "{}")
           use_dispatch = bool(payload)
+          image_base64 = payload.get("image_base64", "") if use_dispatch else ""
+          if image_base64:
+              with open("claim-proof.jpg", "wb") as handle:
+                  handle.write(base64.b64decode(image_base64))
           data = {
               "unit": int(payload.get("unit") if use_dispatch else os.environ["INPUT_UNIT"]),
               "email": payload.get("email") if use_dispatch else os.environ["INPUT_EMAIL"],
               "name": payload.get("name") if use_dispatch else os.environ.get("INPUT_NAME") or None,
               "claimed_at": payload.get("claimed_at") if use_dispatch else os.environ["INPUT_CLAIMED_AT"],
               "claim_hash": payload.get("claim_hash") if use_dispatch else os.environ["INPUT_CLAIM_HASH"],
-              "front_mark": payload.get("front_mark") if use_dispatch else os.environ["INPUT_FRONT_MARK"],
-              "verification": {
-                  "method": "hash",
-                  "confidence": 1.0
+              "image_sha256": payload.get("image_sha256") if use_dispatch else os.environ.get("INPUT_IMAGE_SHA256") or None,
+              "proof_image_path": "claim-proof.jpg" if image_base64 else None,
+              "verification": payload.get("verification") if use_dispatch else {
+                  "method": "image",
+                  "confidence": 0.88
               }
           }
           with open("claim-submission.json", "w", encoding="utf-8") as handle:

@@ -45,9 +45,14 @@ struct SovereignStandardApp {
         case .syncSite:
             shouldSyncSite = true
         case .persistClaim(let claimFilePath):
-            let claimData = try Data(contentsOf: URL(fileURLWithPath: claimFilePath, relativeTo: rootURL))
+            let claimFileURL = URL(fileURLWithPath: claimFilePath, relativeTo: rootURL)
+            let claimData = try Data(contentsOf: claimFileURL)
             let submission = try JSONDecoder().decode(ClaimSubmission.self, from: claimData)
-            try ClaimsStore(root: rootURL).persist(submission: submission, outputRoot: outputRoot)
+            try ClaimsStore(root: rootURL).persist(
+                submission: submission,
+                outputRoot: outputRoot,
+                claimFileURL: claimFileURL
+            )
             shouldSyncSite = true
         }
 

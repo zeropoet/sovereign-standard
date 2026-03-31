@@ -3,6 +3,7 @@ import FoldKernel
 
 struct ClaimsStore {
     private let claimsURL: URL
+    private let proofVerifier = ClaimProofVerifier()
 
     init(root: URL) {
         claimsURL = root.appendingPathComponent("claims.json")
@@ -29,7 +30,7 @@ struct ClaimsStore {
         try data.write(to: claimsURL)
     }
 
-    func persist(submission: ClaimSubmission, outputRoot: URL) throws {
+    func persist(submission: ClaimSubmission, outputRoot: URL, claimFileURL: URL? = nil) throws {
         let unitDirectory = outputRoot.appendingPathComponent(String(submission.unit), isDirectory: true)
         let dataURL = unitDirectory.appendingPathComponent("data.json")
 
@@ -38,19 +39,52 @@ struct ClaimsStore {
         }
 
         let unitData = try JSONDecoder().decode(ClaimUnitDataPayload.self, from: Data(contentsOf: dataURL))
-        let expectedFrontMark = Self.frontMark(for: unitData.hash)
-        guard Self.normalizeFrontMark(submission.frontMark) == expectedFrontMark else {
-            throw ClaimPersistenceError.frontMarkMismatch
-        }
+        switch submission.verification.method.lowercased() {
+        case "hash":
+            let expectedFrontMark = Self.frontMark(for: unitData.hash)
+            guard Self.normalizeFrontMark(submission.frontMark ?? "") == expectedFrontMark else {
+                throw ClaimPersistenceError.frontMarkMismatch
+            }
 
-        let expectedClaimHash = Self.claimHash(
-            convergenceHash: unitData.hash,
-            frontMark: expectedFrontMark,
-            email: submission.email,
-            claimedAt: submission.claimedAt
-        )
-        guard submission.claimHash == expectedClaimHash else {
-            throw ClaimPersistenceError.claimHashMismatch
+            let expectedClaimHash = Self.claimHash(
+                convergenceHash: unitData.hash,
+                frontMark: expectedFrontMark,
+                email: submission.email,
+                claimedAt: submission.claimedAt
+            )
+            guard submission.claimHash == expectedClaimHash else {
+                throw ClaimPersistenceError.claimHashMismatch
+            }
+        case "image", "hybrid":
+            guard let imageSHA256 = submission.imageSHA256?.nilIfBlank else {
+                throw ClaimPersistenceError.missingImageHash
+            }
+            guard let proofImagePath = submission.proofImagePath?.nilIfBlank else {
+                throw ClaimPersistenceError.missingProofImage
+            }
+
+            let baseURL = claimFileURL?.deletingLastPathComponent() ?? claimsURL.deletingLastPathComponent()
+            let proofImageURL = URL(fileURLWithPath: proofImagePath, relativeTo: baseURL)
+            let expectedUnitURL = SiteConfiguration.unitURL(for: submission.unit)
+
+            try proofVerifier.verify(
+                imageAt: proofImageURL,
+                expectedSHA256: imageSHA256,
+                expectedUnitURL: expectedUnitURL
+            )
+
+            let expectedClaimHash = Self.claimHash(
+                convergenceHash: unitData.hash,
+                unitURL: expectedUnitURL,
+                imageSHA256: imageSHA256,
+                email: submission.email,
+                claimedAt: submission.claimedAt
+            )
+            guard submission.claimHash == expectedClaimHash else {
+                throw ClaimPersistenceError.claimHashMismatch
+            }
+        default:
+            throw ClaimPersistenceError.unsupportedVerificationMethod
         }
 
         var claims = try load()
@@ -112,6 +146,22 @@ struct ClaimsStore {
         return hex(Keccak256().hash(Array(payload.utf8)))
     }
 
+    static func claimHash(
+        convergenceHash: String,
+        unitURL: String,
+        imageSHA256: String,
+        email: String,
+        claimedAt: String
+    ) -> String {
+        let payload = convergenceHash
+            + unitURL
+            + imageSHA256.lowercased()
+            + email
+            + claimedAt
+
+        return hex(Keccak256().hash(Array(payload.utf8)))
+    }
+
     static func normalizeFrontMark(_ value: String) -> String {
         String(
             value
@@ -125,13 +175,15 @@ struct ClaimsStore {
     }
 }
 
-struct ClaimSubmission: Decodable {
+struct ClaimSubmission: Codable {
     let unit: Int
     let email: String
     let name: String?
     let claimedAt: String
     let claimHash: String
-    let frontMark: String
+    let frontMark: String?
+    let imageSHA256: String?
+    let proofImagePath: String?
     let verification: PersistedClaimVerification
 
     enum CodingKeys: String, CodingKey {
@@ -141,6 +193,8 @@ struct ClaimSubmission: Decodable {
         case claimedAt = "claimed_at"
         case claimHash = "claim_hash"
         case frontMark = "front_mark"
+        case imageSHA256 = "image_sha256"
+        case proofImagePath = "proof_image_path"
         case verification
     }
 }
@@ -182,7 +236,10 @@ private enum ClaimPersistenceError: Error, LocalizedError {
     case alreadyClaimed(Int)
     case claimHashMismatch
     case frontMarkMismatch
+    case missingImageHash
+    case missingProofImage
     case unitNotFound(Int)
+    case unsupportedVerificationMethod
 
     var errorDescription: String? {
         switch self {
@@ -192,8 +249,14 @@ private enum ClaimPersistenceError: Error, LocalizedError {
             return "Claim hash verification failed."
         case .frontMarkMismatch:
             return "Front mark verification failed."
+        case .missingImageHash:
+            return "Proof image hash was not provided."
+        case .missingProofImage:
+            return "Proof image was not provided."
         case .unitNotFound(let unit):
             return "Unit \(unit) does not exist in output."
+        case .unsupportedVerificationMethod:
+            return "Verification method is not supported."
         }
     }
 }

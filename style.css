@@ -222,6 +222,10 @@ h3 {
   border-bottom: 1px solid var(--line);
 }
 
+.artifact-header {
+  max-width: none;
+}
+
 .archive-page .page-header {
   max-width: 980px;
   margin-bottom: 52px;
@@ -256,6 +260,10 @@ h3 {
 .page-intro {
   max-width: 44ch;
   margin: 14px 0 0;
+}
+
+.artifact-header .page-intro {
+  max-width: none;
 }
 
 .archive-page .page-intro {

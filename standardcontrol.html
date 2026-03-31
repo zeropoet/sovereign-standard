@@ -31,8 +31,7 @@
 <body>
   <main class="artifact-page">
     <nav class="top-links" aria-label="Primary">
-      <a href="index.html" class="nav">Back</a>
-      <a href="archive.html" class="nav">Archive</a>
+      <a href="archive.html" class="nav">Back</a>
     </nav>
     <header class="page-header artifact-header">
       <p class="page-kicker">Standard Control</p>
@@ -154,8 +153,8 @@
                 <input type="email" name="email" autocomplete="email" required>
               </label>
               <label class="order-field">
-                <span>Front Mark</span>
-                <input type="text" name="front_mark" autocomplete="off" required>
+                <span>Proof Photo</span>
+                <input type="file" name="proof_image" accept="image/*" capture="environment" required>
               </label>
               <div class="claim-grid">
                 <label class="order-field">
@@ -169,7 +168,7 @@
               </div>
               <div class="claim-actions">
                 <button class="order-submit" type="submit">Claim This Unit</button>
-                <p class="muted claim-note" id="claim-status">Claim requires the front mark printed on the artifact.</p>
+                <p class="muted claim-note" id="claim-status">Upload a photo with the unit QR clearly visible.</p>
               </div>
             </form>
           </div>
@@ -193,7 +192,7 @@
           try {
             const claimedRecord = await window.SovereignRegistry.claimUnit(record.unit, {
               email: String(data.get('email') || '').trim(),
-              frontMark: String(data.get('front_mark') || '').trim(),
+              proofImage: data.get('proof_image'),
               name: String(data.get('name') || '').trim(),
               location: String(data.get('location') || '').trim()
             });

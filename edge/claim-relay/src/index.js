@@ -3,7 +3,9 @@ const REQUIRED_FIELDS = [
   'email',
   'claimed_at',
   'claim_hash',
-  'front_mark'
+  'image_sha256',
+  'image_base64',
+  'verification'
 ];
 
 export default {
@@ -72,7 +74,9 @@ export default {
             name: payload.name ? String(payload.name) : null,
             claimed_at: String(payload.claimed_at),
             claim_hash: String(payload.claim_hash),
-            front_mark: String(payload.front_mark)
+            image_sha256: String(payload.image_sha256),
+            image_base64: String(payload.image_base64),
+            verification: payload.verification
           }
         })
       }

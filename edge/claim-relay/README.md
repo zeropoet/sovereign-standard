@@ -10,7 +10,7 @@ The relay solves that by:
 
 1. accepting a claim POST from `standardcontrol.html`
 2. forwarding it to GitHub Actions
-3. letting the repo-side Swift verifier re-check the proof phrase and claim hash
+3. letting the repo-side Swift verifier re-check the front mark and claim hash
 4. committing `claims.json` and regenerated `units.json`
 
 ## Recommended deployment
@@ -67,3 +67,16 @@ Or point it at a custom domain such as:
 ```html
 <meta name="sovereign-claim-endpoint" content="https://claims.sovereignstandard.co">
 ```
+
+## Payload
+
+The browser sends:
+
+- `unit`
+- `email`
+- `name`
+- `claimed_at`
+- `claim_hash`
+- `front_mark`
+
+`front_mark` is the code printed on the artifact front.

@@ -21,11 +21,8 @@ on:
       claim_hash:
         description: Claim hash
         required: true
-      tin_serial:
-        description: Tin serial
-        required: true
-      proof_phrase:
-        description: Proof phrase
+      front_mark:
+        description: Front mark
         required: true
 
 permissions:
@@ -54,8 +51,7 @@ jobs:
           INPUT_NAME: ${{ inputs.name }}
           INPUT_CLAIMED_AT: ${{ inputs.claimed_at }}
           INPUT_CLAIM_HASH: ${{ inputs.claim_hash }}
-          INPUT_TIN_SERIAL: ${{ inputs.tin_serial }}
-          INPUT_PROOF_PHRASE: ${{ inputs.proof_phrase }}
+          INPUT_FRONT_MARK: ${{ inputs.front_mark }}
         run: |
           python3 - <<'PY'
           import json
@@ -69,8 +65,7 @@ jobs:
               "name": payload.get("name") if use_dispatch else os.environ.get("INPUT_NAME") or None,
               "claimed_at": payload.get("claimed_at") if use_dispatch else os.environ["INPUT_CLAIMED_AT"],
               "claim_hash": payload.get("claim_hash") if use_dispatch else os.environ["INPUT_CLAIM_HASH"],
-              "tin_serial": payload.get("tin_serial") if use_dispatch else os.environ["INPUT_TIN_SERIAL"],
-              "proof_phrase": payload.get("proof_phrase") if use_dispatch else os.environ["INPUT_PROOF_PHRASE"],
+              "front_mark": payload.get("front_mark") if use_dispatch else os.environ["INPUT_FRONT_MARK"],
               "verification": {
                   "method": "hash",
                   "confidence": 1.0

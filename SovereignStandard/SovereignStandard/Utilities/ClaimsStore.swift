@@ -38,23 +38,14 @@ struct ClaimsStore {
         }
 
         let unitData = try JSONDecoder().decode(ClaimUnitDataPayload.self, from: Data(contentsOf: dataURL))
-        let expectedTinSerial = String(format: "SS-%04d", submission.unit)
-        guard submission.tinSerial.caseInsensitiveCompare(expectedTinSerial) == .orderedSame else {
-            throw ClaimPersistenceError.tinSerialMismatch
-        }
-
-        let expectedProofPhrase = Self.proofPhrase(
-            tinSerial: expectedTinSerial,
-            engravingHash: unitData.hash
-        )
-        guard Self.normalizeProofPhrase(submission.proofPhrase) == expectedProofPhrase else {
-            throw ClaimPersistenceError.proofPhraseMismatch
+        let expectedFrontMark = Self.frontMark(for: unitData.hash)
+        guard Self.normalizeFrontMark(submission.frontMark) == expectedFrontMark else {
+            throw ClaimPersistenceError.frontMarkMismatch
         }
 
         let expectedClaimHash = Self.claimHash(
             convergenceHash: unitData.hash,
-            tinSerial: expectedTinSerial,
-            proofPhrase: expectedProofPhrase,
+            frontMark: expectedFrontMark,
             email: submission.email,
             claimedAt: submission.claimedAt
         )
@@ -103,29 +94,25 @@ struct ClaimsStore {
         return "\(first)\(second)\u{2026}"
     }
 
-    static func proofPhrase(tinSerial: String, engravingHash: String) -> String {
-        let serialSuffix = normalizeProofPhrase(tinSerial).suffix(4)
-        let engravingSuffix = normalizeProofPhrase(engravingHash).suffix(8)
-        return String(serialSuffix + engravingSuffix)
+    static func frontMark(for convergenceHash: String) -> String {
+        String(convergenceHash.prefix(9)).uppercased()
     }
 
     static func claimHash(
         convergenceHash: String,
-        tinSerial: String,
-        proofPhrase: String,
+        frontMark: String,
         email: String,
         claimedAt: String
     ) -> String {
         let payload = convergenceHash
-            + tinSerial.uppercased()
-            + normalizeProofPhrase(proofPhrase)
+            + normalizeFrontMark(frontMark)
             + email
             + claimedAt
 
         return hex(Keccak256().hash(Array(payload.utf8)))
     }
 
-    static func normalizeProofPhrase(_ value: String) -> String {
+    static func normalizeFrontMark(_ value: String) -> String {
         String(
             value
                 .uppercased()
@@ -144,8 +131,7 @@ struct ClaimSubmission: Decodable {
     let name: String?
     let claimedAt: String
     let claimHash: String
-    let tinSerial: String
-    let proofPhrase: String
+    let frontMark: String
     let verification: PersistedClaimVerification
 
     enum CodingKeys: String, CodingKey {
@@ -154,8 +140,7 @@ struct ClaimSubmission: Decodable {
         case name
         case claimedAt = "claimed_at"
         case claimHash = "claim_hash"
-        case tinSerial = "tin_serial"
-        case proofPhrase = "proof_phrase"
+        case frontMark = "front_mark"
         case verification
     }
 }
@@ -196,8 +181,7 @@ private struct ClaimUnitDataPayload: Decodable {
 private enum ClaimPersistenceError: Error, LocalizedError {
     case alreadyClaimed(Int)
     case claimHashMismatch
-    case proofPhraseMismatch
-    case tinSerialMismatch
+    case frontMarkMismatch
     case unitNotFound(Int)
 
     var errorDescription: String? {
@@ -206,10 +190,8 @@ private enum ClaimPersistenceError: Error, LocalizedError {
             return "Unit \(unit) already has a committed claim."
         case .claimHashMismatch:
             return "Claim hash verification failed."
-        case .proofPhraseMismatch:
-            return "Proof phrase verification failed."
-        case .tinSerialMismatch:
-            return "Tin serial verification failed."
+        case .frontMarkMismatch:
+            return "Front mark verification failed."
         case .unitNotFound(let unit):
             return "Unit \(unit) does not exist in output."
         }

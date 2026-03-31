@@ -2,14 +2,18 @@ import Foundation
 
 enum LaserLayout {
     static func frontSVG(unit: UnitOutput) -> String {
-        let displayHash = String(unit.hash.prefix(9))
+        let frontMark = frontMark(for: unit)
 
         return """
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
           <text x="180" y="220" text-anchor="start" fill="black" font-family="'IBM Plex Mono', 'SFMono-Regular', Menlo, monospace" font-size="32" letter-spacing="1.4">SOVEREIGN STANDARD - \(unit.unitID)</text>
-          <text x="180" y="272" text-anchor="start" fill="black" font-family="'IBM Plex Mono', 'SFMono-Regular', Menlo, monospace" font-size="32" letter-spacing="1.4">\(displayHash)</text>
+          <text x="180" y="272" text-anchor="start" fill="black" font-family="'IBM Plex Mono', 'SFMono-Regular', Menlo, monospace" font-size="32" letter-spacing="1.4">\(frontMark)</text>
         </svg>
         """
+    }
+
+    static func frontMark(for unit: UnitOutput) -> String {
+        String(unit.hash.prefix(9)).uppercased()
     }
 
     static func backSVG(unit: UnitOutput, qrSVG: String) -> String {

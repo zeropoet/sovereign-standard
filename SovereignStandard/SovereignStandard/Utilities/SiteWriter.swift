@@ -71,6 +71,7 @@ private struct UnitRegistryRecord: Encodable {
         let issuance = try JSONDecoder().decode(ArtifactIssuance.self, from: Data(contentsOf: issuanceURL))
         let issuedAt = Self.timestamp(from: issuance.creationDate)
         let isPartnerEligible = unitID <= 33
+        let frontMark = String(unitData.hash.prefix(9)).uppercased()
 
         unit = unitID
         eligibleForPartner = isPartnerEligible
@@ -81,8 +82,7 @@ private struct UnitRegistryRecord: Encodable {
             version: "1.0"
         )
         physical = PhysicalRecord(
-            tinSerial: String(format: "SS-%04d", unitID),
-            engravingHash: unitData.hash,
+            tinSerial: frontMark,
             sigil: "output/\(unitID)/sigil.svg"
         )
         system = SystemRecord(
@@ -150,12 +150,10 @@ private struct ProductRecord: Encodable {
 
 private struct PhysicalRecord: Encodable {
     let tinSerial: String
-    let engravingHash: String
     let sigil: String
 
     enum CodingKeys: String, CodingKey {
         case tinSerial = "tin_serial"
-        case engravingHash = "engraving_hash"
         case sigil
     }
 }

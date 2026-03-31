@@ -200,12 +200,10 @@ final class SovereignStandardTests: XCTestCase {
 
         let claimsStore = ClaimsStore(root: root)
         let claimedAt = "2026-03-31T03:00:00Z"
-        let tinSerial = "SS-0042"
-        let proofPhrase = ClaimsStore.proofPhrase(tinSerial: tinSerial, engravingHash: unit.hash)
+        let frontMark = ClaimsStore.frontMark(for: unit.hash)
         let claimHash = ClaimsStore.claimHash(
             convergenceHash: unit.hash,
-            tinSerial: tinSerial,
-            proofPhrase: proofPhrase,
+            frontMark: frontMark,
             email: "collector@example.com",
             claimedAt: claimedAt
         )
@@ -215,8 +213,7 @@ final class SovereignStandardTests: XCTestCase {
             name: "Collector",
             claimedAt: claimedAt,
             claimHash: claimHash,
-            tinSerial: tinSerial,
-            proofPhrase: proofPhrase,
+            frontMark: frontMark,
             verification: PersistedClaimVerification(method: "hash", confidence: 1.0)
         )
 

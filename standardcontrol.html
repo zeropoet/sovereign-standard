@@ -153,16 +153,10 @@
                 <span>Email</span>
                 <input type="email" name="email" autocomplete="email" required>
               </label>
-              <div class="claim-grid">
-                <label class="order-field">
-                  <span>Tin Serial</span>
-                  <input type="text" name="tin_serial" autocomplete="off" required>
-                </label>
-                <label class="order-field">
-                  <span>Proof Phrase</span>
-                  <input type="text" name="proof_phrase" autocomplete="off" required>
-                </label>
-              </div>
+              <label class="order-field">
+                <span>Front Mark</span>
+                <input type="text" name="front_mark" autocomplete="off" required>
+              </label>
               <div class="claim-grid">
                 <label class="order-field">
                   <span>Name</span>
@@ -175,7 +169,7 @@
               </div>
               <div class="claim-actions">
                 <button class="order-submit" type="submit">Claim This Unit</button>
-                <p class="muted claim-note" id="claim-status">Claim requires tin serial plus proof phrase verification. Image verification remains optional and non-blocking.</p>
+                <p class="muted claim-note" id="claim-status">Claim requires the front mark printed on the artifact. For stronger possession proof, the next upgrade should be image review rather than more typed secrets.</p>
               </div>
             </form>
           </div>
@@ -197,8 +191,7 @@
           try {
             const claimedRecord = await window.SovereignRegistry.claimUnit(record.unit, {
               email: String(data.get('email') || '').trim(),
-              tinSerial: String(data.get('tin_serial') || '').trim(),
-              proofPhrase: String(data.get('proof_phrase') || '').trim(),
+              frontMark: String(data.get('front_mark') || '').trim(),
               name: String(data.get('name') || '').trim(),
               location: String(data.get('location') || '').trim()
             });

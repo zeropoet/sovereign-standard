@@ -3,8 +3,7 @@ const REQUIRED_FIELDS = [
   'email',
   'claimed_at',
   'claim_hash',
-  'tin_serial',
-  'proof_phrase'
+  'front_mark'
 ];
 
 export default {
@@ -60,8 +59,7 @@ export default {
             name: payload.name ? String(payload.name) : null,
             claimed_at: String(payload.claimed_at),
             claim_hash: String(payload.claim_hash),
-            tin_serial: String(payload.tin_serial),
-            proof_phrase: String(payload.proof_phrase)
+            front_mark: String(payload.front_mark)
           }
         })
       }

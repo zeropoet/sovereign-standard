@@ -159,21 +159,15 @@
       throw new Error('This unit is not claimable');
     }
 
-    const normalizedTinSerial = String(payload.tinSerial || '').trim().toUpperCase();
-    const normalizedExpectedTinSerial = String(record.physical?.tin_serial || '').trim().toUpperCase();
-    const normalizedProofPhrase = normalizeProofPhrase(payload.proofPhrase);
-    const expectedProofPhrase = buildProofPhrase(record);
+    const normalizedFrontMark = normalizeFrontMark(payload.frontMark);
+    const normalizedExpectedFrontMark = normalizeFrontMark(record.physical?.tin_serial || '');
 
-    if (!normalizedTinSerial || normalizedTinSerial !== normalizedExpectedTinSerial) {
-      throw new Error('Tin serial verification failed');
-    }
-
-    if (!normalizedProofPhrase || normalizedProofPhrase !== expectedProofPhrase) {
-      throw new Error('Proof phrase verification failed');
+    if (!normalizedFrontMark || normalizedFrontMark !== normalizedExpectedFrontMark) {
+      throw new Error('Front mark verification failed');
     }
 
     const timestamp = formatTimestamp(new Date());
-    const claimHash = keccak256(`${record.system.convergence_hash}${normalizedTinSerial}${normalizedProofPhrase}${payload.email}${timestamp}`);
+    const claimHash = keccak256(`${record.system.convergence_hash}${normalizedFrontMark}${payload.email}${timestamp}`);
     const relayEndpoint = getClaimEndpoint();
 
     if (!relayEndpoint) {
@@ -186,8 +180,7 @@
       name: payload.name || null,
       claimed_at: timestamp,
       claim_hash: claimHash,
-      tin_serial: normalizedTinSerial,
-      proof_phrase: normalizedProofPhrase
+      front_mark: normalizedFrontMark
     });
 
     const claim = {
@@ -244,24 +237,11 @@
     setClaimsStore(claimStore);
   }
 
-  function normalizeProofPhrase(value) {
+  function normalizeFrontMark(value) {
     return String(value || '')
       .trim()
       .toUpperCase()
       .replaceAll(/[^A-Z0-9]/g, '');
-  }
-
-  function buildProofPhrase(record) {
-    const tinSerial = String(record.physical?.tin_serial || '')
-      .toUpperCase()
-      .replaceAll(/[^A-Z0-9]/g, '')
-      .slice(-4);
-    const engravingHash = String(record.physical?.engraving_hash || '')
-      .toUpperCase()
-      .replaceAll(/[^A-Z0-9]/g, '')
-      .slice(-8);
-
-    return `${tinSerial}${engravingHash}`;
   }
 
   function getPublicClaimSignal(record) {

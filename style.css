@@ -682,24 +682,21 @@ h3 {
   min-width: 0;
   aspect-ratio: 1 / 1;
   background: transparent;
-  border: 1px solid transparent;
+  border: 0;
   box-shadow: none;
-  transition: background-color 120ms ease, border-color 120ms ease, transform 120ms ease;
+  transition: background-color 120ms ease, transform 120ms ease;
 }
 
 .artifact-card.state-claimable {
-  border-color: var(--line);
   background: #ffffff;
 }
 
 .artifact-card.state-claimed {
-  border-color: var(--text);
   background: #fafafa;
 }
 
 .artifact-card.state-partner {
-  border-color: #8e8e8e;
-  background: #f1f1f1;
+  background: #000000;
 }
 
 .artifact-card:hover,
@@ -735,8 +732,8 @@ h3 {
 
 .artifact-link:hover code,
 .artifact-link:focus-visible code {
-  background: var(--text);
-  color: var(--bg);
+  background: transparent;
+  color: inherit;
 }
 
 .artifact-card img {
@@ -764,6 +761,7 @@ h3 {
 .artifact-card.state-partner img {
   opacity: 1;
   transform: scale(1);
+  filter: invert(1);
 }
 
 .artifact-grid img {
@@ -789,6 +787,10 @@ h3 {
   color: var(--text);
 }
 
+.artifact-card.state-partner code {
+  color: #ffffff;
+}
+
 .artifact-card-meta {
   display: grid;
   gap: 0.25rem;
@@ -807,7 +809,7 @@ h3 {
 }
 
 .artifact-card.state-partner .artifact-card-meta span {
-  color: var(--text);
+  color: #ffffff;
   letter-spacing: 0.18em;
 }
 

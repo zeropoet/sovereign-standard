@@ -889,19 +889,43 @@ h3 {
 }
 
 @media (max-width: 640px) {
+  .landing-page {
+    padding: 12px;
+  }
+
+  .landing-shell {
+    width: min(100%, 100%);
+    margin: 6px 0 0 8px;
+    gap: 18px;
+  }
+
+  .landing-sequence {
+    padding: 12px;
+  }
+
   .archive-page,
   .artifact-page {
-    padding-top: 24px;
+    padding: 12px 12px 24px;
   }
 
   .page-header {
     margin-left: 8px;
+    margin-bottom: 28px;
   }
 
   .artifact-header,
   .artifact-section {
     margin-left: 8px;
     margin-right: 8px;
+  }
+
+  .archive-search-row,
+  .archive-filter-row {
+    margin-top: 14px;
+  }
+
+  .archive-filter-links {
+    gap: 12px;
   }
 
   .unit-pagination {

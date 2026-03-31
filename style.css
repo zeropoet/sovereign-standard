@@ -76,6 +76,7 @@ body {
   justify-items: start;
   width: min(100%, 34rem);
   margin: 0;
+  padding-left: 18px;
   position: relative;
   z-index: 1;
 }
@@ -890,9 +891,10 @@ h3 {
 
 @media (max-width: 640px) {
   .landing-shell {
-    width: 100%;
+    width: min(100%, 34rem);
     margin: 0;
-    gap: 18px;
+    gap: 24px;
+    padding-left: 18px;
     justify-items: start;
     text-align: left;
   }

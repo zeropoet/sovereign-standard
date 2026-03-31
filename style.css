@@ -470,6 +470,34 @@ h3 {
   color: var(--bg);
 }
 
+.order-toggle-option.state-all:hover span,
+.order-toggle-option.state-all input:checked + span {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+
+.order-toggle-option.state-claimable:hover span,
+.order-toggle-option.state-claimable input:checked + span {
+  background: rgba(0, 0, 0, 0.1);
+  color: var(--text);
+  border-color: var(--line);
+}
+
+.order-toggle-option.state-claimed:hover span,
+.order-toggle-option.state-claimed input:checked + span {
+  background: #808080;
+  color: #ffffff;
+  border-color: #808080;
+}
+
+.order-toggle-option.state-partner:hover span,
+.order-toggle-option.state-partner input:checked + span {
+  background: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
+
 .order-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

@@ -110,7 +110,7 @@ body {
 }
 
 .sequence-stage {
-  width: min(100vw, 100vh, 760px);
+  width: min(100%, 400px);
   aspect-ratio: 1 / 1;
   display: grid;
   place-items: center;

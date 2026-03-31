@@ -241,7 +241,6 @@
           <div class="state-block">
             <p class="state-label">${record.pending ? 'CLAIMED' : 'CLAIMED'}</p>
             <p class="state-detail">${escapeHTML(formatTimestamp(record.claimed_at))}</p>
-            ${!record.pending && signal ? `<p class="muted claim-note">${escapeHTML(signal)}</p>` : ''}
             ${record.pending ? '<p class="muted claim-note" id="claim-status">Unit claimed. Awaiting registry publish...</p>' : ''}
           </div>
         `;

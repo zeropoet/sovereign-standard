@@ -34,9 +34,8 @@
       <a href="archive.html" class="nav">Back</a>
     </nav>
     <header class="page-header artifact-header">
-      <p class="page-kicker">Standard Control</p>
       <h1 class="page-title" id="unit-title">Unit</h1>
-      <p class="page-intro">A living index of physical artifacts progressing through state.</p>
+      <p class="page-intro">Standard, held.</p>
     </header>
 
     <nav class="unit-pagination artifact-section" aria-label="Unit navigation">
@@ -45,9 +44,6 @@
     </nav>
 
     <section class="panel section-stack artifact-section state-section">
-      <div class="section-head">
-        <h2>Unit State</h2>
-      </div>
       <div id="state-panel" class="state-panel"></div>
     </section>
 
@@ -178,9 +174,7 @@
             <p class="state-label">CLAIMABLE</p>
             <form class="claim-form" id="claim-form">
               <label class="order-field">
-                <span>Claim Code</span>
-                <input type="text" name="claim_code" autocomplete="off" autocapitalize="characters" spellcheck="false" required>
-                <span class="order-helper-note">Open the tin and enter the engraved internal claim code.</span>
+                <input type="text" name="claim_code" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Enter code" required>
               </label>
               <div class="claim-actions">
                 <button class="order-submit" type="submit">Submit</button>

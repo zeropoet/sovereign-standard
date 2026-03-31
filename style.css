@@ -692,7 +692,7 @@ h3 {
 }
 
 .artifact-card.state-claimed {
-  background: #fafafa;
+  background: #808080;
 }
 
 .artifact-card.state-partner {
@@ -701,7 +701,6 @@ h3 {
 
 .artifact-card:hover,
 .artifact-card:focus-within {
-  background: #fafafa;
   transform: translateY(-1px);
 }
 
@@ -722,7 +721,7 @@ h3 {
 
 .artifact-link:hover,
 .artifact-link:focus-visible {
-  background: #fafafa;
+  background: transparent;
 }
 
 .artifact-link:hover img,
@@ -754,8 +753,8 @@ h3 {
 }
 
 .artifact-card.state-claimed img {
-  opacity: 0.84;
-  transform: scale(0.98);
+  opacity: 0.92;
+  transform: scale(0.99);
 }
 
 .artifact-card.state-partner img {
@@ -787,6 +786,10 @@ h3 {
   color: var(--text);
 }
 
+.artifact-card.state-claimed code {
+  color: #ffffff;
+}
+
 .artifact-card.state-partner code {
   color: #ffffff;
 }
@@ -805,7 +808,7 @@ h3 {
 }
 
 .artifact-card.state-claimed .artifact-card-meta span {
-  color: #555555;
+  color: #f2f2f2;
 }
 
 .artifact-card.state-partner .artifact-card-meta span {

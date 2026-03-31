@@ -703,7 +703,7 @@ h3 {
 
 .artifact-card:hover,
 .artifact-card:focus-within {
-  background: #000;
+  background: #fafafa;
 }
 
 .artifact-link {
@@ -723,12 +723,12 @@ h3 {
 
 .artifact-link:hover,
 .artifact-link:focus-visible {
-  background: #000;
+  background: #fafafa;
 }
 
 .artifact-link:hover img,
 .artifact-link:focus-visible img {
-  filter: invert(1);
+  filter: none;
 }
 
 .artifact-link:hover code,

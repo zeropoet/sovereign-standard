@@ -68,7 +68,7 @@ private struct UnitRegistryRecord: Encodable {
         let unitData = try JSONDecoder().decode(UnitDataPayload.self, from: Data(contentsOf: dataURL))
         let issuance = try JSONDecoder().decode(ArtifactIssuance.self, from: Data(contentsOf: issuanceURL))
         let issuedAt = Self.timestamp(from: issuance.creationDate)
-        let frontMark = String(unitData.hash.prefix(9)).uppercased()
+        let frontMark = String(unitData.hash.prefix(12)).uppercased()
 
         unit = unitID
         timestamp = issuedAt

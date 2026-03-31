@@ -1,5 +1,5 @@
 {
-  "generated_at" : "2026-03-31T04:52:24Z",
+  "generated_at" : "2026-03-31T05:01:50Z",
   "kernel_version" : "1.0.0",
   "units" : [
     {
@@ -15,7 +15,7 @@
       },
       "physical" : {
         "sigil" : "output\/0\/sigil.svg",
-        "tin_serial" : "1500739FC"
+        "tin_serial" : "1500739FCAA8"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -34,7 +34,7 @@
     {
       "physical" : {
         "sigil" : "output\/1\/sigil.svg",
-        "tin_serial" : "67693A38C"
+        "tin_serial" : "67693A38C1B5"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -53,7 +53,7 @@
     {
       "physical" : {
         "sigil" : "output\/2\/sigil.svg",
-        "tin_serial" : "0195C3AC1"
+        "tin_serial" : "0195C3AC1820"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -72,7 +72,7 @@
     {
       "physical" : {
         "sigil" : "output\/3\/sigil.svg",
-        "tin_serial" : "A1780977B"
+        "tin_serial" : "A1780977B51C"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -91,7 +91,7 @@
     {
       "physical" : {
         "sigil" : "output\/4\/sigil.svg",
-        "tin_serial" : "742FB915D"
+        "tin_serial" : "742FB915D9A1"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -110,7 +110,7 @@
     {
       "physical" : {
         "sigil" : "output\/5\/sigil.svg",
-        "tin_serial" : "B5A645B0A"
+        "tin_serial" : "B5A645B0A8E5"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -129,7 +129,7 @@
     {
       "physical" : {
         "sigil" : "output\/6\/sigil.svg",
-        "tin_serial" : "96FEA7AEF"
+        "tin_serial" : "96FEA7AEFDB0"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -148,7 +148,7 @@
     {
       "physical" : {
         "sigil" : "output\/7\/sigil.svg",
-        "tin_serial" : "310C28C6E"
+        "tin_serial" : "310C28C6EFE6"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -167,7 +167,7 @@
     {
       "physical" : {
         "sigil" : "output\/8\/sigil.svg",
-        "tin_serial" : "6053EB82E"
+        "tin_serial" : "6053EB82EF38"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -186,7 +186,7 @@
     {
       "physical" : {
         "sigil" : "output\/9\/sigil.svg",
-        "tin_serial" : "BBC6612E0"
+        "tin_serial" : "BBC6612E0A0A"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -205,7 +205,7 @@
     {
       "physical" : {
         "sigil" : "output\/10\/sigil.svg",
-        "tin_serial" : "B72544D06"
+        "tin_serial" : "B72544D06E8C"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -224,7 +224,7 @@
     {
       "physical" : {
         "sigil" : "output\/11\/sigil.svg",
-        "tin_serial" : "5A6A32343"
+        "tin_serial" : "5A6A32343EF4"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -243,7 +243,7 @@
     {
       "physical" : {
         "sigil" : "output\/12\/sigil.svg",
-        "tin_serial" : "004EA877F"
+        "tin_serial" : "004EA877F49A"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -262,7 +262,7 @@
     {
       "physical" : {
         "sigil" : "output\/13\/sigil.svg",
-        "tin_serial" : "5A371917D"
+        "tin_serial" : "5A371917DB18"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -281,7 +281,7 @@
     {
       "physical" : {
         "sigil" : "output\/14\/sigil.svg",
-        "tin_serial" : "863F6D130"
+        "tin_serial" : "863F6D130339"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -300,7 +300,7 @@
     {
       "physical" : {
         "sigil" : "output\/15\/sigil.svg",
-        "tin_serial" : "1C46D9BD2"
+        "tin_serial" : "1C46D9BD2237"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -319,7 +319,7 @@
     {
       "physical" : {
         "sigil" : "output\/16\/sigil.svg",
-        "tin_serial" : "ED3AC2B0E"
+        "tin_serial" : "ED3AC2B0E7E6"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -338,7 +338,7 @@
     {
       "physical" : {
         "sigil" : "output\/17\/sigil.svg",
-        "tin_serial" : "949F35353"
+        "tin_serial" : "949F35353249"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -357,7 +357,7 @@
     {
       "physical" : {
         "sigil" : "output\/18\/sigil.svg",
-        "tin_serial" : "9EC7AEC0F"
+        "tin_serial" : "9EC7AEC0F42C"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -376,7 +376,7 @@
     {
       "physical" : {
         "sigil" : "output\/19\/sigil.svg",
-        "tin_serial" : "F8FA6F4CC"
+        "tin_serial" : "F8FA6F4CC7C6"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -395,7 +395,7 @@
     {
       "physical" : {
         "sigil" : "output\/20\/sigil.svg",
-        "tin_serial" : "0A8575680"
+        "tin_serial" : "0A85756800C7"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -414,7 +414,7 @@
     {
       "physical" : {
         "sigil" : "output\/21\/sigil.svg",
-        "tin_serial" : "09F16F2B7"
+        "tin_serial" : "09F16F2B701E"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -433,7 +433,7 @@
     {
       "physical" : {
         "sigil" : "output\/22\/sigil.svg",
-        "tin_serial" : "0814CFFEC"
+        "tin_serial" : "0814CFFEC595"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -452,7 +452,7 @@
     {
       "physical" : {
         "sigil" : "output\/23\/sigil.svg",
-        "tin_serial" : "3D41287D8"
+        "tin_serial" : "3D41287D8372"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -471,7 +471,7 @@
     {
       "physical" : {
         "sigil" : "output\/24\/sigil.svg",
-        "tin_serial" : "442ECF262"
+        "tin_serial" : "442ECF262E9D"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -490,7 +490,7 @@
     {
       "physical" : {
         "sigil" : "output\/25\/sigil.svg",
-        "tin_serial" : "88608C320"
+        "tin_serial" : "88608C320CC0"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -509,7 +509,7 @@
     {
       "physical" : {
         "sigil" : "output\/26\/sigil.svg",
-        "tin_serial" : "AB8F60BE9"
+        "tin_serial" : "AB8F60BE9DBE"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -528,7 +528,7 @@
     {
       "physical" : {
         "sigil" : "output\/27\/sigil.svg",
-        "tin_serial" : "DC2D2AAE7"
+        "tin_serial" : "DC2D2AAE7CC7"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -547,7 +547,7 @@
     {
       "physical" : {
         "sigil" : "output\/28\/sigil.svg",
-        "tin_serial" : "7EB02C3A4"
+        "tin_serial" : "7EB02C3A40D9"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -566,7 +566,7 @@
     {
       "physical" : {
         "sigil" : "output\/29\/sigil.svg",
-        "tin_serial" : "1B102037D"
+        "tin_serial" : "1B102037D4CF"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -585,7 +585,7 @@
     {
       "physical" : {
         "sigil" : "output\/30\/sigil.svg",
-        "tin_serial" : "45AB29E6A"
+        "tin_serial" : "45AB29E6A804"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -604,7 +604,7 @@
     {
       "physical" : {
         "sigil" : "output\/31\/sigil.svg",
-        "tin_serial" : "63FB535B5"
+        "tin_serial" : "63FB535B56CD"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -623,7 +623,7 @@
     {
       "physical" : {
         "sigil" : "output\/32\/sigil.svg",
-        "tin_serial" : "257F48D3B"
+        "tin_serial" : "257F48D3B416"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -642,7 +642,7 @@
     {
       "physical" : {
         "sigil" : "output\/33\/sigil.svg",
-        "tin_serial" : "80829E2F2"
+        "tin_serial" : "80829E2F210C"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -661,7 +661,7 @@
     {
       "physical" : {
         "sigil" : "output\/34\/sigil.svg",
-        "tin_serial" : "A4019CF80"
+        "tin_serial" : "A4019CF807D1"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -680,7 +680,7 @@
     {
       "physical" : {
         "sigil" : "output\/35\/sigil.svg",
-        "tin_serial" : "009523916"
+        "tin_serial" : "0095239164BF"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -699,7 +699,7 @@
     {
       "physical" : {
         "sigil" : "output\/36\/sigil.svg",
-        "tin_serial" : "279AAF935"
+        "tin_serial" : "279AAF935D68"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -718,7 +718,7 @@
     {
       "physical" : {
         "sigil" : "output\/37\/sigil.svg",
-        "tin_serial" : "3156B82EB"
+        "tin_serial" : "3156B82EB0D2"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -737,7 +737,7 @@
     {
       "physical" : {
         "sigil" : "output\/38\/sigil.svg",
-        "tin_serial" : "A20D58034"
+        "tin_serial" : "A20D580347F2"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -756,7 +756,7 @@
     {
       "physical" : {
         "sigil" : "output\/39\/sigil.svg",
-        "tin_serial" : "DD5FF08FF"
+        "tin_serial" : "DD5FF08FFF68"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -775,7 +775,7 @@
     {
       "physical" : {
         "sigil" : "output\/40\/sigil.svg",
-        "tin_serial" : "A1A997237"
+        "tin_serial" : "A1A997237B53"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -794,7 +794,7 @@
     {
       "physical" : {
         "sigil" : "output\/41\/sigil.svg",
-        "tin_serial" : "12936AD0F"
+        "tin_serial" : "12936AD0F1DD"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -813,7 +813,7 @@
     {
       "physical" : {
         "sigil" : "output\/42\/sigil.svg",
-        "tin_serial" : "EDEB73E5F"
+        "tin_serial" : "EDEB73E5FF58"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -832,7 +832,7 @@
     {
       "physical" : {
         "sigil" : "output\/43\/sigil.svg",
-        "tin_serial" : "F87EEE389"
+        "tin_serial" : "F87EEE389B8C"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -851,7 +851,7 @@
     {
       "physical" : {
         "sigil" : "output\/44\/sigil.svg",
-        "tin_serial" : "E7D31B7BF"
+        "tin_serial" : "E7D31B7BF49F"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -870,7 +870,7 @@
     {
       "physical" : {
         "sigil" : "output\/45\/sigil.svg",
-        "tin_serial" : "CD8E7EC52"
+        "tin_serial" : "CD8E7EC526B4"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -889,7 +889,7 @@
     {
       "physical" : {
         "sigil" : "output\/46\/sigil.svg",
-        "tin_serial" : "B31566EB1"
+        "tin_serial" : "B31566EB1A4E"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -908,7 +908,7 @@
     {
       "physical" : {
         "sigil" : "output\/47\/sigil.svg",
-        "tin_serial" : "A52A52641"
+        "tin_serial" : "A52A52641E74"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -927,7 +927,7 @@
     {
       "physical" : {
         "sigil" : "output\/48\/sigil.svg",
-        "tin_serial" : "A60B76032"
+        "tin_serial" : "A60B76032BED"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -946,7 +946,7 @@
     {
       "physical" : {
         "sigil" : "output\/49\/sigil.svg",
-        "tin_serial" : "CE30177FF"
+        "tin_serial" : "CE30177FF54C"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -965,7 +965,7 @@
     {
       "physical" : {
         "sigil" : "output\/50\/sigil.svg",
-        "tin_serial" : "512CE0F49"
+        "tin_serial" : "512CE0F49982"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -984,7 +984,7 @@
     {
       "physical" : {
         "sigil" : "output\/51\/sigil.svg",
-        "tin_serial" : "732DBCD43"
+        "tin_serial" : "732DBCD43BCA"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1003,7 +1003,7 @@
     {
       "physical" : {
         "sigil" : "output\/52\/sigil.svg",
-        "tin_serial" : "FCEF25235"
+        "tin_serial" : "FCEF25235F23"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1022,7 +1022,7 @@
     {
       "physical" : {
         "sigil" : "output\/53\/sigil.svg",
-        "tin_serial" : "6E8E177C8"
+        "tin_serial" : "6E8E177C834C"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1041,7 +1041,7 @@
     {
       "physical" : {
         "sigil" : "output\/54\/sigil.svg",
-        "tin_serial" : "139001A8C"
+        "tin_serial" : "139001A8C601"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1060,7 +1060,7 @@
     {
       "physical" : {
         "sigil" : "output\/55\/sigil.svg",
-        "tin_serial" : "15E43FED5"
+        "tin_serial" : "15E43FED5A0E"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1079,7 +1079,7 @@
     {
       "physical" : {
         "sigil" : "output\/56\/sigil.svg",
-        "tin_serial" : "8929BEA62"
+        "tin_serial" : "8929BEA623DF"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1098,7 +1098,7 @@
     {
       "physical" : {
         "sigil" : "output\/57\/sigil.svg",
-        "tin_serial" : "48CCF3184"
+        "tin_serial" : "48CCF31846DE"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1117,7 +1117,7 @@
     {
       "physical" : {
         "sigil" : "output\/58\/sigil.svg",
-        "tin_serial" : "53D0F95F7"
+        "tin_serial" : "53D0F95F7E33"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1136,7 +1136,7 @@
     {
       "physical" : {
         "sigil" : "output\/59\/sigil.svg",
-        "tin_serial" : "2FC651EFE"
+        "tin_serial" : "2FC651EFEAEA"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1155,7 +1155,7 @@
     {
       "physical" : {
         "sigil" : "output\/60\/sigil.svg",
-        "tin_serial" : "BD1B69789"
+        "tin_serial" : "BD1B69789F51"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1174,7 +1174,7 @@
     {
       "physical" : {
         "sigil" : "output\/61\/sigil.svg",
-        "tin_serial" : "50DB8FE40"
+        "tin_serial" : "50DB8FE40CF7"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1193,7 +1193,7 @@
     {
       "physical" : {
         "sigil" : "output\/62\/sigil.svg",
-        "tin_serial" : "DC0033F61"
+        "tin_serial" : "DC0033F61DDA"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1212,7 +1212,7 @@
     {
       "physical" : {
         "sigil" : "output\/63\/sigil.svg",
-        "tin_serial" : "60664EE99"
+        "tin_serial" : "60664EE99A25"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1231,7 +1231,7 @@
     {
       "physical" : {
         "sigil" : "output\/64\/sigil.svg",
-        "tin_serial" : "E2173A9C0"
+        "tin_serial" : "E2173A9C0638"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1250,7 +1250,7 @@
     {
       "physical" : {
         "sigil" : "output\/65\/sigil.svg",
-        "tin_serial" : "0C4354567"
+        "tin_serial" : "0C4354567AAD"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1269,7 +1269,7 @@
     {
       "physical" : {
         "sigil" : "output\/66\/sigil.svg",
-        "tin_serial" : "EC6972EE3"
+        "tin_serial" : "EC6972EE3919"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1288,7 +1288,7 @@
     {
       "physical" : {
         "sigil" : "output\/67\/sigil.svg",
-        "tin_serial" : "5DEA9E679"
+        "tin_serial" : "5DEA9E6799FF"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1307,7 +1307,7 @@
     {
       "physical" : {
         "sigil" : "output\/68\/sigil.svg",
-        "tin_serial" : "817EBFD9B"
+        "tin_serial" : "817EBFD9B501"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1326,7 +1326,7 @@
     {
       "physical" : {
         "sigil" : "output\/69\/sigil.svg",
-        "tin_serial" : "9A3614D5E"
+        "tin_serial" : "9A3614D5EECB"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1345,7 +1345,7 @@
     {
       "physical" : {
         "sigil" : "output\/70\/sigil.svg",
-        "tin_serial" : "9E91C1AE6"
+        "tin_serial" : "9E91C1AE6452"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1364,7 +1364,7 @@
     {
       "physical" : {
         "sigil" : "output\/71\/sigil.svg",
-        "tin_serial" : "F1F4525EA"
+        "tin_serial" : "F1F4525EAEFE"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1383,7 +1383,7 @@
     {
       "physical" : {
         "sigil" : "output\/72\/sigil.svg",
-        "tin_serial" : "46BE11940"
+        "tin_serial" : "46BE119409BE"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1402,7 +1402,7 @@
     {
       "physical" : {
         "sigil" : "output\/73\/sigil.svg",
-        "tin_serial" : "AD12B5A88"
+        "tin_serial" : "AD12B5A8822F"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1421,7 +1421,7 @@
     {
       "physical" : {
         "sigil" : "output\/74\/sigil.svg",
-        "tin_serial" : "E49CF57A0"
+        "tin_serial" : "E49CF57A02CC"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1440,7 +1440,7 @@
     {
       "physical" : {
         "sigil" : "output\/75\/sigil.svg",
-        "tin_serial" : "7C03C49A0"
+        "tin_serial" : "7C03C49A0714"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1459,7 +1459,7 @@
     {
       "physical" : {
         "sigil" : "output\/76\/sigil.svg",
-        "tin_serial" : "7E25C6B28"
+        "tin_serial" : "7E25C6B28099"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1478,7 +1478,7 @@
     {
       "physical" : {
         "sigil" : "output\/77\/sigil.svg",
-        "tin_serial" : "75976D3B5"
+        "tin_serial" : "75976D3B5B79"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1497,7 +1497,7 @@
     {
       "physical" : {
         "sigil" : "output\/78\/sigil.svg",
-        "tin_serial" : "ED066401E"
+        "tin_serial" : "ED066401E54B"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1516,7 +1516,7 @@
     {
       "physical" : {
         "sigil" : "output\/79\/sigil.svg",
-        "tin_serial" : "3BF02A0AF"
+        "tin_serial" : "3BF02A0AF100"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1535,7 +1535,7 @@
     {
       "physical" : {
         "sigil" : "output\/80\/sigil.svg",
-        "tin_serial" : "9FFE4FD59"
+        "tin_serial" : "9FFE4FD59499"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1554,7 +1554,7 @@
     {
       "physical" : {
         "sigil" : "output\/81\/sigil.svg",
-        "tin_serial" : "19234283F"
+        "tin_serial" : "19234283F8F5"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1573,7 +1573,7 @@
     {
       "physical" : {
         "sigil" : "output\/82\/sigil.svg",
-        "tin_serial" : "2318CDE76"
+        "tin_serial" : "2318CDE76D40"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1592,7 +1592,7 @@
     {
       "physical" : {
         "sigil" : "output\/83\/sigil.svg",
-        "tin_serial" : "7B295DDF0"
+        "tin_serial" : "7B295DDF0F3E"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1611,7 +1611,7 @@
     {
       "physical" : {
         "sigil" : "output\/84\/sigil.svg",
-        "tin_serial" : "80A7E10A3"
+        "tin_serial" : "80A7E10A31C0"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1630,7 +1630,7 @@
     {
       "physical" : {
         "sigil" : "output\/85\/sigil.svg",
-        "tin_serial" : "B74B05A67"
+        "tin_serial" : "B74B05A6730C"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1649,7 +1649,7 @@
     {
       "physical" : {
         "sigil" : "output\/86\/sigil.svg",
-        "tin_serial" : "EF1D9E83C"
+        "tin_serial" : "EF1D9E83C76E"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1668,7 +1668,7 @@
     {
       "physical" : {
         "sigil" : "output\/87\/sigil.svg",
-        "tin_serial" : "32FE71589"
+        "tin_serial" : "32FE71589CF4"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1687,7 +1687,7 @@
     {
       "physical" : {
         "sigil" : "output\/88\/sigil.svg",
-        "tin_serial" : "CAD9A2968"
+        "tin_serial" : "CAD9A2968924"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1706,7 +1706,7 @@
     {
       "physical" : {
         "sigil" : "output\/89\/sigil.svg",
-        "tin_serial" : "47B273D33"
+        "tin_serial" : "47B273D33E6E"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1725,7 +1725,7 @@
     {
       "physical" : {
         "sigil" : "output\/90\/sigil.svg",
-        "tin_serial" : "7C602AA82"
+        "tin_serial" : "7C602AA827A3"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1744,7 +1744,7 @@
     {
       "physical" : {
         "sigil" : "output\/91\/sigil.svg",
-        "tin_serial" : "ED4C37FE2"
+        "tin_serial" : "ED4C37FE2D64"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1763,7 +1763,7 @@
     {
       "physical" : {
         "sigil" : "output\/92\/sigil.svg",
-        "tin_serial" : "C1F4BF538"
+        "tin_serial" : "C1F4BF538B7D"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1782,7 +1782,7 @@
     {
       "physical" : {
         "sigil" : "output\/93\/sigil.svg",
-        "tin_serial" : "E11C8CE7B"
+        "tin_serial" : "E11C8CE7B26F"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1801,7 +1801,7 @@
     {
       "physical" : {
         "sigil" : "output\/94\/sigil.svg",
-        "tin_serial" : "987D04884"
+        "tin_serial" : "987D04884B5B"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1820,7 +1820,7 @@
     {
       "physical" : {
         "sigil" : "output\/95\/sigil.svg",
-        "tin_serial" : "128D36BA0"
+        "tin_serial" : "128D36BA09E9"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1839,7 +1839,7 @@
     {
       "physical" : {
         "sigil" : "output\/96\/sigil.svg",
-        "tin_serial" : "3E242F631"
+        "tin_serial" : "3E242F631908"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1858,7 +1858,7 @@
     {
       "physical" : {
         "sigil" : "output\/97\/sigil.svg",
-        "tin_serial" : "120E23B17"
+        "tin_serial" : "120E23B17DBB"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1877,7 +1877,7 @@
     {
       "physical" : {
         "sigil" : "output\/98\/sigil.svg",
-        "tin_serial" : "C2303AF8F"
+        "tin_serial" : "C2303AF8FCA2"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1896,7 +1896,7 @@
     {
       "physical" : {
         "sigil" : "output\/99\/sigil.svg",
-        "tin_serial" : "97330A27E"
+        "tin_serial" : "97330A27E51B"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1915,7 +1915,7 @@
     {
       "physical" : {
         "sigil" : "output\/100\/sigil.svg",
-        "tin_serial" : "52CD862E9"
+        "tin_serial" : "52CD862E9EE6"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1934,7 +1934,7 @@
     {
       "physical" : {
         "sigil" : "output\/101\/sigil.svg",
-        "tin_serial" : "E783D5B51"
+        "tin_serial" : "E783D5B51178"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1953,7 +1953,7 @@
     {
       "physical" : {
         "sigil" : "output\/102\/sigil.svg",
-        "tin_serial" : "4C8613FC7"
+        "tin_serial" : "4C8613FC7867"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1972,7 +1972,7 @@
     {
       "physical" : {
         "sigil" : "output\/103\/sigil.svg",
-        "tin_serial" : "A02BAB5CD"
+        "tin_serial" : "A02BAB5CD0E4"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -1991,7 +1991,7 @@
     {
       "physical" : {
         "sigil" : "output\/104\/sigil.svg",
-        "tin_serial" : "C207BE3F7"
+        "tin_serial" : "C207BE3F70AF"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2010,7 +2010,7 @@
     {
       "physical" : {
         "sigil" : "output\/105\/sigil.svg",
-        "tin_serial" : "B82370691"
+        "tin_serial" : "B82370691041"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2029,7 +2029,7 @@
     {
       "physical" : {
         "sigil" : "output\/106\/sigil.svg",
-        "tin_serial" : "0AAAF7C86"
+        "tin_serial" : "0AAAF7C86FB6"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2048,7 +2048,7 @@
     {
       "physical" : {
         "sigil" : "output\/107\/sigil.svg",
-        "tin_serial" : "9ACB6F28E"
+        "tin_serial" : "9ACB6F28E055"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2067,7 +2067,7 @@
     {
       "physical" : {
         "sigil" : "output\/108\/sigil.svg",
-        "tin_serial" : "66F0B9BF9"
+        "tin_serial" : "66F0B9BF9139"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2086,7 +2086,7 @@
     {
       "physical" : {
         "sigil" : "output\/109\/sigil.svg",
-        "tin_serial" : "174373FF1"
+        "tin_serial" : "174373FF1A47"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2105,7 +2105,7 @@
     {
       "physical" : {
         "sigil" : "output\/110\/sigil.svg",
-        "tin_serial" : "7171CAE90"
+        "tin_serial" : "7171CAE90CDB"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2124,7 +2124,7 @@
     {
       "physical" : {
         "sigil" : "output\/111\/sigil.svg",
-        "tin_serial" : "484DDAC2E"
+        "tin_serial" : "484DDAC2E4E8"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2143,7 +2143,7 @@
     {
       "physical" : {
         "sigil" : "output\/112\/sigil.svg",
-        "tin_serial" : "2000590E1"
+        "tin_serial" : "2000590E11A4"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2162,7 +2162,7 @@
     {
       "physical" : {
         "sigil" : "output\/113\/sigil.svg",
-        "tin_serial" : "91E2AF9E2"
+        "tin_serial" : "91E2AF9E2FA0"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2181,7 +2181,7 @@
     {
       "physical" : {
         "sigil" : "output\/114\/sigil.svg",
-        "tin_serial" : "A1BA98466"
+        "tin_serial" : "A1BA98466FED"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2200,7 +2200,7 @@
     {
       "physical" : {
         "sigil" : "output\/115\/sigil.svg",
-        "tin_serial" : "F30EF48DE"
+        "tin_serial" : "F30EF48DE538"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2219,7 +2219,7 @@
     {
       "physical" : {
         "sigil" : "output\/116\/sigil.svg",
-        "tin_serial" : "F0A77A9A1"
+        "tin_serial" : "F0A77A9A131B"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2238,7 +2238,7 @@
     {
       "physical" : {
         "sigil" : "output\/117\/sigil.svg",
-        "tin_serial" : "62DBC1C64"
+        "tin_serial" : "62DBC1C64F6F"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2257,7 +2257,7 @@
     {
       "physical" : {
         "sigil" : "output\/118\/sigil.svg",
-        "tin_serial" : "1BA68C55A"
+        "tin_serial" : "1BA68C55AC7E"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2276,7 +2276,7 @@
     {
       "physical" : {
         "sigil" : "output\/119\/sigil.svg",
-        "tin_serial" : "67F729A71"
+        "tin_serial" : "67F729A71652"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2295,7 +2295,7 @@
     {
       "physical" : {
         "sigil" : "output\/120\/sigil.svg",
-        "tin_serial" : "116E92E0F"
+        "tin_serial" : "116E92E0F79C"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2314,7 +2314,7 @@
     {
       "physical" : {
         "sigil" : "output\/121\/sigil.svg",
-        "tin_serial" : "17D158FAF"
+        "tin_serial" : "17D158FAF243"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2333,7 +2333,7 @@
     {
       "physical" : {
         "sigil" : "output\/122\/sigil.svg",
-        "tin_serial" : "0B7D63EF2"
+        "tin_serial" : "0B7D63EF26B9"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2352,7 +2352,7 @@
     {
       "physical" : {
         "sigil" : "output\/123\/sigil.svg",
-        "tin_serial" : "CB29F3562"
+        "tin_serial" : "CB29F3562C57"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2371,7 +2371,7 @@
     {
       "physical" : {
         "sigil" : "output\/124\/sigil.svg",
-        "tin_serial" : "81034E5DD"
+        "tin_serial" : "81034E5DD10D"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2390,7 +2390,7 @@
     {
       "physical" : {
         "sigil" : "output\/125\/sigil.svg",
-        "tin_serial" : "D40B1E2E7"
+        "tin_serial" : "D40B1E2E71FC"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2409,7 +2409,7 @@
     {
       "physical" : {
         "sigil" : "output\/126\/sigil.svg",
-        "tin_serial" : "355BA9675"
+        "tin_serial" : "355BA96753C2"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2428,7 +2428,7 @@
     {
       "physical" : {
         "sigil" : "output\/127\/sigil.svg",
-        "tin_serial" : "5E08B1727"
+        "tin_serial" : "5E08B1727944"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2447,7 +2447,7 @@
     {
       "physical" : {
         "sigil" : "output\/128\/sigil.svg",
-        "tin_serial" : "335A70911"
+        "tin_serial" : "335A709117BF"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2466,7 +2466,7 @@
     {
       "physical" : {
         "sigil" : "output\/129\/sigil.svg",
-        "tin_serial" : "0D7C6762D"
+        "tin_serial" : "0D7C6762D667"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2485,7 +2485,7 @@
     {
       "physical" : {
         "sigil" : "output\/130\/sigil.svg",
-        "tin_serial" : "A6B2BDFB6"
+        "tin_serial" : "A6B2BDFB6EB7"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2504,7 +2504,7 @@
     {
       "physical" : {
         "sigil" : "output\/131\/sigil.svg",
-        "tin_serial" : "7532430EA"
+        "tin_serial" : "7532430EA373"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2523,7 +2523,7 @@
     {
       "physical" : {
         "sigil" : "output\/132\/sigil.svg",
-        "tin_serial" : "DE0530511"
+        "tin_serial" : "DE05305113BF"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2542,7 +2542,7 @@
     {
       "physical" : {
         "sigil" : "output\/133\/sigil.svg",
-        "tin_serial" : "5C6B30EFF"
+        "tin_serial" : "5C6B30EFFF2E"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2561,7 +2561,7 @@
     {
       "physical" : {
         "sigil" : "output\/134\/sigil.svg",
-        "tin_serial" : "0A5ABE6C3"
+        "tin_serial" : "0A5ABE6C34DD"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",
@@ -2580,7 +2580,7 @@
     {
       "physical" : {
         "sigil" : "output\/135\/sigil.svg",
-        "tin_serial" : "9CEBCFF62"
+        "tin_serial" : "9CEBCFF625B0"
       },
       "product" : {
         "blend" : "Green Sencha \/ Lemon Balm \/ Kapoor Tulsi \/ Ginger",

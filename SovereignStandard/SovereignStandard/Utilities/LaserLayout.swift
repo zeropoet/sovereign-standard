@@ -13,7 +13,7 @@ enum LaserLayout {
     }
 
     static func frontMark(for unit: UnitOutput) -> String {
-        String(unit.hash.prefix(9)).uppercased()
+        String(unit.hash.prefix(12)).uppercased()
     }
 
     static func backSVG(unit: UnitOutput, qrSVG: String) -> String {

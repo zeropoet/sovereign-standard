@@ -249,6 +249,29 @@
     manifestPromise = undefined;
   }
 
+  async function refreshUnitRecord(unit) {
+    clearManifestCache();
+    return loadUnitRecord(unit);
+  }
+
+  async function waitForUnitRecord(unit, predicate, options = {}) {
+    const timeoutMs = Number(options.timeoutMs ?? 120000);
+    const intervalMs = Number(options.intervalMs ?? 4000);
+    const startedAt = Date.now();
+
+    while (Date.now() - startedAt < timeoutMs) {
+      const record = await refreshUnitRecord(unit);
+
+      if (record && predicate(record)) {
+        return record;
+      }
+
+      await new Promise((resolve) => window.setTimeout(resolve, intervalMs));
+    }
+
+    throw new Error('Registry update timed out');
+  }
+
   function rotl64(value, shift) {
     if (shift === 0) {
       return value;
@@ -346,6 +369,8 @@
     getPublicClaimSignal,
     keccak256,
     loadRegistry,
-    loadUnitRecord
+    loadUnitRecord,
+    refreshUnitRecord,
+    waitForUnitRecord
   };
 })();

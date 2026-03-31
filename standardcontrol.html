@@ -139,6 +139,35 @@
       document.getElementById('twitter-description').content = unitDescription;
     }
 
+    let activePollToken = 0;
+
+    async function pollForCommittedClaim(unitID, pendingRecord, status) {
+      const pollToken = ++activePollToken;
+
+      try {
+        const committedRecord = await window.SovereignRegistry.waitForUnitRecord(
+          unitID,
+          (record) => record.state === 'CLAIMED' && !record.pending && record.claimed_at === pendingRecord.claimed_at,
+          { timeoutMs: 180000, intervalMs: 4000 }
+        );
+
+        if (pollToken !== activePollToken) {
+          return;
+        }
+
+        status.textContent = 'Registry updated.';
+        renderArtifactState(committedRecord);
+        renderStatePanel(committedRecord);
+        renderMetadata(committedRecord);
+      } catch {
+        if (pollToken !== activePollToken) {
+          return;
+        }
+
+        status.textContent = 'Unit claimed. Refresh if the registry has not updated yet.';
+      }
+    }
+
     function renderStatePanel(record) {
       const statePanel = document.getElementById('state-panel');
       const signal = window.SovereignRegistry.getPublicClaimSignal(record);
@@ -187,9 +216,15 @@
             const delay = 500 + Math.floor(Math.random() * 701);
             const remaining = Math.max(0, delay - (Date.now() - startedAt));
             await new Promise((resolve) => window.setTimeout(resolve, remaining));
-            status.textContent = 'Unit claimed.';
+            status.textContent = 'Unit claimed. Awaiting registry publish...';
             renderArtifactState(claimedRecord);
             renderStatePanel(claimedRecord);
+            renderMetadata(claimedRecord);
+            const nextStatus = document.getElementById('claim-status');
+            if (nextStatus) {
+              nextStatus.textContent = 'Unit claimed. Awaiting registry publish...';
+              void pollForCommittedClaim(unitID, claimedRecord, nextStatus);
+            }
           } catch (error) {
             const delay = 500 + Math.floor(Math.random() * 701);
             const remaining = Math.max(0, delay - (Date.now() - startedAt));
@@ -208,9 +243,16 @@
             <p class="state-label">${record.pending ? 'CLAIMED' : 'CLAIMED'}</p>
             <p class="state-detail">${escapeHTML(formatTimestamp(record.claimed_at))}</p>
             ${signal ? `<p class="muted claim-note">${escapeHTML(signal)}</p>` : ''}
-            ${record.pending ? '<p class="muted claim-note">Unit claimed.</p>' : ''}
+            ${record.pending ? '<p class="muted claim-note" id="claim-status">Unit claimed. Awaiting registry publish...</p>' : ''}
           </div>
         `;
+
+        if (record.pending) {
+          const pendingStatus = document.getElementById('claim-status');
+          if (pendingStatus) {
+            void pollForCommittedClaim(unitID, record, pendingStatus);
+          }
+        }
         return;
       }
 

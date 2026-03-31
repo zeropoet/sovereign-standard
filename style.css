@@ -129,20 +129,6 @@ body {
   text-transform: uppercase;
 }
 
-.landing-statement {
-  display: grid;
-  gap: 0.95rem;
-  max-width: 34rem;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.8;
-  letter-spacing: 0.01em;
-}
-
-.landing-statement p {
-  margin: 0;
-}
-
 .top-links {
   display: flex;
   flex-wrap: wrap;

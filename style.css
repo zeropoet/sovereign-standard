@@ -891,12 +891,14 @@ h3 {
 @media (max-width: 640px) {
   .landing-page {
     padding: 12px;
+    place-items: center;
   }
 
   .landing-shell {
     width: min(100%, 34rem);
     margin: 0;
     gap: 18px;
+    justify-self: center;
     justify-items: center;
     text-align: center;
   }

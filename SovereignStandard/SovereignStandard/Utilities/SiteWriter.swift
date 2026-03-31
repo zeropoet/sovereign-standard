@@ -116,31 +116,6 @@ private struct UnitDataPayload: Decodable {
     let hash: String
 }
 
-private struct PartnerStore {
-    let root: URL
-
-    func load() throws -> [Int: PartnerAssignment] {
-        let url = root.appendingPathComponent("partners.json")
-        guard FileManager.default.fileExists(atPath: url.path) else {
-            return [:]
-        }
-
-        let data = try Data(contentsOf: url)
-        let manifest = try JSONDecoder().decode(PartnerManifest.self, from: data)
-        return Dictionary(uniqueKeysWithValues: manifest.units.map { ($0.id, $0) })
-    }
-}
-
-private struct PartnerManifest: Decodable {
-    let units: [PartnerAssignment]
-}
-
-private struct PartnerAssignment: Decodable {
-    let id: Int
-    let state: String
-    let reference: String?
-}
-
 private extension PersistedClaim {
     var resolvedHolderHash: String {
         holderHash

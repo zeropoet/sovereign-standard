@@ -1,10 +1,5 @@
 {
   "claims" : [
-    {
-      "claim_hash" : "855a9e341a1aefc676a2313651ae9ef93e69202535564a2d34781dda65d735be",
-      "claimed_at" : "2026-03-31T03:52:42.299Z",
-      "holder_hash" : "d121037f25729373eddfc33468983f19228c7266afb77958783b68b0911a53f0",
-      "unit" : 0
-    }
+
   ]
 }

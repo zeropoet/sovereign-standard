@@ -76,6 +76,8 @@ The flow is:
 
 The live relay scaffold is in `edge/claim-relay/`.
 
+Partner assignments are repo-backed through `partners.json`.
+
 ## CLI
 
 Run commands from the repository root.
@@ -122,6 +124,24 @@ Persist a confirmed claim from a submission payload file:
 swift run SovereignStandard persist-claim claim-submission.json
 ```
 
+Clear a committed claim for a unit:
+
+```bash
+swift run SovereignStandard clear-claim 0
+```
+
+Mark a unit as partner:
+
+```bash
+swift run SovereignStandard set-partner 12 "Storefront reference"
+```
+
+Remove partner state from a unit:
+
+```bash
+swift run SovereignStandard clear-partner 12
+```
+
 ## Static site
 
 The public site is fully static and published from committed files in the repository root.
@@ -158,3 +178,4 @@ swift test
 GitHub Pages publishes the committed static site.
 
 GitHub Actions is also used to persist confirmed claims back into the repository.
+Admin state changes can be applied from the `Admin Unit State` workflow.

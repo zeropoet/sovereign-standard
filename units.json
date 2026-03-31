@@ -1,15 +1,12 @@
 {
-  "generated_at" : "2026-03-31T15:20:39Z",
+  "generated_at" : "2026-03-31T15:34:19Z",
   "units" : [
     {
       "claim_hash" : "809a5712cb5c21c706575449b4b3059953fe3f4a68870e7b39325a44efc573c2",
-      "claimed_at" : "2026-03-31T03:52:42.299Z",
       "created_at" : "2026-03-31T05:02:16Z",
-      "holder_hash" : "d121037f25729373eddfc33468983f19228c7266afb77958783b68b0911a53f0",
       "id" : 0,
       "is_partner" : false,
-      "sigil" : "output\/0\/sigil.svg",
-      "state" : "CLAIMED"
+      "state" : "CLAIMABLE"
     },
     {
       "claim_hash" : "9ec54dff6fc22643e72554619f3bbd2b8954f73c2df5d1c05ed5ecbbe8624e68",

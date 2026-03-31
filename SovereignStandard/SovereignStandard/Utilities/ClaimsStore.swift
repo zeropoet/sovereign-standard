@@ -74,6 +74,11 @@ struct ClaimsStore {
 
         try save(claims)
     }
+
+    func clear(unitID: Int) throws {
+        let claims = try load().filter { $0.unit != unitID }
+        try save(claims)
+    }
 }
 
 struct ClaimSubmission: Codable {

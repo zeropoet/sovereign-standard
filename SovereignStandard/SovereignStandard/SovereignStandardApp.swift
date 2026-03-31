@@ -50,6 +50,19 @@ struct SovereignStandardApp {
             let submission = try JSONDecoder().decode(ClaimSubmission.self, from: claimData)
             try ClaimsStore(root: rootURL).persist(submission: submission, outputRoot: outputRoot)
             shouldSyncSite = true
+        case .clearClaim(let unitID):
+            try assertUnitExists(unitID: unitID, outputRoot: outputRoot)
+            try ClaimsStore(root: rootURL).clear(unitID: unitID)
+            shouldSyncSite = true
+        case .setPartner(let unitID, let reference):
+            try assertUnitExists(unitID: unitID, outputRoot: outputRoot)
+            try ClaimsStore(root: rootURL).clear(unitID: unitID)
+            try PartnerStore(root: rootURL).setPartner(unitID: unitID, reference: reference)
+            shouldSyncSite = true
+        case .clearPartner(let unitID):
+            try assertUnitExists(unitID: unitID, outputRoot: outputRoot)
+            try PartnerStore(root: rootURL).clear(unitID: unitID)
+            shouldSyncSite = true
         }
 
         if shouldSyncSite {
@@ -58,6 +71,16 @@ struct SovereignStandardApp {
             try claimsStore.save(try claimsStore.load())
             try siteWriter.write(units: unitIDs, root: rootURL)
             try ClaimCodeManifestWriter(root: rootURL).write(units: unitIDs, outputRoot: outputRoot, root: rootURL)
+        }
+    }
+
+    private func assertUnitExists(unitID: Int, outputRoot: URL) throws {
+        let dataURL = outputRoot
+            .appendingPathComponent(String(unitID), isDirectory: true)
+            .appendingPathComponent("data.json")
+
+        guard FileManager.default.fileExists(atPath: dataURL.path) else {
+            throw SovereignCommandError.invalidUnitID(String(unitID))
         }
     }
 }
@@ -69,6 +92,9 @@ private enum SovereignCommand {
     case verifyAll
     case syncSite
     case persistClaim(String)
+    case clearClaim(Int)
+    case setPartner(Int, String?)
+    case clearPartner(Int)
 
     init(arguments: [String]) throws {
         let payload = Array(arguments.dropFirst())
@@ -94,6 +120,15 @@ private enum SovereignCommand {
                 throw SovereignCommandError.missingClaimFile
             }
             self = .persistClaim(claimFilePath)
+        case "clear-claim":
+            self = .clearClaim(try Self.singleUnitID(from: Array(payload.dropFirst())))
+        case "set-partner":
+            let remainder = Array(payload.dropFirst())
+            let unitID = try Self.singleUnitID(from: Array(remainder.prefix(1)))
+            let reference = remainder.dropFirst().joined(separator: " ").trimmingCharacters(in: .whitespacesAndNewlines)
+            self = .setPartner(unitID, reference.isEmpty ? nil : reference)
+        case "clear-partner":
+            self = .clearPartner(try Self.singleUnitID(from: Array(payload.dropFirst())))
         default:
             throw SovereignCommandError.invalidCommand(verb)
         }
@@ -118,6 +153,14 @@ private enum SovereignCommand {
 
         return Array(Set(unitIDs)).sorted()
     }
+
+    private static func singleUnitID(from rawValues: [String]) throws -> Int {
+        let unitIDs = try unitIDs(from: rawValues)
+        guard let unitID = unitIDs.first, unitIDs.count == 1 else {
+            throw SovereignCommandError.requiresSingleUnitID
+        }
+        return unitID
+    }
 }
 
 private enum SovereignCommandError: Error, LocalizedError {
@@ -125,17 +168,20 @@ private enum SovereignCommandError: Error, LocalizedError {
     case invalidUnitID(String)
     case missingUnitIDs
     case missingClaimFile
+    case requiresSingleUnitID
 
     var errorDescription: String? {
         switch self {
         case .invalidCommand(let command):
-            return "Unknown command '\(command)'. Use generate, delete, verify, verify-all, sync-site, or persist-claim."
+            return "Unknown command '\(command)'. Use generate, delete, verify, verify-all, sync-site, persist-claim, clear-claim, set-partner, or clear-partner."
         case .invalidUnitID(let value):
             return "Invalid unit id '\(value)'."
         case .missingUnitIDs:
             return "No unit ids were provided."
         case .missingClaimFile:
             return "No claim submission file was provided."
+        case .requiresSingleUnitID:
+            return "Exactly one unit id must be provided."
         }
     }
 }

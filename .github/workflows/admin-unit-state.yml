@@ -1,0 +1,70 @@
+name: Admin Unit State
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: Admin action
+        required: true
+        type: choice
+        options:
+          - clear-claim
+          - set-partner
+          - clear-partner
+      unit:
+        description: Unit number
+        required: true
+      reference:
+        description: Optional partner reference
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Select Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+
+      - name: Apply admin change
+        env:
+          ADMIN_ACTION: ${{ inputs.action }}
+          ADMIN_UNIT: ${{ inputs.unit }}
+          ADMIN_REFERENCE: ${{ inputs.reference }}
+        run: |
+          case "$ADMIN_ACTION" in
+            clear-claim)
+              swift run SovereignStandard clear-claim "$ADMIN_UNIT"
+              ;;
+            set-partner)
+              swift run SovereignStandard set-partner "$ADMIN_UNIT" "$ADMIN_REFERENCE"
+              ;;
+            clear-partner)
+              swift run SovereignStandard clear-partner "$ADMIN_UNIT"
+              ;;
+            *)
+              echo "Unsupported action: $ADMIN_ACTION"
+              exit 1
+              ;;
+          esac
+
+      - name: Run tests
+        run: swift test
+
+      - name: Commit admin change
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add claims.json partners.json units.json
+          git commit -m "Admin state change: ${{ inputs.action }} unit ${{ inputs.unit }}" || exit 0
+          git push

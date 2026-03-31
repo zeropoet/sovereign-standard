@@ -256,6 +256,100 @@ final class SovereignStandardTests: XCTestCase {
         XCTAssertEqual(first, second)
     }
 
+    func testClearClaimRemovesCommittedClaim() throws {
+        let engine = SovereignEngine()
+        let writer = OutputWriter()
+        let siteWriter = SiteWriter()
+        let root = FileManager.default.temporaryDirectory
+            .appendingPathComponent(UUID().uuidString, isDirectory: true)
+        let outputRoot = root.appendingPathComponent("output", isDirectory: true)
+
+        try FileManager.default.createDirectory(at: outputRoot, withIntermediateDirectories: true)
+        try writeClaimSecret(into: root)
+        defer {
+            try? FileManager.default.removeItem(at: root)
+        }
+
+        let unit = try engine.generateUnit(unitID: 7)
+        try writer.write(unit: unit, outputRoot: outputRoot)
+
+        let authority = try ClaimCodeAuthority(root: root, masterSecret: testClaimSecret)
+        let claimCode = authority.claimCode(for: unit.hash)
+        let claimsStore = ClaimsStore(root: root, masterSecret: testClaimSecret)
+
+        try claimsStore.persist(
+            submission: ClaimSubmission(
+                unit: 7,
+                claimedAt: "2026-03-31T12:00:00Z",
+                claimCode: claimCode
+            ),
+            outputRoot: outputRoot
+        )
+
+        try claimsStore.clear(unitID: 7)
+        try siteWriter.write(units: [7], root: root)
+
+        let claims = try claimsStore.load()
+        XCTAssertTrue(claims.isEmpty)
+
+        let unitsData = try Data(contentsOf: root.appendingPathComponent("units.json"))
+        let manifest = try JSONSerialization.jsonObject(with: unitsData) as? [String: Any]
+        let units = manifest?["units"] as? [[String: Any]]
+        let record = try XCTUnwrap(units?.first)
+
+        XCTAssertEqual(record["state"] as? String, "CLAIMABLE")
+        XCTAssertNil(record["claimed_at"])
+        XCTAssertNil(record["holder_hash"])
+        XCTAssertNotNil(record["claim_hash"])
+    }
+
+    func testPartnerAssignmentOverridesClaimState() throws {
+        let engine = SovereignEngine()
+        let writer = OutputWriter()
+        let siteWriter = SiteWriter()
+        let root = FileManager.default.temporaryDirectory
+            .appendingPathComponent(UUID().uuidString, isDirectory: true)
+        let outputRoot = root.appendingPathComponent("output", isDirectory: true)
+
+        try FileManager.default.createDirectory(at: outputRoot, withIntermediateDirectories: true)
+        try writeClaimSecret(into: root)
+        defer {
+            try? FileManager.default.removeItem(at: root)
+        }
+
+        let unit = try engine.generateUnit(unitID: 12)
+        try writer.write(unit: unit, outputRoot: outputRoot)
+
+        let authority = try ClaimCodeAuthority(root: root, masterSecret: testClaimSecret)
+        let claimCode = authority.claimCode(for: unit.hash)
+        let claimsStore = ClaimsStore(root: root, masterSecret: testClaimSecret)
+
+        try claimsStore.persist(
+            submission: ClaimSubmission(
+                unit: 12,
+                claimedAt: "2026-03-31T12:00:00Z",
+                claimCode: claimCode
+            ),
+            outputRoot: outputRoot
+        )
+
+        try claimsStore.clear(unitID: 12)
+        try PartnerStore(root: root).setPartner(unitID: 12, reference: "Storefront")
+        try siteWriter.write(units: [12], root: root)
+
+        let unitsData = try Data(contentsOf: root.appendingPathComponent("units.json"))
+        let manifest = try JSONSerialization.jsonObject(with: unitsData) as? [String: Any]
+        let units = manifest?["units"] as? [[String: Any]]
+        let record = try XCTUnwrap(units?.first)
+
+        XCTAssertEqual(record["state"] as? String, "PARTNER")
+        XCTAssertEqual(record["is_partner"] as? Bool, true)
+        XCTAssertEqual(record["partner_reference"] as? String, "Storefront")
+        XCTAssertNil(record["claim_hash"])
+        XCTAssertNil(record["claimed_at"])
+        XCTAssertNil(record["holder_hash"])
+    }
+
     private func permutations(from events: [FoldEvent]) -> [[UInt8]] {
         events.compactMap { event in
             guard case .permutationCommit(let permutation) = event else {

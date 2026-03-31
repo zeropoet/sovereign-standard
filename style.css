@@ -764,7 +764,7 @@ h3 {
 .artifact-card.state-claimed img {
   opacity: 1;
   transform: none;
-  filter: invert(1);
+  filter: none;
 }
 
 .artifact-card.state-partner img {
@@ -796,10 +796,6 @@ h3 {
   color: var(--text);
 }
 
-.artifact-card.state-claimed code {
-  color: #ffffff;
-}
-
 .artifact-card.state-partner code {
   color: #ffffff;
 }
@@ -818,7 +814,7 @@ h3 {
 }
 
 .artifact-card.state-claimed .artifact-card-meta span {
-  color: #f2f2f2;
+  color: var(--text);
 }
 
 .artifact-card.state-partner .artifact-card-meta span {

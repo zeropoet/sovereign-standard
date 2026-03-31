@@ -72,13 +72,13 @@ body {
 
 .landing-shell {
   display: grid;
-  gap: 24px;
+  gap: 18px;
   justify-items: center;
   width: min(100vw, 100vh, 760px);
   margin: 0;
   position: relative;
   z-index: 1;
-  transform: translateY(-6vh);
+  transform: translateY(-9vh);
 }
 
 .visually-hidden {

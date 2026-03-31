@@ -684,7 +684,7 @@ h3 {
   background: transparent;
   border: 0;
   box-shadow: none;
-  transition: background-color 120ms ease, transform 120ms ease;
+  transition: opacity 120ms ease;
 }
 
 .artifact-card.state-claimable {
@@ -701,7 +701,7 @@ h3 {
 
 .artifact-card:hover,
 .artifact-card:focus-within {
-  transform: translateY(-1px);
+  opacity: 0.9;
 }
 
 .artifact-link {
@@ -748,18 +748,19 @@ h3 {
 }
 
 .artifact-card.state-claimable img {
-  opacity: 0.58;
-  transform: scale(0.94);
+  opacity: 1;
+  transform: none;
 }
 
 .artifact-card.state-claimed img {
-  opacity: 0.92;
-  transform: scale(0.99);
+  opacity: 1;
+  transform: none;
+  filter: invert(1);
 }
 
 .artifact-card.state-partner img {
   opacity: 1;
-  transform: scale(1);
+  transform: none;
   filter: invert(1);
 }
 

@@ -889,25 +889,12 @@ h3 {
 }
 
 @media (max-width: 640px) {
-  .landing-page {
-    padding: 12px;
-    place-items: start;
-  }
-
   .landing-shell {
     width: 100%;
     margin: 0;
     gap: 18px;
     justify-items: start;
     text-align: left;
-  }
-
-  .landing-sequence {
-    padding: 12px;
-  }
-
-  .sequence-stage {
-    width: min(calc(100vw - 24px), calc(100vh - 24px), 640px);
   }
 
   .archive-page,

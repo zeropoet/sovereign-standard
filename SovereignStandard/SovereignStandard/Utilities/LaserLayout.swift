@@ -3,11 +3,24 @@ import Foundation
 enum LaserLayout {
     static func frontSVG(unit: UnitOutput) -> String {
         let frontMark = frontMark(for: unit)
+        let blendLines = [
+            "Green Sencha",
+            "Lemon Balm",
+            "Kapoor Tulsi",
+            "Ginger"
+        ]
+        let blendSVG = blendLines.enumerated().map { index, line in
+            let y = 170 + (index * 40)
+            return """
+              <text x="180" y="\(y)" text-anchor="start" fill="black" font-family="'IBM Plex Mono', 'SFMono-Regular', Menlo, monospace" font-size="28" letter-spacing="1.1">\(line)</text>
+            """
+        }.joined(separator: "\n")
 
         return """
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
-          <text x="180" y="220" text-anchor="start" fill="black" font-family="'IBM Plex Mono', 'SFMono-Regular', Menlo, monospace" font-size="32" letter-spacing="1.4">SOVEREIGN STANDARD - \(unit.unitID)</text>
-          <text x="180" y="272" text-anchor="start" fill="black" font-family="'IBM Plex Mono', 'SFMono-Regular', Menlo, monospace" font-size="32" letter-spacing="1.4">\(frontMark)</text>
+        \(blendSVG)
+          <text x="180" y="365" text-anchor="start" fill="black" font-family="'IBM Plex Mono', 'SFMono-Regular', Menlo, monospace" font-size="32" letter-spacing="1.4">SOVEREIGN STANDARD - \(unit.unitID)</text>
+          <text x="180" y="417" text-anchor="start" fill="black" font-family="'IBM Plex Mono', 'SFMono-Regular', Menlo, monospace" font-size="32" letter-spacing="1.4">\(frontMark)</text>
         </svg>
         """
     }

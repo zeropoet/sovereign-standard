@@ -1,16 +1,16 @@
 # Sovereign Standard
 
-Sovereign Standard is a deterministic artifact generator and static archive site built around the Reference Instrument fold engine.
+Sovereign Standard is a deterministic artifact generator and static registry for physical units progressing through state.
 
-Today, this repository contains:
+This repository contains:
 
 - the Swift package that generates and verifies units
 - local engine dependencies in `FoldKernel/` and `SigilEngine/`
 - the committed artifact archive in `output/`
 - the static public site served from the repo root
-- release metadata and archive integrity tooling in `release/` and `scripts/`
+- the repo-backed claim ledger in `claims.json`
 
-## Current baseline
+## Baseline
 
 - Platform target: macOS 13+
 - Swift tools version: 5.9
@@ -18,24 +18,19 @@ Today, this repository contains:
 - Kernel version: `FoldKernel-1.0.0`
 - Fixed step count: `64`
 - Public base URL: `https://sovereignstandard.co`
-- Live archive range: units `0...135`
-- Current committed archive size: `136` units
-
-The deterministic payload for a unit lives in `data.json`. The issuance sidecar lives in `issuance.json`. Confirmed repo-backed claims live in `claims.json`.
+- Current archive range: units `0...135`
 
 ## Repository layout
 
-- `Package.swift` defines the main executable package.
-- `SovereignStandard/SovereignStandard/` contains the CLI app, engine, output writer, verifier, QR generation, and site manifest writer.
-- `FoldKernel/` contains the fold primitives, symmetry/canonical-distance logic, memory encoding, and convergence hash machinery.
+- `Package.swift` defines the executable package.
+- `SovereignStandard/SovereignStandard/` contains the CLI app, generator, writers, verifier, QR generation, and site manifest writer.
+- `FoldKernel/` contains the fold primitives and convergence hash machinery.
 - `SigilEngine/` contains deterministic sigil geometry and SVG export.
-- `Tests/SovereignStandardTests/` contains generator, golden-vector, replay, and verifier coverage.
+- `Tests/SovereignStandardTests/` contains generator and verifier coverage.
 - `output/<unit-id>/` stores generated artifacts for each committed unit.
-- `index.html`, `archive.html`, `system.html`, `order.html`, `unit.html`, `standardcontrol.html`, `style.css`, `site.js`, `registry.js`, `sigil-sequence.js`, `units.json`, and `claims.json` make up the static site and registry surface.
-- `sigil-sequence.html` is a standalone playback tool for reviewing the current committed sigil run.
-- `assets/sovereign-standard-lockup.svg` and `assets/social-preview.svg` hold the locked wordmark and social preview artwork.
-- `release/PRODUCTION.md` documents the production baseline and release procedure.
-- `release/archive-manifest.sha256` records hashes for the committed public archive.
+- `units.json` is the generated public registry manifest.
+- `claims.json` is the committed claim ledger.
+- `standardcontrol.html`, `archive.html`, `index.html`, `style.css`, `site.js`, and `registry.js` make up the main site surface.
 
 ## Unit artifacts
 
@@ -48,27 +43,38 @@ Each generated unit is written to `output/<unit-id>/` with:
 - `front.svg`
 - `back.svg`
 
-`data.json` is deterministic for a fixed walker/kernel baseline and includes:
+`data.json` is deterministic for a fixed walker/kernel baseline and includes the unit hash, permutation, event stream, memory, and sigil payload.
 
-- `unit_id`
-- `walker_version`
-- `kernel_version`
-- `step_count`
-- `permutation`
-- `canonical_distance`
-- `events`
-- `memory`
-- `hash`
-- `sigil_svg`
+`issuance.json` is intentionally separate from the deterministic payload and carries issuance-time metadata.
 
-`issuance.json` is intentionally separate from the deterministic payload and carries issuance-time metadata:
+Rewriting an existing unit refreshes `issuance.json`.
 
-- `creation_date`
-- `integrity` (derived from `creation_date` as a 12-month decay value)
+## Registry model
 
-Rewriting an existing unit refreshes `issuance.json` with a new issuance timestamp.
+Public site state is derived from `units.json`.
 
-`claims.json` stores committed claim records that are merged into the generated public `units.json`.
+Current public states:
+
+- `CLAIMABLE`
+- `CLAIMED`
+- `PARTNER`
+
+Claims are committed into `claims.json` and merged into `units.json`.
+
+The public registry does not expose internal claim codes.
+
+## Claims
+
+Claims are repo-backed, not browser-only.
+
+The flow is:
+
+1. A collector opens the tin and enters the internal claim code.
+2. The browser submits the claim to the relay.
+3. GitHub Actions verifies the claim and commits the result to the repo.
+4. The public registry updates from committed state.
+
+The live relay scaffold is in `edge/claim-relay/`.
 
 ## CLI
 
@@ -104,7 +110,7 @@ Verify every generated unit currently present in `output/`:
 swift run SovereignStandard verify-all
 ```
 
-Rebuild `units.json` from the existing archive without generating or deleting units:
+Rebuild the public registry from the existing archive:
 
 ```bash
 swift run SovereignStandard sync-site
@@ -116,65 +122,30 @@ Persist a confirmed claim from a submission payload file:
 swift run SovereignStandard persist-claim claim-submission.json
 ```
 
-Default invocation with no subcommand currently generates units `136...149` and then syncs the site:
-
-```bash
-swift run SovereignStandard
-```
-
-Behavior notes:
-
-- `generate` writes artifacts, verifies each generated unit immediately, then rewrites `units.json`
-- `delete` removes unit directories, then rewrites `units.json`
-- `persist-claim` validates a confirmed claim submission, updates `claims.json`, then rewrites `units.json`
-- `verify` and `verify-all` do not modify site files
-- unit ids must be non-negative integers
-
 ## Static site
 
 The public site is fully static and published from committed files in the repository root.
 
 - `index.html` is the landing page
-- the landing page also runs a centered live sigil sequence driven by the current `units.json`
-- `archive.html` lists all units from `units.json`
-- `system.html` contains the system statement
-- `order.html` is a compatibility redirect
-- `unit.html` is a compatibility redirect
-- `standardcontrol.html?unit=<unit-id>` renders a single unit from `output/<unit-id>/`
-- `units.json` is generated by `SiteWriter` and drives the archive index
-- `claims.json` is the committed claim ledger merged into `units.json`
-- `site.js` contains shared browser behavior
-- `registry.js` powers client-side claim state and local claim hashing
-- `sigil-sequence.js` contains the shared sigil sequence playback module used by the landing page and the standalone sequence viewer
-- `assets/` and `manifest.webmanifest` provide icons and metadata for deployment
+- `archive.html` lists units from `units.json`
+- `standardcontrol.html?unit=<unit-id>` renders a single unit
+- `unit.html` and `order.html` are compatibility redirects
 
-The public site is still static, but committed claim persistence now belongs in GitHub Actions rather than browser-only storage. `.github/workflows/persist-claim.yml` is the repo entrypoint for a trusted caller, such as a small edge function, to persist confirmed claims into the repository.
+`registry.js` powers the browser claim flow and local claim submission behavior.
 
-The recommended relay is a Cloudflare Worker. A scaffold lives in [`edge/claim-relay/README.md`](/Users/zeropoet/WebstormProjects/sovereign-standard/edge/claim-relay/README.md) and [`edge/claim-relay/src/index.js`](/Users/zeropoet/WebstormProjects/sovereign-standard/edge/claim-relay/src/index.js).
-
-QR routing and public unit URLs are derived from:
+If the production domain changes, update:
 
 - `SovereignStandard/SovereignStandard/Utilities/SiteConfiguration.swift`
 
-If the production domain changes, update that file and regenerate affected units.
+and regenerate affected units.
 
 ## Determinism and verification
 
-The current implementation is designed so that, under a fixed walker/kernel baseline:
+Under a fixed walker/kernel baseline:
 
-- generating the same unit twice produces the same deterministic payload and visual artifacts
-- committed artifacts can be checked byte-for-byte with `verify` or `verify-all`
-- `data.json`, `sigil.svg`, `front.svg`, `back.svg`, `qr.svg`, and `units.json` are expected to remain stable for the production archive range
-
-The main test suite currently covers:
-
-- deterministic generation
-- fixed version and step-count enforcement
-- rejection of invalid unit ids
-- golden vectors for units `0`, `1`, and `42`
-- byte-identical artifact replay after delete/regenerate
-- issuance preservation across rewrites
-- verifier success and tamper detection
+- generating the same unit twice produces the same deterministic payload
+- committed artifacts can be checked with `verify` or `verify-all`
+- the kernel is not modified by claim or site-layer changes
 
 Run the tests with:
 
@@ -182,36 +153,8 @@ Run the tests with:
 swift test
 ```
 
-## CI and deployment
+## Deployment
 
-GitHub Actions currently does the following:
+GitHub Pages publishes the committed static site.
 
-- `.github/workflows/ci.yml` runs `swift test`
-- the same CI workflow runs `swift run SovereignStandard verify-all`
-- the same CI workflow regenerates units `0...135`
-- CI fails if `output/` or `units.json` drift from the committed archive
-- `.github/workflows/pages.yml` stages the static site and deploys it to GitHub Pages
-
-The Pages deployment publishes the committed site, assets, archive output, `CNAME`, and `.nojekyll` for `https://sovereignstandard.co`.
-
-## Release operations
-
-The canonical production procedure lives in:
-
-- `release/PRODUCTION.md`
-
-Refresh the public hash manifest with:
-
-```bash
-./scripts/update_archive_manifest.sh
-```
-
-Before shipping a new production snapshot, the normal release path is:
-
-1. Confirm the public base URL in `SovereignStandard/SovereignStandard/Utilities/SiteConfiguration.swift`.
-2. Regenerate the production archive with `swift run SovereignStandard generate {0..135}`.
-3. Verify committed artifacts with `swift run SovereignStandard verify-all`.
-4. Refresh `release/archive-manifest.sha256`.
-5. Run `swift test`.
-6. Confirm GitHub Pages custom domain and HTTPS settings.
-7. Commit and push the release snapshot.
+GitHub Actions is also used to persist confirmed claims back into the repository.

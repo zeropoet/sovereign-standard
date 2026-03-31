@@ -76,7 +76,7 @@ body {
   justify-items: start;
   width: min(100%, 34rem);
   margin: 0;
-  padding-left: 18px;
+  padding-left: 28px;
   position: relative;
   z-index: 1;
 }
@@ -894,7 +894,7 @@ h3 {
     width: min(100%, 34rem);
     margin: 0;
     gap: 24px;
-    padding-left: 18px;
+    padding-left: 28px;
     justify-items: start;
     text-align: left;
   }

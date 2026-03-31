@@ -704,6 +704,11 @@ h3 {
   opacity: 0.9;
 }
 
+.artifact-card.state-claimable:hover,
+.artifact-card.state-claimable:focus-within {
+  opacity: 1;
+}
+
 .artifact-link {
   display: grid;
   align-content: center;
@@ -722,6 +727,11 @@ h3 {
 .artifact-link:hover,
 .artifact-link:focus-visible {
   background: transparent;
+}
+
+.artifact-card.state-claimable .artifact-link:hover,
+.artifact-card.state-claimable .artifact-link:focus-visible {
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .artifact-link:hover img,

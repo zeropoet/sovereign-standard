@@ -150,7 +150,7 @@ The public site is fully static and published from committed files in the reposi
 - `index.html` is the landing page
 - `archive.html` lists units from `units.json`
 - `standardcontrol.html?unit=<unit-id>` renders a single unit
-- `unit.html` and `order.html` are compatibility redirects
+- `unit.html` is a compatibility redirect
 
 `registry.js` powers the browser claim flow and local claim submission behavior.
 

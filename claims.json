@@ -1,12 +1,6 @@
 {
   "claims" : [
     {
-      "claim_hash" : "809a5712cb5c21c706575449b4b3059953fe3f4a68870e7b39325a44efc573c2",
-      "claimed_at" : "2026-03-31T16:07:45.170Z",
-      "holder_hash" : "c919dc6f10a5593237ffb65104ad00b5ebbe630e10c6046e0b2069ee39d82a1f",
-      "unit" : 0
-    },
-    {
       "claim_hash" : "9ec54dff6fc22643e72554619f3bbd2b8954f73c2df5d1c05ed5ecbbe8624e68",
       "claimed_at" : "2026-03-31T16:15:19.517Z",
       "holder_hash" : "3556507aeda02f3a7a1d95d8f1693652c475cb9f4da6ffc8ec1559fdbcbb0cff",

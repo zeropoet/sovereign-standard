@@ -1,4 +1,9 @@
 {
   "units" : [
+    {
+      "id" : 0,
+      "reference" : "Zeropoet",
+      "state" : "PARTNER"
+    }
   ]
 }

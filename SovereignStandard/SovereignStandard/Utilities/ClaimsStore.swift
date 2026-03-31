@@ -3,10 +3,11 @@ import FoldKernel
 
 struct ClaimsStore {
     private let claimsURL: URL
-    private let proofVerifier = ClaimProofVerifier()
+    private let authority: ClaimCodeAuthority?
 
-    init(root: URL) {
+    init(root: URL, masterSecret: String? = nil, environment: [String: String] = ProcessInfo.processInfo.environment) {
         claimsURL = root.appendingPathComponent("claims.json")
+        authority = try? ClaimCodeAuthority(root: root, masterSecret: masterSecret, environment: environment)
     }
 
     func load() throws -> [PersistedClaim] {
@@ -30,7 +31,7 @@ struct ClaimsStore {
         try data.write(to: claimsURL)
     }
 
-    func persist(submission: ClaimSubmission, outputRoot: URL, claimFileURL: URL? = nil) throws {
+    func persist(submission: ClaimSubmission, outputRoot: URL) throws {
         let unitDirectory = outputRoot.appendingPathComponent(String(submission.unit), isDirectory: true)
         let dataURL = unitDirectory.appendingPathComponent("data.json")
 
@@ -39,52 +40,30 @@ struct ClaimsStore {
         }
 
         let unitData = try JSONDecoder().decode(ClaimUnitDataPayload.self, from: Data(contentsOf: dataURL))
-        switch submission.verification.method.lowercased() {
-        case "hash":
-            let expectedFrontMark = Self.frontMark(for: unitData.hash)
-            guard Self.normalizeFrontMark(submission.frontMark ?? "") == expectedFrontMark else {
-                throw ClaimPersistenceError.frontMarkMismatch
-            }
-
-            let expectedClaimHash = Self.claimHash(
-                convergenceHash: unitData.hash,
-                frontMark: expectedFrontMark,
-                email: submission.email,
-                claimedAt: submission.claimedAt
-            )
-            guard submission.claimHash == expectedClaimHash else {
-                throw ClaimPersistenceError.claimHashMismatch
-            }
-        case "image", "hybrid":
-            guard let imageSHA256 = submission.imageSHA256?.nilIfBlank else {
-                throw ClaimPersistenceError.missingImageHash
-            }
-            guard let proofImagePath = submission.proofImagePath?.nilIfBlank else {
-                throw ClaimPersistenceError.missingProofImage
-            }
-
-            let baseURL = claimFileURL?.deletingLastPathComponent() ?? claimsURL.deletingLastPathComponent()
-            let proofImageURL = URL(fileURLWithPath: proofImagePath, relativeTo: baseURL)
-            let expectedUnitURL = SiteConfiguration.unitURL(for: submission.unit)
-
-            try proofVerifier.verify(
-                imageAt: proofImageURL,
-                expectedSHA256: imageSHA256,
-                expectedUnitURL: expectedUnitURL
-            )
-
-            let expectedClaimHash = Self.claimHash(
-                convergenceHash: unitData.hash,
-                unitURL: expectedUnitURL,
-                imageSHA256: imageSHA256,
-                email: submission.email,
-                claimedAt: submission.claimedAt
-            )
-            guard submission.claimHash == expectedClaimHash else {
-                throw ClaimPersistenceError.claimHashMismatch
-            }
-        default:
+        guard submission.verification.method.lowercased() == "code" else {
             throw ClaimPersistenceError.unsupportedVerificationMethod
+        }
+
+        guard let claimCode = submission.claimCode?.nilIfBlank else {
+            throw ClaimPersistenceError.missingClaimCode
+        }
+
+        guard let authority else {
+            throw ClaimPersistenceError.missingClaimSecret
+        }
+
+        guard authority.verify(claimCode: claimCode, convergenceHash: unitData.hash) else {
+            throw ClaimPersistenceError.claimCodeMismatch
+        }
+
+        let expectedClaimHash = ClaimCodeAuthority.claimHash(
+            convergenceHash: unitData.hash,
+            claimCode: claimCode,
+            email: submission.email,
+            claimedAt: submission.claimedAt
+        )
+        guard submission.claimHash == expectedClaimHash else {
+            throw ClaimPersistenceError.claimHashMismatch
         }
 
         var claims = try load()
@@ -128,51 +107,10 @@ struct ClaimsStore {
         return "\(first)\(second)\u{2026}"
     }
 
-    static func frontMark(for convergenceHash: String) -> String {
-        String(convergenceHash.prefix(9)).uppercased()
-    }
-
-    static func claimHash(
-        convergenceHash: String,
-        frontMark: String,
-        email: String,
-        claimedAt: String
-    ) -> String {
-        let payload = convergenceHash
-            + normalizeFrontMark(frontMark)
-            + email
-            + claimedAt
-
-        return hex(Keccak256().hash(Array(payload.utf8)))
-    }
-
-    static func claimHash(
-        convergenceHash: String,
-        unitURL: String,
-        imageSHA256: String,
-        email: String,
-        claimedAt: String
-    ) -> String {
-        let payload = convergenceHash
-            + unitURL
-            + imageSHA256.lowercased()
-            + email
-            + claimedAt
-
-        return hex(Keccak256().hash(Array(payload.utf8)))
-    }
-
-    static func normalizeFrontMark(_ value: String) -> String {
-        String(
-            value
-                .uppercased()
-                .filter { $0.isLetter || $0.isNumber }
-        )
-    }
-
     private static func hex(_ bytes: [UInt8]) -> String {
         bytes.map { String(format: "%02x", $0) }.joined()
     }
+
 }
 
 struct ClaimSubmission: Codable {
@@ -181,9 +119,7 @@ struct ClaimSubmission: Codable {
     let name: String?
     let claimedAt: String
     let claimHash: String
-    let frontMark: String?
-    let imageSHA256: String?
-    let proofImagePath: String?
+    let claimCode: String?
     let verification: PersistedClaimVerification
 
     enum CodingKeys: String, CodingKey {
@@ -192,9 +128,7 @@ struct ClaimSubmission: Codable {
         case name
         case claimedAt = "claimed_at"
         case claimHash = "claim_hash"
-        case frontMark = "front_mark"
-        case imageSHA256 = "image_sha256"
-        case proofImagePath = "proof_image_path"
+        case claimCode = "claim_code"
         case verification
     }
 }
@@ -234,10 +168,10 @@ private struct ClaimUnitDataPayload: Decodable {
 
 private enum ClaimPersistenceError: Error, LocalizedError {
     case alreadyClaimed(Int)
+    case claimCodeMismatch
     case claimHashMismatch
-    case frontMarkMismatch
-    case missingImageHash
-    case missingProofImage
+    case missingClaimCode
+    case missingClaimSecret
     case unitNotFound(Int)
     case unsupportedVerificationMethod
 
@@ -245,14 +179,14 @@ private enum ClaimPersistenceError: Error, LocalizedError {
         switch self {
         case .alreadyClaimed(let unit):
             return "Unit \(unit) already has a committed claim."
+        case .claimCodeMismatch:
+            return "Internal claim code verification failed."
         case .claimHashMismatch:
             return "Claim hash verification failed."
-        case .frontMarkMismatch:
-            return "Front mark verification failed."
-        case .missingImageHash:
-            return "Proof image hash was not provided."
-        case .missingProofImage:
-            return "Proof image was not provided."
+        case .missingClaimCode:
+            return "Internal claim code was not provided."
+        case .missingClaimSecret:
+            return "Missing claim-code master secret."
         case .unitNotFound(let unit):
             return "Unit \(unit) does not exist in output."
         case .unsupportedVerificationMethod:

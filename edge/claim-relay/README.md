@@ -10,7 +10,7 @@ The relay solves that by:
 
 1. accepting a claim POST from `standardcontrol.html`
 2. forwarding it to GitHub Actions
-3. letting the repo-side Swift verifier re-check the front mark and claim hash
+3. letting the repo-side Swift verifier re-check the internal claim code and claim hash
 4. committing `claims.json` and regenerated `units.json`
 
 ## Recommended deployment
@@ -77,6 +77,6 @@ The browser sends:
 - `name`
 - `claimed_at`
 - `claim_hash`
-- `front_mark`
+- `claim_code`
 
-`front_mark` is the code printed on the artifact front.
+`claim_code` is the deterministic internal code engraved inside the tin.

@@ -14,3 +14,6 @@ xcuserdata/
 /tmp-home/
 /tmp-sigil-build/
 tmp-referenceinstrument-*.png
+.secrets/
+private/
+edge/claim-relay/node_modules/

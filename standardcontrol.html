@@ -153,8 +153,9 @@
                 <input type="email" name="email" autocomplete="email" required>
               </label>
               <label class="order-field">
-                <span>Proof Photo</span>
-                <input type="file" name="proof_image" accept="image/*" capture="environment" required>
+                <span>Internal Claim Code</span>
+                <input type="text" name="claim_code" autocomplete="off" autocapitalize="characters" spellcheck="false" required>
+                <span class="order-helper-note">Open the tin and enter the engraved internal claim code.</span>
               </label>
               <div class="claim-grid">
                 <label class="order-field">
@@ -168,7 +169,7 @@
               </div>
               <div class="claim-actions">
                 <button class="order-submit" type="submit">Claim This Unit</button>
-                <p class="muted claim-note" id="claim-status">Upload a photo with the unit QR clearly visible.</p>
+                <p class="muted claim-note" id="claim-status"></p>
               </div>
             </form>
           </div>
@@ -192,7 +193,7 @@
           try {
             const claimedRecord = await window.SovereignRegistry.claimUnit(record.unit, {
               email: String(data.get('email') || '').trim(),
-              proofImage: data.get('proof_image'),
+              claimCode: String(data.get('claim_code') || '').trim(),
               name: String(data.get('name') || '').trim(),
               location: String(data.get('location') || '').trim()
             });

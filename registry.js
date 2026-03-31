@@ -1,8 +1,6 @@
 (() => {
   const STORAGE_KEY = 'sovereign-standard.claims.v1';
   const PARTNER_ELIGIBLE_MAX_UNIT = 33;
-  const PUBLIC_BASE_URL = 'https://sovereignstandard.co';
-  const MAX_PROOF_IMAGE_BASE64_LENGTH = 48000;
   const RATE_IN_BYTES = 136;
   const ROTATION_OFFSETS = [
     0, 1, 62, 28, 27,
@@ -161,11 +159,14 @@
       throw new Error('This unit is not claimable');
     }
 
+    const normalizedClaimCode = normalizeClaimCode(payload.claimCode);
+    if (normalizedClaimCode.length < 12) {
+      throw new Error('Enter the internal claim code from inside the tin');
+    }
+
     const timestamp = formatTimestamp(new Date());
-    const proof = await prepareImageProof(payload.proofImage, Number(unit));
-    const expectedUnitURL = expectedQRPayloadForUnit(unit);
     const claimHash = keccak256(
-      `${record.system.convergence_hash}${expectedUnitURL}${proof.imageSHA256}${payload.email}${timestamp}`
+      `${record.system.convergence_hash}${normalizedClaimCode}${payload.email}${timestamp}`
     );
     const relayEndpoint = getClaimEndpoint();
 
@@ -179,9 +180,11 @@
       name: payload.name || null,
       claimed_at: timestamp,
       claim_hash: claimHash,
-      image_sha256: proof.imageSHA256,
-      image_base64: proof.imageBase64,
-      verification: proof.verification
+      claim_code: normalizedClaimCode,
+      verification: {
+        method: 'code',
+        confidence: 1
+      }
     });
 
     const claim = {
@@ -191,7 +194,7 @@
       claim_hash: claimHash,
       pending: true,
       verification: {
-        method: 'hash',
+        method: 'code',
         confidence: 1
       }
     };
@@ -204,32 +207,6 @@
       ...record,
       state: 'CLAIMED',
       claim
-    };
-  }
-
-  async function prepareImageProof(file, unit) {
-    if (!(file instanceof File)) {
-      throw new Error('A proof photo is required');
-    }
-
-    if (!file.type.startsWith('image/')) {
-      throw new Error('Proof photo must be an image');
-    }
-
-    const preparedBlob = await compressProofImage(file);
-    const imageSHA256 = await sha256Hex(await preparedBlob.arrayBuffer());
-    const imageBase64 = await blobToBase64(preparedBlob);
-
-    if (imageBase64.length > MAX_PROOF_IMAGE_BASE64_LENGTH) {
-      throw new Error('Proof photo is too large. Use a closer crop with the QR clearly visible.');
-    }
-
-    const verification = await verifyProofImage(preparedBlob, unit);
-
-    return {
-      imageSHA256,
-      imageBase64,
-      verification
     };
   }
 
@@ -267,7 +244,7 @@
     setClaimsStore(claimStore);
   }
 
-  function normalizeFrontMark(value) {
+  function normalizeClaimCode(value) {
     return String(value || '')
       .trim()
       .toUpperCase()
@@ -293,79 +270,6 @@
     }
 
     return null;
-  }
-
-  function expectedQRPayloadForUnit(unit) {
-    return `${PUBLIC_BASE_URL}/standardcontrol.html?unit=${Number(unit)}`;
-  }
-
-  async function compressProofImage(file) {
-    const bitmap = await createImageBitmap(file);
-    const canvas = document.createElement('canvas');
-    const context = canvas.getContext('2d');
-    const longestEdge = Math.max(bitmap.width, bitmap.height);
-    const scale = longestEdge > 1440 ? 1440 / longestEdge : 1;
-
-    canvas.width = Math.max(1, Math.round(bitmap.width * scale));
-    canvas.height = Math.max(1, Math.round(bitmap.height * scale));
-    context.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
-    bitmap.close?.();
-
-    return await new Promise((resolve, reject) => {
-      canvas.toBlob((blob) => {
-        if (!blob) {
-          reject(new Error('Unable to process proof photo'));
-          return;
-        }
-        resolve(blob);
-      }, 'image/jpeg', 0.82);
-    });
-  }
-
-  async function verifyProofImage(blob, unit) {
-    if (!('BarcodeDetector' in window)) {
-      throw new Error('This browser cannot scan proof photos yet. Use Chrome or Edge for now.');
-    }
-
-    const detector = new window.BarcodeDetector({ formats: ['qr_code'] });
-    const bitmap = await createImageBitmap(blob);
-
-    try {
-      const results = await detector.detect(bitmap);
-      const expectedPayload = expectedQRPayloadForUnit(unit);
-      const matched = results.some((result) => String(result.rawValue || '').trim() === expectedPayload);
-
-      if (!matched) {
-        throw new Error('Proof photo must include this unit QR');
-      }
-
-      return {
-        method: 'image',
-        confidence: 0.88
-      };
-    } finally {
-      bitmap.close?.();
-    }
-  }
-
-  async function sha256Hex(buffer) {
-    const digest = await crypto.subtle.digest('SHA-256', buffer);
-    return Array.from(new Uint8Array(digest))
-      .map((byte) => byte.toString(16).padStart(2, '0'))
-      .join('');
-  }
-
-  async function blobToBase64(blob) {
-    return await new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => {
-        const result = String(reader.result || '');
-        const base64 = result.split(',')[1] || '';
-        resolve(base64);
-      };
-      reader.onerror = () => reject(new Error('Unable to encode proof photo'));
-      reader.readAsDataURL(blob);
-    });
   }
 
   function clearManifestCache() {

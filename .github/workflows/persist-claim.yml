@@ -21,9 +21,9 @@ on:
       claim_hash:
         description: Claim hash
         required: true
-      image_sha256:
-        description: Proof image SHA256
-        required: false
+      claim_code:
+        description: Internal claim code
+        required: true
 
 permissions:
   contents: write
@@ -51,30 +51,24 @@ jobs:
           INPUT_NAME: ${{ inputs.name }}
           INPUT_CLAIMED_AT: ${{ inputs.claimed_at }}
           INPUT_CLAIM_HASH: ${{ inputs.claim_hash }}
-          INPUT_IMAGE_SHA256: ${{ inputs.image_sha256 }}
+          INPUT_CLAIM_CODE: ${{ inputs.claim_code }}
         run: |
           python3 - <<'PY'
-          import base64
           import json
           import os
 
           payload = json.loads(os.environ.get("DISPATCH_PAYLOAD") or "{}")
           use_dispatch = bool(payload)
-          image_base64 = payload.get("image_base64", "") if use_dispatch else ""
-          if image_base64:
-              with open("claim-proof.jpg", "wb") as handle:
-                  handle.write(base64.b64decode(image_base64))
           data = {
               "unit": int(payload.get("unit") if use_dispatch else os.environ["INPUT_UNIT"]),
               "email": payload.get("email") if use_dispatch else os.environ["INPUT_EMAIL"],
               "name": payload.get("name") if use_dispatch else os.environ.get("INPUT_NAME") or None,
               "claimed_at": payload.get("claimed_at") if use_dispatch else os.environ["INPUT_CLAIMED_AT"],
               "claim_hash": payload.get("claim_hash") if use_dispatch else os.environ["INPUT_CLAIM_HASH"],
-              "image_sha256": payload.get("image_sha256") if use_dispatch else os.environ.get("INPUT_IMAGE_SHA256") or None,
-              "proof_image_path": "claim-proof.jpg" if image_base64 else None,
+              "claim_code": payload.get("claim_code") if use_dispatch else os.environ["INPUT_CLAIM_CODE"],
               "verification": payload.get("verification") if use_dispatch else {
-                  "method": "image",
-                  "confidence": 0.88
+                  "method": "code",
+                  "confidence": 1.0
               }
           }
           with open("claim-submission.json", "w", encoding="utf-8") as handle:
@@ -82,6 +76,8 @@ jobs:
           PY
 
       - name: Persist claim and refresh site
+        env:
+          SOVEREIGN_CLAIM_SECRET: ${{ secrets.SOVEREIGN_CLAIM_SECRET }}
         run: swift run SovereignStandard persist-claim claim-submission.json
 
       - name: Run tests

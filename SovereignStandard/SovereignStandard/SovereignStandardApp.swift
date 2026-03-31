@@ -48,17 +48,14 @@ struct SovereignStandardApp {
             let claimFileURL = URL(fileURLWithPath: claimFilePath, relativeTo: rootURL)
             let claimData = try Data(contentsOf: claimFileURL)
             let submission = try JSONDecoder().decode(ClaimSubmission.self, from: claimData)
-            try ClaimsStore(root: rootURL).persist(
-                submission: submission,
-                outputRoot: outputRoot,
-                claimFileURL: claimFileURL
-            )
+            try ClaimsStore(root: rootURL).persist(submission: submission, outputRoot: outputRoot)
             shouldSyncSite = true
         }
 
         if shouldSyncSite {
             let unitIDs = try outputWriter.existingUnitIDs(outputRoot: outputRoot)
             try siteWriter.write(units: unitIDs, root: rootURL)
+            try ClaimCodeManifestWriter(root: rootURL).write(units: unitIDs, outputRoot: outputRoot, root: rootURL)
         }
     }
 }

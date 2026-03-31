@@ -1,12 +1,11 @@
 import XCTest
-import AppKit
-import CoreImage
-import CoreImage.CIFilterBuiltins
 import Foundation
 import FoldKernel
 @testable import SovereignStandard
 
 final class SovereignStandardTests: XCTestCase {
+    private let testClaimSecret = "test-claim-secret"
+
     func testGenerateUnitIsDeterministic() throws {
         let engine = SovereignEngine()
 
@@ -201,12 +200,13 @@ final class SovereignStandardTests: XCTestCase {
         let unit = try engine.generateUnit(unitID: 42)
         try writer.write(unit: unit, outputRoot: outputRoot)
 
-        let claimsStore = ClaimsStore(root: root)
+        let claimsStore = ClaimsStore(root: root, masterSecret: testClaimSecret)
         let claimedAt = "2026-03-31T03:00:00Z"
-        let frontMark = ClaimsStore.frontMark(for: unit.hash)
-        let claimHash = ClaimsStore.claimHash(
+        let authority = try ClaimCodeAuthority(root: root, masterSecret: testClaimSecret)
+        let claimCode = authority.claimCode(for: unit.hash)
+        let claimHash = ClaimCodeAuthority.claimHash(
             convergenceHash: unit.hash,
-            frontMark: frontMark,
+            claimCode: claimCode,
             email: "collector@example.com",
             claimedAt: claimedAt
         )
@@ -216,10 +216,8 @@ final class SovereignStandardTests: XCTestCase {
             name: "Collector",
             claimedAt: claimedAt,
             claimHash: claimHash,
-            frontMark: frontMark,
-            imageSHA256: nil,
-            proofImagePath: nil,
-            verification: PersistedClaimVerification(method: "hash", confidence: 1.0)
+            claimCode: claimCode,
+            verification: PersistedClaimVerification(method: "code", confidence: 1.0)
         )
 
         try claimsStore.persist(submission: submission, outputRoot: outputRoot)
@@ -243,10 +241,9 @@ final class SovereignStandardTests: XCTestCase {
         XCTAssertNil(claim["email"])
     }
 
-    func testPersistClaimAcceptsImageProofAndPublicRegistryState() throws {
+    func testClaimCodeManifestWriterIsDeterministicAcrossRegeneration() throws {
         let engine = SovereignEngine()
         let writer = OutputWriter()
-        let siteWriter = SiteWriter()
         let root = FileManager.default.temporaryDirectory
             .appendingPathComponent(UUID().uuidString, isDirectory: true)
         let outputRoot = root.appendingPathComponent("output", isDirectory: true)
@@ -258,56 +255,15 @@ final class SovereignStandardTests: XCTestCase {
 
         let unit = try engine.generateUnit(unitID: 43)
         try writer.write(unit: unit, outputRoot: outputRoot)
+        let manifestWriter = try ClaimCodeManifestWriter(root: root, masterSecret: testClaimSecret)
+        try manifestWriter.write(units: [43], outputRoot: outputRoot, root: root)
+        let first = try claimCodeManifestData(at: root.appendingPathComponent("private/claim-codes.json"))
 
-        let proofImageURL = root.appendingPathComponent("claim-proof.jpg")
-        try writeQRProofImage(payload: SiteConfiguration.unitURL(for: unit.unitID), to: proofImageURL)
-        let proofImageData = try Data(contentsOf: proofImageURL)
-        let imageSHA256 = ClaimProofVerifier.sha256(for: proofImageData)
-        let claimedAt = "2026-03-31T04:30:00Z"
+        try writer.write(unit: unit, outputRoot: outputRoot)
+        try manifestWriter.write(units: [43], outputRoot: outputRoot, root: root)
+        let second = try claimCodeManifestData(at: root.appendingPathComponent("private/claim-codes.json"))
 
-        let claimHash = ClaimsStore.claimHash(
-            convergenceHash: unit.hash,
-            unitURL: SiteConfiguration.unitURL(for: unit.unitID),
-            imageSHA256: imageSHA256,
-            email: "image-collector@example.com",
-            claimedAt: claimedAt
-        )
-
-        let submission = ClaimSubmission(
-            unit: 43,
-            email: "image-collector@example.com",
-            name: "Image Collector",
-            claimedAt: claimedAt,
-            claimHash: claimHash,
-            frontMark: nil,
-            imageSHA256: imageSHA256,
-            proofImagePath: "claim-proof.jpg",
-            verification: PersistedClaimVerification(method: "image", confidence: 0.88)
-        )
-
-        let claimsStore = ClaimsStore(root: root)
-        let claimFileURL = root.appendingPathComponent("claim-submission.json")
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
-        try encoder.encode(submission).write(to: claimFileURL)
-
-        try claimsStore.persist(submission: submission, outputRoot: outputRoot, claimFileURL: claimFileURL)
-        try siteWriter.write(units: [43], root: root)
-
-        let claims = try claimsStore.load()
-        XCTAssertEqual(claims.count, 1)
-        XCTAssertEqual(claims.first?.unit, 43)
-        XCTAssertEqual(claims.first?.verification.method, "image")
-
-        let unitsData = try Data(contentsOf: root.appendingPathComponent("units.json"))
-        let manifest = try JSONSerialization.jsonObject(with: unitsData) as? [String: Any]
-        let units = manifest?["units"] as? [[String: Any]]
-        let record = try XCTUnwrap(units?.first)
-        let claim = try XCTUnwrap(record["claim"] as? [String: Any])
-        let verification = try XCTUnwrap(claim["verification"] as? [String: Any])
-
-        XCTAssertEqual(record["state"] as? String, "CLAIMED")
-        XCTAssertEqual(verification["method"] as? String, "image")
+        XCTAssertEqual(first, second)
     }
 
     private func permutations(from events: [FoldEvent]) -> [[UInt8]] {
@@ -335,32 +291,10 @@ final class SovereignStandardTests: XCTestCase {
         return try JSONDecoder().decode(ArtifactIssuance.self, from: data)
     }
 
-    private func writeQRProofImage(payload: String, to url: URL) throws {
-        let filter = CIFilter.qrCodeGenerator()
-        filter.setValue(Data(payload.utf8), forKey: "inputMessage")
-        filter.setValue("M", forKey: "inputCorrectionLevel")
-
-        guard let outputImage = filter.outputImage else {
-            XCTFail("QR generation failed")
-            return
-        }
-
-        let transformed = outputImage.transformed(by: CGAffineTransform(scaleX: 18, y: 18))
-        let context = CIContext(options: [.useSoftwareRenderer: true])
-        let extent = transformed.extent.integral
-
-        guard let cgImage = context.createCGImage(transformed, from: extent) else {
-            XCTFail("QR rasterization failed")
-            return
-        }
-
-        let bitmap = NSBitmapImageRep(cgImage: cgImage)
-        guard let jpegData = bitmap.representation(using: .jpeg, properties: [.compressionFactor: 0.9]) else {
-            XCTFail("JPEG encoding failed")
-            return
-        }
-
-        try jpegData.write(to: url)
+    private func claimCodeManifestData(at url: URL) throws -> [[String: AnyHashable]] {
+        let data = try Data(contentsOf: url)
+        let payload = try JSONSerialization.jsonObject(with: data) as? [String: Any]
+        return payload?["units"] as? [[String: AnyHashable]] ?? []
     }
 }
 

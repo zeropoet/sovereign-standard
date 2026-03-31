@@ -54,6 +54,8 @@ struct SovereignStandardApp {
 
         if shouldSyncSite {
             let unitIDs = try outputWriter.existingUnitIDs(outputRoot: outputRoot)
+            let claimsStore = ClaimsStore(root: rootURL)
+            try claimsStore.save(try claimsStore.load())
             try siteWriter.write(units: unitIDs, root: rootURL)
             try ClaimCodeManifestWriter(root: rootURL).write(units: unitIDs, outputRoot: outputRoot, root: rootURL)
         }

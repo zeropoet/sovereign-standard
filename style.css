@@ -672,6 +672,20 @@ h3 {
   transition: background-color 120ms ease;
 }
 
+.artifact-card.state-claimable {
+  border-color: var(--line);
+}
+
+.artifact-card.state-claimed {
+  border-color: var(--text);
+  background: #fafafa;
+}
+
+.artifact-card.state-partner {
+  border-color: var(--text);
+  background: #f3f3f3;
+}
+
 .artifact-card:hover,
 .artifact-card:focus-within {
   background: #000;

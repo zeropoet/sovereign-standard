@@ -193,6 +193,7 @@ final class SovereignStandardTests: XCTestCase {
         let outputRoot = root.appendingPathComponent("output", isDirectory: true)
 
         try FileManager.default.createDirectory(at: outputRoot, withIntermediateDirectories: true)
+        try writeClaimSecret(into: root)
         defer {
             try? FileManager.default.removeItem(at: root)
         }
@@ -204,20 +205,10 @@ final class SovereignStandardTests: XCTestCase {
         let claimedAt = "2026-03-31T03:00:00Z"
         let authority = try ClaimCodeAuthority(root: root, masterSecret: testClaimSecret)
         let claimCode = authority.claimCode(for: unit.hash)
-        let claimHash = ClaimCodeAuthority.claimHash(
-            convergenceHash: unit.hash,
-            claimCode: claimCode,
-            email: "collector@example.com",
-            claimedAt: claimedAt
-        )
         let submission = ClaimSubmission(
             unit: 42,
-            email: "collector@example.com",
-            name: "Collector",
             claimedAt: claimedAt,
-            claimHash: claimHash,
-            claimCode: claimCode,
-            verification: PersistedClaimVerification(method: "code", confidence: 1.0)
+            claimCode: claimCode
         )
 
         try claimsStore.persist(submission: submission, outputRoot: outputRoot)
@@ -226,19 +217,17 @@ final class SovereignStandardTests: XCTestCase {
         let claims = try claimsStore.load()
         XCTAssertEqual(claims.count, 1)
         XCTAssertEqual(claims.first?.unit, 42)
-        XCTAssertEqual(claims.first?.name, "Collector")
-        XCTAssertNotNil(claims.first?.emailHash)
+        XCTAssertNotNil(claims.first?.holderHash)
 
         let unitsData = try Data(contentsOf: root.appendingPathComponent("units.json"))
         let manifest = try JSONSerialization.jsonObject(with: unitsData) as? [String: Any]
         let units = manifest?["units"] as? [[String: Any]]
         let record = try XCTUnwrap(units?.first)
-        let claim = try XCTUnwrap(record["claim"] as? [String: Any])
 
         XCTAssertEqual(record["state"] as? String, "CLAIMED")
-        XCTAssertEqual(claim["claim_hash"] as? String, claimHash)
-        XCTAssertEqual(claim["signal"] as? String, "Collector")
-        XCTAssertNil(claim["email"])
+        XCTAssertEqual(record["claim_hash"] as? String, ClaimCodeAuthority.claimHash(for: claimCode))
+        XCTAssertEqual(record["claimed_at"] as? String, claimedAt)
+        XCTAssertNotNil(record["holder_hash"] as? String)
     }
 
     func testClaimCodeManifestWriterIsDeterministicAcrossRegeneration() throws {
@@ -249,6 +238,7 @@ final class SovereignStandardTests: XCTestCase {
         let outputRoot = root.appendingPathComponent("output", isDirectory: true)
 
         try FileManager.default.createDirectory(at: outputRoot, withIntermediateDirectories: true)
+        try writeClaimSecret(into: root)
         defer {
             try? FileManager.default.removeItem(at: root)
         }
@@ -295,6 +285,12 @@ final class SovereignStandardTests: XCTestCase {
         let data = try Data(contentsOf: url)
         let payload = try JSONSerialization.jsonObject(with: data) as? [String: Any]
         return payload?["units"] as? [[String: AnyHashable]] ?? []
+    }
+
+    private func writeClaimSecret(into root: URL) throws {
+        let directory = root.appendingPathComponent(".secrets", isDirectory: true)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        try testClaimSecret.write(to: directory.appendingPathComponent("claim-master.txt"), atomically: true, encoding: .utf8)
     }
 }
 

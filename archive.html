@@ -33,8 +33,8 @@
       <a href="index.html" class="nav">Back</a>
     </nav>
     <header class="page-header">
-      <h1 class="page-title">Artifact Archive</h1>
-      <p class="page-intro">Each unit is a state-bearing object in the registry.</p>
+      <h1 class="page-title">Unit Archive</h1>
+      <p class="page-intro">A finite index of units progressing through state.</p>
       <div class="archive-search-row">
         <label class="archive-search" for="unit-search">
           <input id="unit-search" name="unit-search" type="search" inputmode="numeric" placeholder="Enter a unit number" autocomplete="off">
@@ -70,14 +70,15 @@
   <script>
     async function loadUnits() {
       const manifest = await window.SovereignRegistry.loadRegistry();
+      const publicUnits = manifest.units.filter((record) => record.state !== 'NODE');
       const gallery = document.getElementById('gallery');
       const unitCount = document.getElementById('unit-count');
       const unitSearch = document.getElementById('unit-search');
       const stateInputs = Array.from(document.querySelectorAll('input[name="state-filter"]'));
 
-      unitCount.textContent = `/ ${manifest.units.length} units created`;
+      unitCount.textContent = `/ ${publicUnits.length} units indexed`;
 
-      if (!manifest.units.length) {
+      if (!publicUnits.length) {
         gallery.innerHTML = '<p>No artifacts indexed yet.</p>';
         return;
       }
@@ -87,8 +88,8 @@
         const selectedState = stateInputs.find((input) => input.checked)?.value || 'ALL';
 
         const normalizedQuery = query.trim();
-        const filteredUnits = manifest.units.filter((record) => {
-          const unitID = Number(record.unit);
+        const filteredUnits = publicUnits.filter((record) => {
+          const unitID = Number(record.id ?? record.unit);
           const matchesQuery = normalizedQuery ? `${unitID}`.includes(normalizedQuery) : true;
           const matchesState = selectedState === 'ALL' || record.state === selectedState;
 
@@ -103,9 +104,9 @@
         }
 
         for (const record of filteredUnits) {
-          const unitID = Number(record.unit);
+          const unitID = Number(record.id ?? record.unit);
           const card = document.createElement('article');
-          card.className = 'artifact-card panel';
+          card.className = `artifact-card panel state-${String(record.state || '').toLowerCase()}`;
 
           const link = document.createElement('a');
           link.href = `standardcontrol.html?unit=${unitID}`;

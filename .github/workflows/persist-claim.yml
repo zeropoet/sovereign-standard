@@ -9,17 +9,8 @@ on:
       unit:
         description: Unit number
         required: true
-      email:
-        description: Collector email
-        required: true
-      name:
-        description: Collector name
-        required: false
       claimed_at:
         description: Claim timestamp ISO8601
-        required: true
-      claim_hash:
-        description: Claim hash
         required: true
       claim_code:
         description: Internal claim code
@@ -47,10 +38,7 @@ jobs:
         env:
           DISPATCH_PAYLOAD: ${{ toJson(github.event.client_payload) }}
           INPUT_UNIT: ${{ inputs.unit }}
-          INPUT_EMAIL: ${{ inputs.email }}
-          INPUT_NAME: ${{ inputs.name }}
           INPUT_CLAIMED_AT: ${{ inputs.claimed_at }}
-          INPUT_CLAIM_HASH: ${{ inputs.claim_hash }}
           INPUT_CLAIM_CODE: ${{ inputs.claim_code }}
         run: |
           python3 - <<'PY'
@@ -61,15 +49,8 @@ jobs:
           use_dispatch = bool(payload)
           data = {
               "unit": int(payload.get("unit") if use_dispatch else os.environ["INPUT_UNIT"]),
-              "email": payload.get("email") if use_dispatch else os.environ["INPUT_EMAIL"],
-              "name": payload.get("name") if use_dispatch else os.environ.get("INPUT_NAME") or None,
               "claimed_at": payload.get("claimed_at") if use_dispatch else os.environ["INPUT_CLAIMED_AT"],
-              "claim_hash": payload.get("claim_hash") if use_dispatch else os.environ["INPUT_CLAIM_HASH"],
-              "claim_code": payload.get("claim_code") if use_dispatch else os.environ["INPUT_CLAIM_CODE"],
-              "verification": payload.get("verification") if use_dispatch else {
-                  "method": "code",
-                  "confidence": 1.0
-              }
+              "claim_code": payload.get("claim_code") if use_dispatch else os.environ["INPUT_CLAIM_CODE"]
           }
           with open("claim-submission.json", "w", encoding="utf-8") as handle:
               json.dump(data, handle, indent=2, sort_keys=True)

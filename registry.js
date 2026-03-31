@@ -79,41 +79,38 @@
   function createFallbackRecord(unit) {
     const timestamp = new Date().toISOString();
     return {
-      unit,
-      timestamp,
+      id: Number(unit),
+      created_at: timestamp,
       state: 'CLAIMABLE',
-      product: {
-        blend: 'Green Sencha / Lemon Balm / Kapoor Tulsi / Ginger',
-        version: '1.0'
-      },
-      physical: {
-        tin_serial: `SS-${String(unit).padStart(4, '0')}`,
-        engraving_hash: '',
-        sigil: `output/${unit}/sigil.svg`
-      },
-      system: {
-        seed: String(unit),
-        convergence_hash: '',
-        memory_bytes: 0,
-        kernel_version: '1.0.0'
-      },
-      claim: null,
-      partner: null
+      claim_hash: null,
+      claimed_at: null,
+      holder_hash: null,
+      is_partner: false,
+      sigil: null
     };
   }
 
   function mergeUnitRecord(record) {
     const claimStore = getClaimsStore();
-    const localClaim = claimStore[String(record.unit)];
+    const unitID = Number(record.id ?? record.unit);
+    const localClaim = claimStore[String(unitID)];
 
-    if (!localClaim || record.state === 'PARTNER' || record.claim) {
+    if (localClaim && (record.claimed_at || record.state === 'PARTNER' || record.state === 'NODE')) {
+      delete claimStore[String(unitID)];
+      setClaimsStore(claimStore);
+      return record;
+    }
+
+    if (!localClaim) {
       return record;
     }
 
     return {
       ...record,
       state: 'CLAIMED',
-      claim: localClaim
+      pending: Boolean(localClaim.pending),
+      claimed_at: localClaim.claimed_at,
+      holder_hash: localClaim.holder_hash
     };
   }
 
@@ -142,7 +139,7 @@
 
   async function loadUnitRecord(unit) {
     const registry = await loadRegistry();
-    return registry.units.find((entry) => Number(entry.unit) === Number(unit)) || null;
+    return registry.units.find((entry) => Number(entry.id ?? entry.unit) === Number(unit)) || null;
   }
 
   async function claimUnit(unit, payload) {
@@ -158,13 +155,16 @@
 
     const normalizedClaimCode = normalizeClaimCode(payload.claimCode);
     if (normalizedClaimCode.length < 12) {
-      throw new Error('Enter the internal claim code from inside the tin');
+      throw new Error('Invalid code');
+    }
+
+    if (keccak256(normalizedClaimCode) !== String(record.claim_hash || '')) {
+      throw new Error('Invalid code');
     }
 
     const timestamp = formatTimestamp(new Date());
-    const claimHash = keccak256(
-      `${record.system.convergence_hash}${normalizedClaimCode}${payload.email}${timestamp}`
-    );
+    const unitID = Number(record.id ?? record.unit);
+    const holderHash = keccak256(`${normalizedClaimCode}${timestamp}${unitID}`);
     const relayEndpoint = getClaimEndpoint();
 
     if (!relayEndpoint) {
@@ -172,38 +172,25 @@
     }
 
     await submitClaimToRelay(relayEndpoint, {
-      unit: Number(unit),
-      email: payload.email,
-      name: payload.name || null,
+      unit: unitID,
       claimed_at: timestamp,
-      claim_hash: claimHash,
-      claim_code: normalizedClaimCode,
-      verification: {
-        method: 'code',
-        confidence: 1
-      }
+      claim_code: normalizedClaimCode
     });
 
-    const claim = {
-      name: payload.name || null,
-      signal: payload.name || null,
-      claimed_at: timestamp,
-      claim_hash: claimHash,
-      pending: true,
-      verification: {
-        method: 'code',
-        confidence: 1
-      }
-    };
-
     const claimStore = getClaimsStore();
-    claimStore[String(unit)] = claim;
+    claimStore[String(unitID)] = {
+      claimed_at: timestamp,
+      holder_hash: holderHash,
+      pending: true
+    };
     setClaimsStore(claimStore);
 
     return {
       ...record,
       state: 'CLAIMED',
-      claim
+      pending: true,
+      claimed_at: timestamp,
+      holder_hash: holderHash
     };
   }
 
@@ -249,24 +236,13 @@
   }
 
   function getPublicClaimSignal(record) {
-    if (!record?.claim) {
+    const holderHash = record?.holder_hash;
+
+    if (!holderHash) {
       return null;
     }
 
-    if (record.claim.signal) {
-      return record.claim.signal;
-    }
-
-    if (record.claim.name) {
-      return record.claim.name;
-    }
-
-    if (record.claim.email) {
-      const [localPart = 'collector'] = record.claim.email.split('@');
-      return `${localPart.slice(0, 1).toUpperCase()}${localPart.slice(1, 2)}…`;
-    }
-
-    return null;
+    return `${String(holderHash).slice(0, 10)}...`;
   }
 
   function clearManifestCache() {

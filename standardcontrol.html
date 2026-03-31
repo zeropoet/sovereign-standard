@@ -44,7 +44,7 @@
       <a id="unit-next" class="unit-pagination-link" href="archive.html">Next</a>
     </nav>
 
-    <section class="artifact-grid artifact-section">
+    <section id="artifact-grid" class="artifact-grid artifact-section">
       <article class="panel artifact-figure">
         <h3>Front</h3>
         <img id="front" alt="Front layout">
@@ -142,33 +142,20 @@
     function renderStatePanel(record) {
       const statePanel = document.getElementById('state-panel');
       const signal = window.SovereignRegistry.getPublicClaimSignal(record);
+      const unitID = Number(record.id ?? record.unit);
 
       if (record.state === 'CLAIMABLE') {
         statePanel.innerHTML = `
           <div class="state-block">
-            <p class="state-label">THIS UNIT IS UNCLAIMED</p>
+            <p class="state-label">CLAIMABLE</p>
             <form class="claim-form" id="claim-form">
               <label class="order-field">
-                <span>Email</span>
-                <input type="email" name="email" autocomplete="email" required>
-              </label>
-              <label class="order-field">
-                <span>Internal Claim Code</span>
+                <span>Claim Code</span>
                 <input type="text" name="claim_code" autocomplete="off" autocapitalize="characters" spellcheck="false" required>
                 <span class="order-helper-note">Open the tin and enter the engraved internal claim code.</span>
               </label>
-              <div class="claim-grid">
-                <label class="order-field">
-                  <span>Name</span>
-                  <input type="text" name="name" autocomplete="name">
-                </label>
-                <label class="order-field">
-                  <span>Location</span>
-                  <input type="text" name="location" autocomplete="address-level2">
-                </label>
-              </div>
               <div class="claim-actions">
-                <button class="order-submit" type="submit">Claim This Unit</button>
+                <button class="order-submit" type="submit">Submit</button>
                 <p class="muted claim-note" id="claim-status"></p>
               </div>
             </form>
@@ -188,18 +175,25 @@
           const data = new FormData(form);
           const submitButton = form.querySelector('button[type="submit"]');
           submitButton.disabled = true;
-          status.textContent = 'Claiming unit...';
+          status.textContent = '';
+
+          const startedAt = Date.now();
 
           try {
-            const claimedRecord = await window.SovereignRegistry.claimUnit(record.unit, {
-              email: String(data.get('email') || '').trim(),
-              claimCode: String(data.get('claim_code') || '').trim(),
-              name: String(data.get('name') || '').trim(),
-              location: String(data.get('location') || '').trim()
+            const claimedRecord = await window.SovereignRegistry.claimUnit(unitID, {
+              claimCode: String(data.get('claim_code') || '').trim()
             });
 
+            const delay = 500 + Math.floor(Math.random() * 701);
+            const remaining = Math.max(0, delay - (Date.now() - startedAt));
+            await new Promise((resolve) => window.setTimeout(resolve, remaining));
+            status.textContent = 'Unit claimed.';
+            renderArtifactState(claimedRecord);
             renderStatePanel(claimedRecord);
           } catch (error) {
+            const delay = 500 + Math.floor(Math.random() * 701);
+            const remaining = Math.max(0, delay - (Date.now() - startedAt));
+            await new Promise((resolve) => window.setTimeout(resolve, remaining));
             status.textContent = error.message || 'Unable to claim this unit.';
             submitButton.disabled = false;
           }
@@ -211,10 +205,10 @@
       if (record.state === 'CLAIMED') {
         statePanel.innerHTML = `
           <div class="state-block">
-            <p class="state-label">${record.claim?.pending ? 'CLAIM SUBMITTED' : 'CLAIMED'}</p>
-            <p class="state-detail">${escapeHTML(formatTimestamp(record.claim?.claimed_at))}</p>
+            <p class="state-label">${record.pending ? 'CLAIMED' : 'CLAIMED'}</p>
+            <p class="state-detail">${escapeHTML(formatTimestamp(record.claimed_at))}</p>
             ${signal ? `<p class="muted claim-note">${escapeHTML(signal)}</p>` : ''}
-            ${record.claim?.pending ? '<p class="muted claim-note">Awaiting registry publish.</p>' : ''}
+            ${record.pending ? '<p class="muted claim-note">Unit claimed.</p>' : ''}
           </div>
         `;
         return;
@@ -223,8 +217,17 @@
       if (record.state === 'PARTNER') {
         statePanel.innerHTML = `
           <div class="state-block">
-            <p class="state-label">PARTNER NODE</p>
-            <p class="state-detail">${escapeHTML(formatTimestamp(record.partner?.activated_at || record.timestamp))}</p>
+            <p class="state-label">PARTNER</p>
+            ${record.partner_reference ? `<p class="state-detail">${escapeHTML(record.partner_reference)}</p>` : ''}
+          </div>
+        `;
+        return;
+      }
+
+      if (record.state === 'NODE') {
+        statePanel.innerHTML = `
+          <div class="state-block">
+            <p class="state-label">NODE</p>
           </div>
         `;
         return;
@@ -237,36 +240,30 @@
       `;
     }
 
-    function renderMetadata(record, data, issuance) {
-      const stateTimestampLabel = record.state === 'PARTNER' ? 'Partner Timestamp' : record.state === 'CLAIMED' ? 'Claim Timestamp' : 'Claimable Timestamp';
-      const stateTimestampValue = record.state === 'PARTNER'
-        ? (record.partner?.activated_at || record.timestamp)
-        : record.state === 'CLAIMED'
-          ? (record.claim?.claimed_at || record.timestamp)
-          : 'Pending';
+    function renderArtifactState(record) {
+      const grid = document.getElementById('artifact-grid');
+      if (!grid) {
+        return;
+      }
 
+      grid.style.display = record.state === 'CLAIMABLE' ? 'none' : 'grid';
+    }
+
+    function renderMetadata(record) {
+      const unitID = Number(record.id ?? record.unit);
       document.getElementById('meta-list').innerHTML = `
         <div class="meta-column">
           <div class="meta-group">
-            <div><span>Unit Number</span><br><span class="code">${escapeHTML(record.unit)}</span></div>
-            <div><span>Issued At</span><br><span class="code">${escapeHTML(formatTimestamp(issuance.creation_date))}</span></div>
-            <div><span>${escapeHTML(stateTimestampLabel)}</span><br><span class="code">${escapeHTML(formatTimestamp(stateTimestampValue))}</span></div>
+            <div><span>Unit Number</span><br><span class="code">${escapeHTML(unitID)}</span></div>
             <div><span>State</span><br><span class="code">${escapeHTML(record.state)}</span></div>
-          </div>
-          <div class="meta-group">
-            <div><span>Blend</span><br><span class="code">${escapeHTML(record.product.blend)}</span></div>
-            <div><span>Product Version</span><br><span class="code">${escapeHTML(record.product.version)}</span></div>
+            ${record.state !== 'CLAIMABLE' ? `<div><span>Created At</span><br><span class="code">${escapeHTML(formatTimestamp(record.created_at))}</span></div>` : ''}
+            ${record.state === 'CLAIMED' ? `<div><span>Claimed At</span><br><span class="code">${escapeHTML(formatTimestamp(record.claimed_at))}</span></div>` : ''}
+            ${record.state === 'CLAIMED' && record.holder_hash ? `<div><span>Holder Hash</span><br><span class="code">${escapeHTML(String(record.holder_hash).slice(0, 16))}</span></div>` : ''}
           </div>
         </div>
         <div class="meta-column">
           <div class="meta-group">
-            <div><span>Convergence Hash</span><br><span class="code">${escapeHTML(record.system.convergence_hash)}</span></div>
-            <div><span>Memory Footprint</span><br><span class="code">${escapeHTML(record.system.memory_bytes)} bytes</span></div>
-            <div><span>Kernel Version</span><br><span class="code">${escapeHTML(record.system.kernel_version)}</span></div>
-          </div>
-          <div class="meta-group">
-            <div><span>Starting Permutation</span><br><span class="code">${escapeHTML(data.permutation.join(', '))}</span></div>
-            <div><span>Canonical Distance</span><br><span class="code">${escapeHTML(data.canonical_distance)}</span></div>
+            ${record.state === 'PARTNER' && record.partner_reference ? `<div><span>Reference</span><br><span class="code">${escapeHTML(record.partner_reference)}</span></div>` : ''}
           </div>
         </div>
       `;
@@ -289,11 +286,11 @@
       updateMeta(unitID);
 
       const registry = await window.SovereignRegistry.loadRegistry();
-      const unitList = registry.units.map((record) => Number(record.unit));
+      const unitList = registry.units.map((record) => Number(record.id ?? record.unit));
       const unitIndex = unitList.indexOf(unitID);
       const previousUnit = unitIndex > 0 ? unitList[unitIndex - 1] : null;
       const nextUnit = unitIndex >= 0 && unitIndex < unitList.length - 1 ? unitList[unitIndex + 1] : null;
-      const record = registry.units.find((entry) => Number(entry.unit) === unitID);
+      const record = registry.units.find((entry) => Number(entry.id ?? entry.unit) === unitID);
 
       if (!record) {
         throw new Error(`Unit ${unitID} is not available`);
@@ -337,28 +334,14 @@
         }
       });
 
-      const [data, issuance] = await Promise.all([
-        fetch(`output/${unitID}/data.json`, { cache: 'no-store' }).then((response) => {
-          if (!response.ok) {
-            throw new Error(`Unit ${unitID} is not available`);
-          }
-          return response.json();
-        }),
-        fetch(`output/${unitID}/issuance.json`, { cache: 'no-store' }).then((response) => {
-          if (!response.ok) {
-            throw new Error(`Unit ${unitID} issuance is not available`);
-          }
-          return response.json();
-        })
-      ]);
-
       document.getElementById('front').src = `output/${unitID}/front.svg`;
       document.getElementById('back').src = `output/${unitID}/back.svg`;
       document.getElementById('sigil').src = `output/${unitID}/sigil.svg`;
       document.getElementById('qr').src = `output/${unitID}/qr.svg`;
 
+      renderArtifactState(record);
       renderStatePanel(record);
-      renderMetadata(record, data, issuance);
+      renderMetadata(record);
     }
 
     loadUnit().catch((error) => {

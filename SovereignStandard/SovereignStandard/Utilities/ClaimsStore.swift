@@ -1,6 +1,4 @@
 import Foundation
-import FoldKernel
-
 struct ClaimsStore {
     private let claimsURL: URL
     private let authority: ClaimCodeAuthority?
@@ -40,9 +38,6 @@ struct ClaimsStore {
         }
 
         let unitData = try JSONDecoder().decode(ClaimUnitDataPayload.self, from: Data(contentsOf: dataURL))
-        guard submission.verification.method.lowercased() == "code" else {
-            throw ClaimPersistenceError.unsupportedVerificationMethod
-        }
 
         guard let claimCode = submission.claimCode?.nilIfBlank else {
             throw ClaimPersistenceError.missingClaimCode
@@ -56,106 +51,77 @@ struct ClaimsStore {
             throw ClaimPersistenceError.claimCodeMismatch
         }
 
-        let expectedClaimHash = ClaimCodeAuthority.claimHash(
-            convergenceHash: unitData.hash,
-            claimCode: claimCode,
-            email: submission.email,
-            claimedAt: submission.claimedAt
-        )
-        guard submission.claimHash == expectedClaimHash else {
-            throw ClaimPersistenceError.claimHashMismatch
-        }
-
         var claims = try load()
         guard !claims.contains(where: { $0.unit == submission.unit }) else {
             throw ClaimPersistenceError.alreadyClaimed(submission.unit)
         }
 
+        let claimHash = ClaimCodeAuthority.claimHash(for: claimCode)
+        let holderHash = ClaimCodeAuthority.holderHash(
+            claimCode: claimCode,
+            claimedAt: submission.claimedAt,
+            unitID: submission.unit
+        )
+
         claims.append(
             PersistedClaim(
                 unit: submission.unit,
-                emailHash: Self.emailHash(for: submission.email),
-                name: submission.name?.nilIfBlank,
-                publicSignal: Self.publicSignal(name: submission.name, email: submission.email),
                 claimedAt: submission.claimedAt,
-                claimHash: submission.claimHash,
-                verification: submission.verification
+                claimHash: claimHash,
+                holderHash: holderHash
             )
         )
 
         try save(claims)
     }
-
-    static func emailHash(for email: String) -> String {
-        let normalized = email.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
-        return hex(Keccak256().hash(Array(normalized.utf8)))
-    }
-
-    static func publicSignal(name: String?, email: String) -> String? {
-        if let name, !name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            return name.trimmingCharacters(in: .whitespacesAndNewlines)
-        }
-
-        let localPart = email.split(separator: "@").first.map(String.init) ?? "collector"
-        let trimmed = localPart.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty else {
-            return nil
-        }
-
-        let first = trimmed.prefix(1).uppercased()
-        let second = trimmed.dropFirst().prefix(1)
-        return "\(first)\(second)\u{2026}"
-    }
-
-    private static func hex(_ bytes: [UInt8]) -> String {
-        bytes.map { String(format: "%02x", $0) }.joined()
-    }
-
 }
 
 struct ClaimSubmission: Codable {
     let unit: Int
-    let email: String
-    let name: String?
     let claimedAt: String
-    let claimHash: String
     let claimCode: String?
-    let verification: PersistedClaimVerification
 
     enum CodingKeys: String, CodingKey {
         case unit
-        case email
-        case name
         case claimedAt = "claimed_at"
-        case claimHash = "claim_hash"
         case claimCode = "claim_code"
-        case verification
     }
 }
 
 struct PersistedClaim: Codable {
     let unit: Int
-    let emailHash: String
-    let name: String?
-    let publicSignal: String?
     let claimedAt: String
     let claimHash: String
-    let verification: PersistedClaimVerification
+    let holderHash: String
 
     enum CodingKeys: String, CodingKey {
         case unit
-        case emailHash = "email_hash"
-        case name
-        case publicSignal = "public_signal"
         case claimedAt = "claimed_at"
         case claimHash = "claim_hash"
-        case verification
+        case holderHash = "holder_hash"
     }
-}
 
-struct PersistedClaimVerification: Codable {
-    let method: String
-    let confidence: Double
+    init(unit: Int, claimedAt: String, claimHash: String, holderHash: String) {
+        self.unit = unit
+        self.claimedAt = claimedAt
+        self.claimHash = claimHash
+        self.holderHash = holderHash
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let unit = try container.decode(Int.self, forKey: .unit)
+        let claimedAt = try container.decode(String.self, forKey: .claimedAt)
+        let claimHash = try container.decode(String.self, forKey: .claimHash)
+        let holderHash = try container.decodeIfPresent(String.self, forKey: .holderHash)
+            ?? Self.legacyHolderHash(claimHash: claimHash, claimedAt: claimedAt, unitID: unit)
+
+        self.init(unit: unit, claimedAt: claimedAt, claimHash: claimHash, holderHash: holderHash)
+    }
+
+    private static func legacyHolderHash(claimHash: String, claimedAt: String, unitID: Int) -> String {
+        ClaimCodeAuthority.claimHash(for: "\(claimHash)\(claimedAt)\(unitID)")
+    }
 }
 
 private struct PersistedClaimsManifest: Codable {
@@ -169,11 +135,9 @@ private struct ClaimUnitDataPayload: Decodable {
 private enum ClaimPersistenceError: Error, LocalizedError {
     case alreadyClaimed(Int)
     case claimCodeMismatch
-    case claimHashMismatch
     case missingClaimCode
     case missingClaimSecret
     case unitNotFound(Int)
-    case unsupportedVerificationMethod
 
     var errorDescription: String? {
         switch self {
@@ -181,16 +145,12 @@ private enum ClaimPersistenceError: Error, LocalizedError {
             return "Unit \(unit) already has a committed claim."
         case .claimCodeMismatch:
             return "Internal claim code verification failed."
-        case .claimHashMismatch:
-            return "Claim hash verification failed."
         case .missingClaimCode:
             return "Internal claim code was not provided."
         case .missingClaimSecret:
             return "Missing claim-code master secret."
         case .unitNotFound(let unit):
             return "Unit \(unit) does not exist in output."
-        case .unsupportedVerificationMethod:
-            return "Verification method is not supported."
         }
     }
 }

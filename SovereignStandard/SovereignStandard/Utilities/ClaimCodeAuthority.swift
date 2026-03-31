@@ -43,15 +43,20 @@ struct ClaimCodeAuthority {
     }
 
     static func claimHash(
-        convergenceHash: String,
-        claimCode: String,
-        email: String,
-        claimedAt: String
+        for claimCode: String
     ) -> String {
-        let payload = convergenceHash
-            + normalizeClaimCode(claimCode)
-            + email
+        let payload = normalizeClaimCode(claimCode)
+        return hex(Keccak256().hash(Array(payload.utf8)))
+    }
+
+    static func holderHash(
+        claimCode: String,
+        claimedAt: String,
+        unitID: Int
+    ) -> String {
+        let payload = normalizeClaimCode(claimCode)
             + claimedAt
+            + String(unitID)
 
         return hex(Keccak256().hash(Array(payload.utf8)))
     }

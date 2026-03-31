@@ -1,10 +1,7 @@
 const REQUIRED_FIELDS = [
   'unit',
-  'email',
   'claimed_at',
-  'claim_hash',
-  'claim_code',
-  'verification'
+  'claim_code'
 ];
 
 export default {
@@ -69,12 +66,8 @@ export default {
           event_type: 'persist-claim',
           client_payload: {
             unit: Number(payload.unit),
-            email: String(payload.email),
-            name: payload.name ? String(payload.name) : null,
             claimed_at: String(payload.claimed_at),
-            claim_hash: String(payload.claim_hash),
-            claim_code: String(payload.claim_code),
-            verification: payload.verification
+            claim_code: String(payload.claim_code)
           }
         })
       }

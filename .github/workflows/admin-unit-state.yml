@@ -30,7 +30,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
@@ -45,6 +45,7 @@ jobs:
           ADMIN_ACTION: ${{ inputs.action }}
           ADMIN_UNIT: ${{ inputs.unit }}
           ADMIN_REFERENCE: ${{ inputs.reference }}
+          SOVEREIGN_CLAIM_SECRET: ${{ secrets.SOVEREIGN_CLAIM_SECRET }}
         run: |
           if [ -n "$DISPATCH_PAYLOAD" ] && [ "$DISPATCH_PAYLOAD" != "null" ]; then
             PAYLOAD_ACTION="$(python3 -c 'import json, os; payload=json.loads(os.environ["DISPATCH_PAYLOAD"]); print(payload.get("action", ""))')"

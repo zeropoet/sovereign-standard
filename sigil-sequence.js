@@ -13,7 +13,22 @@
       throw new Error('No units available');
     }
 
-    return manifest.units.map((unit) => typeof unit === 'number' ? unit : unit.unit);
+    const units = manifest.units
+      .map((record) => {
+        if (typeof record === 'number') {
+          return record;
+        }
+
+        const unitID = Number(record?.id ?? record?.unit);
+        return Number.isFinite(unitID) ? unitID : null;
+      })
+      .filter((unitID) => unitID !== null);
+
+    if (units.length === 0) {
+      throw new Error('No sequence units available');
+    }
+
+    return units;
   }
 
   async function initSigilSequence(root) {

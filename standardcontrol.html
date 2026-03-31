@@ -155,7 +155,6 @@
           return;
         }
 
-        status.textContent = 'Registry updated.';
         renderArtifactState(committedRecord);
         renderStatePanel(committedRecord);
         renderMetadata(committedRecord);
@@ -164,7 +163,7 @@
           return;
         }
 
-        status.textContent = 'Unit claimed. Refresh if the registry has not updated yet.';
+        status.textContent = '';
       }
     }
 
@@ -242,7 +241,7 @@
           <div class="state-block">
             <p class="state-label">${record.pending ? 'CLAIMED' : 'CLAIMED'}</p>
             <p class="state-detail">${escapeHTML(formatTimestamp(record.claimed_at))}</p>
-            ${signal ? `<p class="muted claim-note">${escapeHTML(signal)}</p>` : ''}
+            ${!record.pending && signal ? `<p class="muted claim-note">${escapeHTML(signal)}</p>` : ''}
             ${record.pending ? '<p class="muted claim-note" id="claim-status">Unit claimed. Awaiting registry publish...</p>' : ''}
           </div>
         `;

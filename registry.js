@@ -184,11 +184,11 @@
     });
 
     const claim = {
-      email: payload.email,
       name: payload.name || null,
-      location: payload.location || null,
+      signal: payload.name || null,
       claimed_at: timestamp,
       claim_hash: claimHash,
+      pending: true,
       verification: {
         method: 'hash',
         confidence: 1
@@ -222,6 +222,9 @@
         const data = await response.json();
         if (data?.error) {
           message = data.error;
+        }
+        if (data?.detail) {
+          message = `${message}: ${data.detail}`;
         }
       } catch {
         // Ignore parse failure and fall back to the generic message.

@@ -186,6 +186,8 @@
           }
 
           const data = new FormData(form);
+          const submitButton = form.querySelector('button[type="submit"]');
+          submitButton.disabled = true;
           status.textContent = 'Claiming unit...';
 
           try {
@@ -199,6 +201,7 @@
             renderStatePanel(claimedRecord);
           } catch (error) {
             status.textContent = error.message || 'Unable to claim this unit.';
+            submitButton.disabled = false;
           }
         });
 
@@ -208,9 +211,10 @@
       if (record.state === 'CLAIMED') {
         statePanel.innerHTML = `
           <div class="state-block">
-            <p class="state-label">CLAIMED</p>
+            <p class="state-label">${record.claim?.pending ? 'CLAIM SUBMITTED' : 'CLAIMED'}</p>
             <p class="state-detail">${escapeHTML(formatTimestamp(record.claim?.claimed_at))}</p>
             ${signal ? `<p class="muted claim-note">${escapeHTML(signal)}</p>` : ''}
+            ${record.claim?.pending ? '<p class="muted claim-note">Awaiting registry publish.</p>' : ''}
           </div>
         `;
         return;

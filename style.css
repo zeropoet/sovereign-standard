@@ -65,7 +65,7 @@ body {
 .landing-page {
   min-height: 100vh;
   display: grid;
-  place-items: start;
+  place-items: center start;
   padding: 16px 24px;
   position: relative;
 }
@@ -75,7 +75,7 @@ body {
   gap: 24px;
   justify-items: start;
   width: min(100%, 34rem);
-  margin: 10px 0 0 18px;
+  margin: 0 0 0 18px;
   position: relative;
   z-index: 1;
 }
@@ -895,7 +895,7 @@ h3 {
 
   .landing-shell {
     width: min(100%, 100%);
-    margin: 6px 0 0 8px;
+    margin: 0 0 0 8px;
     gap: 18px;
   }
 

@@ -4,3 +4,5 @@ compatibility_date = "2026-03-30"
 
 [vars]
 ALLOWED_ORIGIN = "https://sovereignstandard.co"
+GITHUB_OWNER = "zeropoet"
+GITHUB_REPO = "sovereign-standard"

@@ -1,5 +1,5 @@
 {
-  "generated_at" : "2026-03-31T03:53:08Z",
+  "generated_at" : "2026-03-31T04:52:24Z",
   "kernel_version" : "1.0.0",
   "units" : [
     {
@@ -13,7 +13,6 @@
           "method" : "hash"
         }
       },
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/0\/sigil.svg",
         "tin_serial" : "1500739FC"
@@ -33,7 +32,6 @@
       "unit" : 0
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/1\/sigil.svg",
         "tin_serial" : "67693A38C"
@@ -53,7 +51,6 @@
       "unit" : 1
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/2\/sigil.svg",
         "tin_serial" : "0195C3AC1"
@@ -73,7 +70,6 @@
       "unit" : 2
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/3\/sigil.svg",
         "tin_serial" : "A1780977B"
@@ -93,7 +89,6 @@
       "unit" : 3
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/4\/sigil.svg",
         "tin_serial" : "742FB915D"
@@ -113,7 +108,6 @@
       "unit" : 4
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/5\/sigil.svg",
         "tin_serial" : "B5A645B0A"
@@ -133,7 +127,6 @@
       "unit" : 5
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/6\/sigil.svg",
         "tin_serial" : "96FEA7AEF"
@@ -153,7 +146,6 @@
       "unit" : 6
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/7\/sigil.svg",
         "tin_serial" : "310C28C6E"
@@ -173,7 +165,6 @@
       "unit" : 7
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/8\/sigil.svg",
         "tin_serial" : "6053EB82E"
@@ -193,7 +184,6 @@
       "unit" : 8
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/9\/sigil.svg",
         "tin_serial" : "BBC6612E0"
@@ -213,7 +203,6 @@
       "unit" : 9
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/10\/sigil.svg",
         "tin_serial" : "B72544D06"
@@ -233,7 +222,6 @@
       "unit" : 10
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/11\/sigil.svg",
         "tin_serial" : "5A6A32343"
@@ -253,7 +241,6 @@
       "unit" : 11
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/12\/sigil.svg",
         "tin_serial" : "004EA877F"
@@ -273,7 +260,6 @@
       "unit" : 12
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/13\/sigil.svg",
         "tin_serial" : "5A371917D"
@@ -293,7 +279,6 @@
       "unit" : 13
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/14\/sigil.svg",
         "tin_serial" : "863F6D130"
@@ -313,7 +298,6 @@
       "unit" : 14
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/15\/sigil.svg",
         "tin_serial" : "1C46D9BD2"
@@ -333,7 +317,6 @@
       "unit" : 15
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/16\/sigil.svg",
         "tin_serial" : "ED3AC2B0E"
@@ -353,7 +336,6 @@
       "unit" : 16
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/17\/sigil.svg",
         "tin_serial" : "949F35353"
@@ -373,7 +355,6 @@
       "unit" : 17
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/18\/sigil.svg",
         "tin_serial" : "9EC7AEC0F"
@@ -393,7 +374,6 @@
       "unit" : 18
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/19\/sigil.svg",
         "tin_serial" : "F8FA6F4CC"
@@ -413,7 +393,6 @@
       "unit" : 19
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/20\/sigil.svg",
         "tin_serial" : "0A8575680"
@@ -433,7 +412,6 @@
       "unit" : 20
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/21\/sigil.svg",
         "tin_serial" : "09F16F2B7"
@@ -453,7 +431,6 @@
       "unit" : 21
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/22\/sigil.svg",
         "tin_serial" : "0814CFFEC"
@@ -473,7 +450,6 @@
       "unit" : 22
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/23\/sigil.svg",
         "tin_serial" : "3D41287D8"
@@ -493,7 +469,6 @@
       "unit" : 23
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/24\/sigil.svg",
         "tin_serial" : "442ECF262"
@@ -513,7 +488,6 @@
       "unit" : 24
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/25\/sigil.svg",
         "tin_serial" : "88608C320"
@@ -533,7 +507,6 @@
       "unit" : 25
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/26\/sigil.svg",
         "tin_serial" : "AB8F60BE9"
@@ -553,7 +526,6 @@
       "unit" : 26
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/27\/sigil.svg",
         "tin_serial" : "DC2D2AAE7"
@@ -573,7 +545,6 @@
       "unit" : 27
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/28\/sigil.svg",
         "tin_serial" : "7EB02C3A4"
@@ -593,7 +564,6 @@
       "unit" : 28
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/29\/sigil.svg",
         "tin_serial" : "1B102037D"
@@ -613,7 +583,6 @@
       "unit" : 29
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/30\/sigil.svg",
         "tin_serial" : "45AB29E6A"
@@ -633,7 +602,6 @@
       "unit" : 30
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/31\/sigil.svg",
         "tin_serial" : "63FB535B5"
@@ -653,7 +621,6 @@
       "unit" : 31
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/32\/sigil.svg",
         "tin_serial" : "257F48D3B"
@@ -673,7 +640,6 @@
       "unit" : 32
     },
     {
-      "eligible_for_partner" : true,
       "physical" : {
         "sigil" : "output\/33\/sigil.svg",
         "tin_serial" : "80829E2F2"
@@ -693,7 +659,6 @@
       "unit" : 33
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/34\/sigil.svg",
         "tin_serial" : "A4019CF80"
@@ -713,7 +678,6 @@
       "unit" : 34
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/35\/sigil.svg",
         "tin_serial" : "009523916"
@@ -733,7 +697,6 @@
       "unit" : 35
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/36\/sigil.svg",
         "tin_serial" : "279AAF935"
@@ -753,7 +716,6 @@
       "unit" : 36
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/37\/sigil.svg",
         "tin_serial" : "3156B82EB"
@@ -773,7 +735,6 @@
       "unit" : 37
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/38\/sigil.svg",
         "tin_serial" : "A20D58034"
@@ -793,7 +754,6 @@
       "unit" : 38
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/39\/sigil.svg",
         "tin_serial" : "DD5FF08FF"
@@ -813,7 +773,6 @@
       "unit" : 39
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/40\/sigil.svg",
         "tin_serial" : "A1A997237"
@@ -833,7 +792,6 @@
       "unit" : 40
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/41\/sigil.svg",
         "tin_serial" : "12936AD0F"
@@ -853,7 +811,6 @@
       "unit" : 41
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/42\/sigil.svg",
         "tin_serial" : "EDEB73E5F"
@@ -873,7 +830,6 @@
       "unit" : 42
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/43\/sigil.svg",
         "tin_serial" : "F87EEE389"
@@ -893,7 +849,6 @@
       "unit" : 43
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/44\/sigil.svg",
         "tin_serial" : "E7D31B7BF"
@@ -913,7 +868,6 @@
       "unit" : 44
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/45\/sigil.svg",
         "tin_serial" : "CD8E7EC52"
@@ -933,7 +887,6 @@
       "unit" : 45
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/46\/sigil.svg",
         "tin_serial" : "B31566EB1"
@@ -953,7 +906,6 @@
       "unit" : 46
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/47\/sigil.svg",
         "tin_serial" : "A52A52641"
@@ -973,7 +925,6 @@
       "unit" : 47
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/48\/sigil.svg",
         "tin_serial" : "A60B76032"
@@ -993,7 +944,6 @@
       "unit" : 48
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/49\/sigil.svg",
         "tin_serial" : "CE30177FF"
@@ -1013,7 +963,6 @@
       "unit" : 49
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/50\/sigil.svg",
         "tin_serial" : "512CE0F49"
@@ -1033,7 +982,6 @@
       "unit" : 50
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/51\/sigil.svg",
         "tin_serial" : "732DBCD43"
@@ -1053,7 +1001,6 @@
       "unit" : 51
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/52\/sigil.svg",
         "tin_serial" : "FCEF25235"
@@ -1073,7 +1020,6 @@
       "unit" : 52
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/53\/sigil.svg",
         "tin_serial" : "6E8E177C8"
@@ -1093,7 +1039,6 @@
       "unit" : 53
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/54\/sigil.svg",
         "tin_serial" : "139001A8C"
@@ -1113,7 +1058,6 @@
       "unit" : 54
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/55\/sigil.svg",
         "tin_serial" : "15E43FED5"
@@ -1133,7 +1077,6 @@
       "unit" : 55
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/56\/sigil.svg",
         "tin_serial" : "8929BEA62"
@@ -1153,7 +1096,6 @@
       "unit" : 56
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/57\/sigil.svg",
         "tin_serial" : "48CCF3184"
@@ -1173,7 +1115,6 @@
       "unit" : 57
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/58\/sigil.svg",
         "tin_serial" : "53D0F95F7"
@@ -1193,7 +1134,6 @@
       "unit" : 58
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/59\/sigil.svg",
         "tin_serial" : "2FC651EFE"
@@ -1213,7 +1153,6 @@
       "unit" : 59
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/60\/sigil.svg",
         "tin_serial" : "BD1B69789"
@@ -1233,7 +1172,6 @@
       "unit" : 60
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/61\/sigil.svg",
         "tin_serial" : "50DB8FE40"
@@ -1253,7 +1191,6 @@
       "unit" : 61
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/62\/sigil.svg",
         "tin_serial" : "DC0033F61"
@@ -1273,7 +1210,6 @@
       "unit" : 62
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/63\/sigil.svg",
         "tin_serial" : "60664EE99"
@@ -1293,7 +1229,6 @@
       "unit" : 63
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/64\/sigil.svg",
         "tin_serial" : "E2173A9C0"
@@ -1313,7 +1248,6 @@
       "unit" : 64
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/65\/sigil.svg",
         "tin_serial" : "0C4354567"
@@ -1333,7 +1267,6 @@
       "unit" : 65
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/66\/sigil.svg",
         "tin_serial" : "EC6972EE3"
@@ -1353,7 +1286,6 @@
       "unit" : 66
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/67\/sigil.svg",
         "tin_serial" : "5DEA9E679"
@@ -1373,7 +1305,6 @@
       "unit" : 67
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/68\/sigil.svg",
         "tin_serial" : "817EBFD9B"
@@ -1393,7 +1324,6 @@
       "unit" : 68
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/69\/sigil.svg",
         "tin_serial" : "9A3614D5E"
@@ -1413,7 +1343,6 @@
       "unit" : 69
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/70\/sigil.svg",
         "tin_serial" : "9E91C1AE6"
@@ -1433,7 +1362,6 @@
       "unit" : 70
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/71\/sigil.svg",
         "tin_serial" : "F1F4525EA"
@@ -1453,7 +1381,6 @@
       "unit" : 71
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/72\/sigil.svg",
         "tin_serial" : "46BE11940"
@@ -1473,7 +1400,6 @@
       "unit" : 72
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/73\/sigil.svg",
         "tin_serial" : "AD12B5A88"
@@ -1493,7 +1419,6 @@
       "unit" : 73
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/74\/sigil.svg",
         "tin_serial" : "E49CF57A0"
@@ -1513,7 +1438,6 @@
       "unit" : 74
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/75\/sigil.svg",
         "tin_serial" : "7C03C49A0"
@@ -1533,7 +1457,6 @@
       "unit" : 75
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/76\/sigil.svg",
         "tin_serial" : "7E25C6B28"
@@ -1553,7 +1476,6 @@
       "unit" : 76
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/77\/sigil.svg",
         "tin_serial" : "75976D3B5"
@@ -1573,7 +1495,6 @@
       "unit" : 77
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/78\/sigil.svg",
         "tin_serial" : "ED066401E"
@@ -1593,7 +1514,6 @@
       "unit" : 78
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/79\/sigil.svg",
         "tin_serial" : "3BF02A0AF"
@@ -1613,7 +1533,6 @@
       "unit" : 79
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/80\/sigil.svg",
         "tin_serial" : "9FFE4FD59"
@@ -1633,7 +1552,6 @@
       "unit" : 80
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/81\/sigil.svg",
         "tin_serial" : "19234283F"
@@ -1653,7 +1571,6 @@
       "unit" : 81
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/82\/sigil.svg",
         "tin_serial" : "2318CDE76"
@@ -1673,7 +1590,6 @@
       "unit" : 82
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/83\/sigil.svg",
         "tin_serial" : "7B295DDF0"
@@ -1693,7 +1609,6 @@
       "unit" : 83
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/84\/sigil.svg",
         "tin_serial" : "80A7E10A3"
@@ -1713,7 +1628,6 @@
       "unit" : 84
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/85\/sigil.svg",
         "tin_serial" : "B74B05A67"
@@ -1733,7 +1647,6 @@
       "unit" : 85
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/86\/sigil.svg",
         "tin_serial" : "EF1D9E83C"
@@ -1753,7 +1666,6 @@
       "unit" : 86
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/87\/sigil.svg",
         "tin_serial" : "32FE71589"
@@ -1773,7 +1685,6 @@
       "unit" : 87
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/88\/sigil.svg",
         "tin_serial" : "CAD9A2968"
@@ -1793,7 +1704,6 @@
       "unit" : 88
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/89\/sigil.svg",
         "tin_serial" : "47B273D33"
@@ -1813,7 +1723,6 @@
       "unit" : 89
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/90\/sigil.svg",
         "tin_serial" : "7C602AA82"
@@ -1833,7 +1742,6 @@
       "unit" : 90
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/91\/sigil.svg",
         "tin_serial" : "ED4C37FE2"
@@ -1853,7 +1761,6 @@
       "unit" : 91
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/92\/sigil.svg",
         "tin_serial" : "C1F4BF538"
@@ -1873,7 +1780,6 @@
       "unit" : 92
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/93\/sigil.svg",
         "tin_serial" : "E11C8CE7B"
@@ -1893,7 +1799,6 @@
       "unit" : 93
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/94\/sigil.svg",
         "tin_serial" : "987D04884"
@@ -1913,7 +1818,6 @@
       "unit" : 94
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/95\/sigil.svg",
         "tin_serial" : "128D36BA0"
@@ -1933,7 +1837,6 @@
       "unit" : 95
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/96\/sigil.svg",
         "tin_serial" : "3E242F631"
@@ -1953,7 +1856,6 @@
       "unit" : 96
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/97\/sigil.svg",
         "tin_serial" : "120E23B17"
@@ -1973,7 +1875,6 @@
       "unit" : 97
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/98\/sigil.svg",
         "tin_serial" : "C2303AF8F"
@@ -1993,7 +1894,6 @@
       "unit" : 98
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/99\/sigil.svg",
         "tin_serial" : "97330A27E"
@@ -2013,7 +1913,6 @@
       "unit" : 99
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/100\/sigil.svg",
         "tin_serial" : "52CD862E9"
@@ -2033,7 +1932,6 @@
       "unit" : 100
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/101\/sigil.svg",
         "tin_serial" : "E783D5B51"
@@ -2053,7 +1951,6 @@
       "unit" : 101
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/102\/sigil.svg",
         "tin_serial" : "4C8613FC7"
@@ -2073,7 +1970,6 @@
       "unit" : 102
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/103\/sigil.svg",
         "tin_serial" : "A02BAB5CD"
@@ -2093,7 +1989,6 @@
       "unit" : 103
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/104\/sigil.svg",
         "tin_serial" : "C207BE3F7"
@@ -2113,7 +2008,6 @@
       "unit" : 104
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/105\/sigil.svg",
         "tin_serial" : "B82370691"
@@ -2133,7 +2027,6 @@
       "unit" : 105
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/106\/sigil.svg",
         "tin_serial" : "0AAAF7C86"
@@ -2153,7 +2046,6 @@
       "unit" : 106
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/107\/sigil.svg",
         "tin_serial" : "9ACB6F28E"
@@ -2173,7 +2065,6 @@
       "unit" : 107
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/108\/sigil.svg",
         "tin_serial" : "66F0B9BF9"
@@ -2193,7 +2084,6 @@
       "unit" : 108
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/109\/sigil.svg",
         "tin_serial" : "174373FF1"
@@ -2213,7 +2103,6 @@
       "unit" : 109
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/110\/sigil.svg",
         "tin_serial" : "7171CAE90"
@@ -2233,7 +2122,6 @@
       "unit" : 110
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/111\/sigil.svg",
         "tin_serial" : "484DDAC2E"
@@ -2253,7 +2141,6 @@
       "unit" : 111
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/112\/sigil.svg",
         "tin_serial" : "2000590E1"
@@ -2273,7 +2160,6 @@
       "unit" : 112
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/113\/sigil.svg",
         "tin_serial" : "91E2AF9E2"
@@ -2293,7 +2179,6 @@
       "unit" : 113
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/114\/sigil.svg",
         "tin_serial" : "A1BA98466"
@@ -2313,7 +2198,6 @@
       "unit" : 114
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/115\/sigil.svg",
         "tin_serial" : "F30EF48DE"
@@ -2333,7 +2217,6 @@
       "unit" : 115
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/116\/sigil.svg",
         "tin_serial" : "F0A77A9A1"
@@ -2353,7 +2236,6 @@
       "unit" : 116
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/117\/sigil.svg",
         "tin_serial" : "62DBC1C64"
@@ -2373,7 +2255,6 @@
       "unit" : 117
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/118\/sigil.svg",
         "tin_serial" : "1BA68C55A"
@@ -2393,7 +2274,6 @@
       "unit" : 118
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/119\/sigil.svg",
         "tin_serial" : "67F729A71"
@@ -2413,7 +2293,6 @@
       "unit" : 119
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/120\/sigil.svg",
         "tin_serial" : "116E92E0F"
@@ -2433,7 +2312,6 @@
       "unit" : 120
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/121\/sigil.svg",
         "tin_serial" : "17D158FAF"
@@ -2453,7 +2331,6 @@
       "unit" : 121
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/122\/sigil.svg",
         "tin_serial" : "0B7D63EF2"
@@ -2473,7 +2350,6 @@
       "unit" : 122
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/123\/sigil.svg",
         "tin_serial" : "CB29F3562"
@@ -2493,7 +2369,6 @@
       "unit" : 123
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/124\/sigil.svg",
         "tin_serial" : "81034E5DD"
@@ -2513,7 +2388,6 @@
       "unit" : 124
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/125\/sigil.svg",
         "tin_serial" : "D40B1E2E7"
@@ -2533,7 +2407,6 @@
       "unit" : 125
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/126\/sigil.svg",
         "tin_serial" : "355BA9675"
@@ -2553,7 +2426,6 @@
       "unit" : 126
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/127\/sigil.svg",
         "tin_serial" : "5E08B1727"
@@ -2573,7 +2445,6 @@
       "unit" : 127
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/128\/sigil.svg",
         "tin_serial" : "335A70911"
@@ -2593,7 +2464,6 @@
       "unit" : 128
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/129\/sigil.svg",
         "tin_serial" : "0D7C6762D"
@@ -2613,7 +2483,6 @@
       "unit" : 129
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/130\/sigil.svg",
         "tin_serial" : "A6B2BDFB6"
@@ -2633,7 +2502,6 @@
       "unit" : 130
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/131\/sigil.svg",
         "tin_serial" : "7532430EA"
@@ -2653,7 +2521,6 @@
       "unit" : 131
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/132\/sigil.svg",
         "tin_serial" : "DE0530511"
@@ -2673,7 +2540,6 @@
       "unit" : 132
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/133\/sigil.svg",
         "tin_serial" : "5C6B30EFF"
@@ -2693,7 +2559,6 @@
       "unit" : 133
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/134\/sigil.svg",
         "tin_serial" : "0A5ABE6C3"
@@ -2713,7 +2578,6 @@
       "unit" : 134
     },
     {
-      "eligible_for_partner" : false,
       "physical" : {
         "sigil" : "output\/135\/sigil.svg",
         "tin_serial" : "9CEBCFF62"

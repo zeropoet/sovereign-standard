@@ -41,7 +41,6 @@ private struct SiteManifest: Encodable {
 
 private struct UnitRegistryRecord: Encodable {
     let unit: Int
-    let eligibleForPartner: Bool
     let timestamp: String
     let state: String
     let product: ProductRecord
@@ -52,7 +51,6 @@ private struct UnitRegistryRecord: Encodable {
 
     enum CodingKeys: String, CodingKey {
         case unit
-        case eligibleForPartner = "eligible_for_partner"
         case timestamp
         case state
         case product
@@ -70,11 +68,9 @@ private struct UnitRegistryRecord: Encodable {
         let unitData = try JSONDecoder().decode(UnitDataPayload.self, from: Data(contentsOf: dataURL))
         let issuance = try JSONDecoder().decode(ArtifactIssuance.self, from: Data(contentsOf: issuanceURL))
         let issuedAt = Self.timestamp(from: issuance.creationDate)
-        let isPartnerEligible = unitID <= 33
         let frontMark = String(unitData.hash.prefix(9)).uppercased()
 
         unit = unitID
-        eligibleForPartner = isPartnerEligible
         timestamp = issuedAt
         state = committedClaim == nil ? "CLAIMABLE" : "CLAIMED"
         product = ProductRecord(

@@ -1,6 +1,5 @@
 (() => {
   const STORAGE_KEY = 'sovereign-standard.claims.v1';
-  const PARTNER_ELIGIBLE_MAX_UNIT = 33;
   const RATE_IN_BYTES = 136;
   const ROTATION_OFFSETS = [
     0, 1, 62, 28, 27,
@@ -78,11 +77,9 @@
   }
 
   function createFallbackRecord(unit) {
-    const isPartnerEligible = unit <= PARTNER_ELIGIBLE_MAX_UNIT;
     const timestamp = new Date().toISOString();
     return {
       unit,
-      eligible_for_partner: isPartnerEligible,
       timestamp,
       state: 'CLAIMABLE',
       product: {

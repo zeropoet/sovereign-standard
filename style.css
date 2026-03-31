@@ -682,13 +682,14 @@ h3 {
   min-width: 0;
   aspect-ratio: 1 / 1;
   background: transparent;
-  border: 0;
+  border: 1px solid transparent;
   box-shadow: none;
-  transition: background-color 120ms ease;
+  transition: background-color 120ms ease, border-color 120ms ease, transform 120ms ease;
 }
 
 .artifact-card.state-claimable {
   border-color: var(--line);
+  background: #ffffff;
 }
 
 .artifact-card.state-claimed {
@@ -697,13 +698,14 @@ h3 {
 }
 
 .artifact-card.state-partner {
-  border-color: var(--text);
-  background: #f3f3f3;
+  border-color: #8e8e8e;
+  background: #f1f1f1;
 }
 
 .artifact-card:hover,
 .artifact-card:focus-within {
   background: #fafafa;
+  transform: translateY(-1px);
 }
 
 .artifact-link {
@@ -746,7 +748,22 @@ h3 {
   margin: 0 auto 12px;
   border: 0;
   background: transparent;
-  transition: filter 120ms ease;
+  transition: filter 120ms ease, opacity 120ms ease, transform 120ms ease;
+}
+
+.artifact-card.state-claimable img {
+  opacity: 0.58;
+  transform: scale(0.94);
+}
+
+.artifact-card.state-claimed img {
+  opacity: 0.84;
+  transform: scale(0.98);
+}
+
+.artifact-card.state-partner img {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .artifact-grid img {
@@ -756,7 +773,7 @@ h3 {
 
 .artifact-card code {
   display: inline-block;
-  color: var(--muted);
+  color: #717171;
   font-family: var(--mono-sans);
   font-size: 12px;
   line-height: 1.5;
@@ -767,6 +784,11 @@ h3 {
   transition: color 120ms ease, background-color 120ms ease;
 }
 
+.artifact-card.state-claimed code,
+.artifact-card.state-partner code {
+  color: var(--text);
+}
+
 .artifact-card-meta {
   display: grid;
   gap: 0.25rem;
@@ -774,10 +796,19 @@ h3 {
 }
 
 .artifact-card-meta span {
-  color: var(--muted);
+  color: #808080;
   font-size: 10px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+.artifact-card.state-claimed .artifact-card-meta span {
+  color: #555555;
+}
+
+.artifact-card.state-partner .artifact-card-meta span {
+  color: var(--text);
+  letter-spacing: 0.18em;
 }
 
 .meta-list {

@@ -37,8 +37,21 @@ export default {
       }
     }
 
-    if (!env.GITHUB_TOKEN || !env.GITHUB_OWNER || !env.GITHUB_REPO) {
-      return json({ error: 'Relay is not configured' }, 500, env);
+    const missing = [
+      !env.GITHUB_TOKEN ? 'GITHUB_TOKEN' : null,
+      !env.GITHUB_OWNER ? 'GITHUB_OWNER' : null,
+      !env.GITHUB_REPO ? 'GITHUB_REPO' : null
+    ].filter(Boolean);
+
+    if (missing.length > 0) {
+      return json(
+        {
+          error: 'Relay is not configured',
+          missing
+        },
+        500,
+        env
+      );
     }
 
     const dispatchResponse = await fetch(

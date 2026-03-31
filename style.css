@@ -65,7 +65,7 @@ body {
 .landing-page {
   min-height: 100vh;
   display: grid;
-  place-items: center;
+  place-items: center start;
   padding: 16px 24px;
   position: relative;
 }
@@ -73,12 +73,11 @@ body {
 .landing-shell {
   display: grid;
   gap: 24px;
-  justify-items: center;
+  justify-items: start;
   width: min(100%, 34rem);
-  margin: 0;
+  margin: 0 0 0 18px;
   position: relative;
   z-index: 1;
-  text-align: center;
 }
 
 .visually-hidden {
@@ -100,13 +99,16 @@ body {
 }
 
 .landing-sequence {
+  position: absolute;
+  inset: 0;
   display: grid;
   place-items: center;
-  width: 100%;
+  padding: 16px 24px;
+  pointer-events: none;
 }
 
 .sequence-stage {
-  width: min(100%, 280px);
+  width: min(calc(100vw - 48px), calc(100vh - 48px), 760px);
   aspect-ratio: 1 / 1;
   display: grid;
   place-items: center;
@@ -150,7 +152,6 @@ body {
 .landing-links {
   gap: 12px;
   margin-bottom: 0;
-  justify-content: center;
 }
 
 a {
@@ -893,9 +894,19 @@ h3 {
   }
 
   .landing-shell {
-    width: min(100%, 100%);
+    width: min(100%, 34rem);
     margin: 0;
     gap: 18px;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .landing-sequence {
+    padding: 12px;
+  }
+
+  .sequence-stage {
+    width: min(calc(100vw - 24px), calc(100vh - 24px), 640px);
   }
 
   .archive-page,

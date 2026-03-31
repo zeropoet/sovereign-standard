@@ -31,6 +31,7 @@ This repository contains:
 - `units.json` is the generated public registry manifest.
 - `claims.json` is the committed claim ledger.
 - `standardcontrol.html`, `archive.html`, `index.html`, `style.css`, `site.js`, and `registry.js` make up the main site surface.
+- `admin.html` and `admin.js` provide a lightweight admin interface for repo-backed state changes.
 
 ## Unit artifacts
 
@@ -179,3 +180,5 @@ GitHub Pages publishes the committed static site.
 
 GitHub Actions is also used to persist confirmed claims back into the repository.
 Admin state changes can be applied from the `Admin Unit State` workflow.
+
+`admin.html` is a browser convenience layer for the same workflow path and should only be used with the secured admin relay.

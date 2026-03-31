@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Control</title>
+  <meta name="robots" content="noindex">
+  <meta name="description" content="Administrative unit state control.">
+  <meta name="sovereign-admin-endpoint" content="https://sovereign-standard-claim-relay.mancel.workers.dev/admin">
+  <link rel="icon" href="assets/favicons/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="artifact-page">
+    <nav class="top-links" aria-label="Primary">
+      <a href="archive.html" class="nav">Back</a>
+    </nav>
+    <header class="page-header artifact-header">
+      <p class="page-kicker">Administrative</p>
+      <h1 class="page-title">Unit Control</h1>
+      <p class="page-intro">Repo-backed administrative state changes for units.</p>
+    </header>
+
+    <section class="panel section-stack artifact-section admin-panel">
+      <div class="section-head">
+        <h2>Admin Action</h2>
+      </div>
+
+      <form id="admin-form" class="claim-form admin-form">
+        <label class="order-field">
+          <span>Action</span>
+          <select id="admin-action" name="action" class="order-select">
+            <option value="clear-claim">Clear Claim</option>
+            <option value="set-partner">Set Partner</option>
+            <option value="clear-partner">Clear Partner</option>
+          </select>
+        </label>
+
+        <label class="order-field">
+          <span>Unit Number</span>
+          <input id="admin-unit" type="number" name="unit" min="0" step="1" inputmode="numeric" required>
+        </label>
+
+        <label class="order-field" id="reference-field">
+          <span>Partner Reference</span>
+          <input id="admin-reference" type="text" name="reference" autocomplete="off" placeholder="Optional storefront reference">
+        </label>
+
+        <label class="order-field">
+          <span>Admin Token</span>
+          <input id="admin-token" type="password" name="token" autocomplete="current-password" required>
+          <span class="order-helper-note">Required for repo-backed state changes.</span>
+        </label>
+
+        <div class="claim-actions">
+          <button class="order-submit" type="submit">Apply</button>
+          <p class="muted claim-note" id="admin-status"></p>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>

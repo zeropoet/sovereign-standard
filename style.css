@@ -257,6 +257,14 @@ h3 {
   letter-spacing: 0.01em;
 }
 
+.admin-panel {
+  max-width: 720px;
+}
+
+.admin-form .order-select {
+  width: 100%;
+}
+
 .page-intro {
   max-width: 44ch;
   margin: 14px 0 0;

@@ -1,6 +1,9 @@
 name: Admin Unit State
 
 on:
+  repository_dispatch:
+    types:
+      - admin-unit-state
   workflow_dispatch:
     inputs:
       action:
@@ -38,22 +41,33 @@ jobs:
 
       - name: Apply admin change
         env:
+          DISPATCH_PAYLOAD: ${{ toJson(github.event.client_payload) }}
           ADMIN_ACTION: ${{ inputs.action }}
           ADMIN_UNIT: ${{ inputs.unit }}
           ADMIN_REFERENCE: ${{ inputs.reference }}
         run: |
-          case "$ADMIN_ACTION" in
+          if [ -n "$DISPATCH_PAYLOAD" ] && [ "$DISPATCH_PAYLOAD" != "null" ]; then
+            PAYLOAD_ACTION="$(python3 -c 'import json, os; payload=json.loads(os.environ["DISPATCH_PAYLOAD"]); print(payload.get("action", ""))')"
+            PAYLOAD_UNIT="$(python3 -c 'import json, os; payload=json.loads(os.environ["DISPATCH_PAYLOAD"]); print(payload.get("unit", ""))')"
+            PAYLOAD_REFERENCE="$(python3 -c 'import json, os; payload=json.loads(os.environ["DISPATCH_PAYLOAD"]); print(payload.get("reference", ""))')"
+          else
+            PAYLOAD_ACTION="$ADMIN_ACTION"
+            PAYLOAD_UNIT="$ADMIN_UNIT"
+            PAYLOAD_REFERENCE="$ADMIN_REFERENCE"
+          fi
+
+          case "$PAYLOAD_ACTION" in
             clear-claim)
-              swift run SovereignStandard clear-claim "$ADMIN_UNIT"
+              swift run SovereignStandard clear-claim "$PAYLOAD_UNIT"
               ;;
             set-partner)
-              swift run SovereignStandard set-partner "$ADMIN_UNIT" "$ADMIN_REFERENCE"
+              swift run SovereignStandard set-partner "$PAYLOAD_UNIT" "$PAYLOAD_REFERENCE"
               ;;
             clear-partner)
-              swift run SovereignStandard clear-partner "$ADMIN_UNIT"
+              swift run SovereignStandard clear-partner "$PAYLOAD_UNIT"
               ;;
             *)
-              echo "Unsupported action: $ADMIN_ACTION"
+              echo "Unsupported action: $PAYLOAD_ACTION"
               exit 1
               ;;
           esac
@@ -62,9 +76,20 @@ jobs:
         run: swift test
 
       - name: Commit admin change
+        env:
+          DISPATCH_PAYLOAD: ${{ toJson(github.event.client_payload) }}
+          INPUT_ACTION: ${{ inputs.action }}
+          INPUT_UNIT: ${{ inputs.unit }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add claims.json partners.json units.json
-          git commit -m "Admin state change: ${{ inputs.action }} unit ${{ inputs.unit }}" || exit 0
+          if [ -n "$DISPATCH_PAYLOAD" ] && [ "$DISPATCH_PAYLOAD" != "null" ]; then
+            ACTION="$(python3 -c 'import json, os; payload=json.loads(os.environ["DISPATCH_PAYLOAD"]); print(payload.get("action", ""))')"
+            UNIT="$(python3 -c 'import json, os; payload=json.loads(os.environ["DISPATCH_PAYLOAD"]); print(payload.get("unit", ""))')"
+          else
+            ACTION="$INPUT_ACTION"
+            UNIT="$INPUT_UNIT"
+          fi
+          git commit -m "Admin state change: $ACTION unit $UNIT" || exit 0
           git push

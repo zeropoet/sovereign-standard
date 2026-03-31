@@ -432,81 +432,41 @@ h3 {
   gap: 1rem;
 }
 
-.order-toggle {
+.archive-filter-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-}
-
-.order-toggle-row {
-  display: flex;
-  align-items: center;
   gap: 16px;
-  flex-wrap: wrap;
 }
 
-.order-toggle-option {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.order-toggle-option input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.order-toggle-option span {
-  display: inline-flex;
-  align-items: center;
-  min-height: 40px;
-  padding: 0.7rem 0.9rem;
-  border: 1px solid var(--line);
-  font-size: 11px;
+.archive-filter-link {
+  font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
+  text-decoration: none;
 }
 
-.order-toggle-option:hover span {
-  background: var(--text);
-  color: var(--bg);
+.archive-filter-link:hover,
+.archive-filter-link.is-active {
+  text-decoration: underline;
 }
 
-.order-toggle-option input:checked + span {
-  border-color: var(--text);
-  background: var(--text);
-  color: var(--bg);
-}
-
-.order-toggle-option.state-all:hover span,
-.order-toggle-option.state-all input:checked + span {
-  background: var(--text);
-  color: var(--bg);
-  border-color: var(--text);
-}
-
-.order-toggle-option.state-claimable:hover span,
-.order-toggle-option.state-claimable input:checked + span {
+.archive-filter-link.state-claimable:hover,
+.archive-filter-link.state-claimable.is-active {
   background: rgba(0, 0, 0, 0.1);
   color: var(--text);
-  border-color: var(--line);
 }
 
-.order-toggle-option.state-claimed:hover span,
-.order-toggle-option.state-claimed input:checked + span {
-  background: #808080;
-  color: #ffffff;
-  border-color: #808080;
+.archive-filter-link.state-claimed:hover,
+.archive-filter-link.state-claimed.is-active {
+  background: rgba(0, 0, 0, 0.1);
+  color: var(--text);
 }
 
-.order-toggle-option.state-partner:hover span,
-.order-toggle-option.state-partner input:checked + span {
+.archive-filter-link.state-partner:hover,
+.archive-filter-link.state-partner.is-active {
   background: #000000;
   color: #ffffff;
-  border-color: #000000;
 }
 
 .order-grid {
@@ -731,7 +691,7 @@ h3 {
 }
 
 .artifact-card.state-claimed {
-  background: #808080;
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .artifact-card.state-partner {

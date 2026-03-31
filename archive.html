@@ -41,24 +41,12 @@
         <p class="archive-count" id="unit-count">/ 0 units created</p>
       </div>
       <div class="archive-filter-row" aria-label="Archive filters">
-        <div class="order-toggle" role="radiogroup" aria-label="State">
-          <label class="order-toggle-option state-all">
-            <input type="radio" name="state-filter" value="ALL" checked>
-            <span>All</span>
-          </label>
-          <label class="order-toggle-option state-claimable">
-            <input type="radio" name="state-filter" value="CLAIMABLE">
-            <span>Claimable</span>
-          </label>
-          <label class="order-toggle-option state-claimed">
-            <input type="radio" name="state-filter" value="CLAIMED">
-            <span>Claimed</span>
-          </label>
-          <label class="order-toggle-option state-partner">
-            <input type="radio" name="state-filter" value="PARTNER">
-            <span>Partner</span>
-          </label>
-        </div>
+        <nav class="archive-filter-links" aria-label="State">
+          <a href="#all" data-state-filter="ALL" class="archive-filter-link state-all">All</a>
+          <a href="#claimable" data-state-filter="CLAIMABLE" class="archive-filter-link state-claimable">Claimable</a>
+          <a href="#claimed" data-state-filter="CLAIMED" class="archive-filter-link state-claimed">Claimed</a>
+          <a href="#partner" data-state-filter="PARTNER" class="archive-filter-link state-partner">Partner</a>
+        </nav>
       </div>
     </header>
     <div id="gallery"></div>
@@ -73,7 +61,8 @@
       const gallery = document.getElementById('gallery');
       const unitCount = document.getElementById('unit-count');
       const unitSearch = document.getElementById('unit-search');
-      const stateInputs = Array.from(document.querySelectorAll('input[name="state-filter"]'));
+      const stateLinks = Array.from(document.querySelectorAll('[data-state-filter]'));
+      let selectedState = 'ALL';
 
       unitCount.textContent = `/ ${publicUnits.length} units indexed`;
 
@@ -82,10 +71,20 @@
         return;
       }
 
+      const syncFilterLinks = () => {
+        stateLinks.forEach((link) => {
+          const active = link.dataset.stateFilter === selectedState;
+          link.classList.toggle('is-active', active);
+          if (active) {
+            link.setAttribute('aria-current', 'page');
+          } else {
+            link.removeAttribute('aria-current');
+          }
+        });
+      };
+
       const renderGallery = () => {
         const query = unitSearch.value.trim();
-        const selectedState = stateInputs.find((input) => input.checked)?.value || 'ALL';
-
         const normalizedQuery = query.trim();
         const filteredUnits = publicUnits.filter((record) => {
           const unitID = Number(record.id ?? record.unit);
@@ -129,8 +128,14 @@
       };
 
       unitSearch.addEventListener('input', renderGallery);
-      stateInputs.forEach((input) => input.addEventListener('change', renderGallery));
+      stateLinks.forEach((link) => link.addEventListener('click', (event) => {
+        event.preventDefault();
+        selectedState = link.dataset.stateFilter || 'ALL';
+        syncFilterLinks();
+        renderGallery();
+      }));
 
+      syncFilterLinks();
       renderGallery();
     }
 

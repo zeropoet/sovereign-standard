@@ -66,7 +66,7 @@ body {
   min-height: 100vh;
   display: grid;
   place-items: center;
-  padding: 16px 24px;
+  padding: 0;
   position: relative;
 }
 
@@ -74,7 +74,7 @@ body {
   display: grid;
   gap: 24px;
   justify-items: center;
-  width: min(calc(100vw - 48px), calc(100vh - 48px), 760px);
+  width: min(100vw, 100vh, 760px);
   margin: 0;
   position: relative;
   z-index: 1;
@@ -94,7 +94,7 @@ body {
 
 .landing-wordmark {
   display: block;
-  width: min(100%, 700px);
+  width: min(100%, 560px);
   height: auto;
 }
 
@@ -103,12 +103,11 @@ body {
   inset: 0;
   display: grid;
   place-items: center;
-  padding: 16px 24px;
   pointer-events: none;
 }
 
 .sequence-stage {
-  width: min(calc(100vw - 48px), calc(100vh - 48px), 760px);
+  width: min(100vw, 100vh, 760px);
   aspect-ratio: 1 / 1;
   display: grid;
   place-items: center;
@@ -891,7 +890,7 @@ h3 {
 
 @media (max-width: 640px) {
   .landing-shell {
-    width: min(calc(100vw - 48px), calc(100vh - 48px), 760px);
+    width: min(100vw, 100vh, 760px);
     margin: 0;
     gap: 24px;
     justify-items: center;

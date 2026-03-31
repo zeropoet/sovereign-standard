@@ -79,7 +79,7 @@
       unitCount.textContent = `/ ${publicUnits.length} units indexed`;
 
       if (!publicUnits.length) {
-        gallery.innerHTML = '<p>No artifacts indexed yet.</p>';
+        gallery.innerHTML = '<p class="gallery-empty">No artifacts indexed yet.</p>';
         return;
       }
 
@@ -99,7 +99,7 @@
         gallery.innerHTML = '';
 
         if (!filteredUnits.length) {
-          gallery.innerHTML = '<p class="muted">No units match the active filters.</p>';
+          gallery.innerHTML = '<p class="gallery-empty muted">No units match the active filters.</p>';
           return;
         }
 
@@ -136,7 +136,7 @@
     }
 
     loadUnits().catch(() => {
-      document.getElementById('gallery').innerHTML = '<p>Unable to load artifact index.</p>';
+      document.getElementById('gallery').innerHTML = '<p class="gallery-empty">Unable to load artifact index.</p>';
     });
   </script>
 </body>

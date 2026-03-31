@@ -667,6 +667,13 @@ h3 {
   width: 100%;
 }
 
+.gallery-empty {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin: 0;
+  text-align: left;
+}
+
 .artifact-card {
   display: grid;
   place-items: center;

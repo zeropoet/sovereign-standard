@@ -18,7 +18,7 @@ This repository contains:
 - Kernel version: `FoldKernel-1.0.0`
 - Fixed step count: `64`
 - Public base URL: `https://sovereignstandard.co`
-- Current archive range: units `0...135`
+- Current committed archive range: units `0...135`
 
 ## Repository layout
 
@@ -28,8 +28,10 @@ This repository contains:
 - `SigilEngine/` contains deterministic sigil geometry and SVG export.
 - `Tests/SovereignStandardTests/` contains generator and verifier coverage.
 - `output/<unit-id>/` stores generated artifacts for each committed unit.
-- `units.json` is the generated public registry manifest.
+- `units.json` is the generated public registry manifest written by `sync-site`.
 - `claims.json` is the committed claim ledger.
+- `partners.json` is the committed partner assignment ledger.
+- `private/claim-codes.json` is the generated internal claim-code manifest.
 - `standardcontrol.html`, `archive.html`, `index.html`, `style.css`, `site.js`, and `registry.js` make up the main site surface.
 - `admin.html` and `admin.js` provide a lightweight admin interface for repo-backed state changes.
 
@@ -63,6 +65,15 @@ Current public states:
 Claims are committed into `claims.json` and merged into `units.json`.
 
 The public registry does not expose internal claim codes.
+
+Each unit record in `units.json` includes:
+
+- `id`
+- `state`
+- `created_at`
+- `sigil` for non-claimable public states
+- public claim metadata for claimable or claimed units
+- partner metadata when assigned
 
 ## Claims
 
@@ -118,6 +129,8 @@ Rebuild the public registry from the existing archive:
 ```bash
 swift run SovereignStandard sync-site
 ```
+
+`sync-site` also refreshes `units.json` and `private/claim-codes.json` from the committed archive and current repo-backed state.
 
 Persist a confirmed claim from a submission payload file:
 
